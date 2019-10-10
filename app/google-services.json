@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "811434146884",
+    "firebase_url": "https://onlinejobportal-46375.firebaseio.com",
+    "project_id": "onlinejobportal-46375",
+    "storage_bucket": "onlinejobportal-46375.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:811434146884:android:856b70f98f223f64bad011",
+        "android_client_info": {
+          "package_name": "com.example.onlinejobportal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "811434146884-s31gia8ece6ri44n539oks6r4n1rmh5n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.onlinejobportal",
+            "certificate_hash": "add77befe713b270d313801d124d15891275d8d2"
+          }
+        },
+        {
+          "client_id": "811434146884-dfpl38h3r7n8u0ijmjbq1us0527insg9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGWiaNrfriBgcQrY6LuMKuXZHo0ggBuLQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "811434146884-dfpl38h3r7n8u0ijmjbq1us0527insg9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

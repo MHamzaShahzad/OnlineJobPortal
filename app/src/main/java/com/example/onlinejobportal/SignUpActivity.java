@@ -3,7 +3,6 @@ package com.example.onlinejobportal;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,59 +16,54 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class MainActivity extends AppCompatActivity {
+public class SignUpActivity extends AppCompatActivity {
 
-    private static final String TAG = MainActivity.class.getName();
+    private static final String TAG = SignUpActivity.class.getName();
     private FirebaseAuth mAuth;
 
 
     private TextInputEditText inputEmail, inputPassword;
-    private Button btnSignIn;
+    private Button btnSignUp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_sign_up);
 
         inputEmail = findViewById(R.id.inputEmail);
         inputPassword = findViewById(R.id.inputPassword);
-        btnSignIn = findViewById(R.id.btnSignIn);
+        btnSignUp = findViewById(R.id.btnSignUp);
+
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
 
-
-        btnSignIn.setOnClickListener(new View.OnClickListener() {
+        btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (inputEmail.length() > 0 && inputPassword.length() > 0)
-                    sigIn(inputEmail.getText().toString(), inputPassword.getText().toString());
+                    createNewUser(inputEmail.getText().toString(), inputPassword.getText().toString());
                 else
-                    Toast.makeText(MainActivity.this, "Form not valid!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(SignUpActivity.this, "Form not valid!", Toast.LENGTH_LONG).show();
             }
         });
 
     }
 
-    private void sigIn(String email, String password) {
-
-        mAuth.signInWithEmailAndPassword(email, password)
+    private void createNewUser(String email, String password){
+        mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "signInWithEmail:success");
+                            Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            if (user != null) {
-                                //updateUI(user);
-
-                            }
+                            //updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
-                            Log.w(TAG, "signInWithEmail:failure", task.getException());
-                            Toast.makeText(MainActivity.this, "Authentication failed.",
+                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                            Toast.makeText(SignUpActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                             //updateUI(null);
                         }
@@ -77,10 +71,5 @@ public class MainActivity extends AppCompatActivity {
                         // ...
                     }
                 });
-
-    }
-
-    public void moveToSignUp(View view) {
-        startActivity(new Intent(MainActivity.this, SignUpActivity.class));
     }
 }

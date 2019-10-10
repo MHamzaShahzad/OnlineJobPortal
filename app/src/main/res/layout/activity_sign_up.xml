@@ -36,19 +36,13 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/btnSignIn"
+        android:id="@+id/btnSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/passwordTextLayout"
         android:layout_centerHorizontal="true"
-        android:text="Signin" />
+        android:text="Sign Up" />
 
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Create New Account."
-        android:layout_below="@id/btnSignIn"
-        android:onClick="moveToSignUp"/>
 
 </RelativeLayout>
