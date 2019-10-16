@@ -68,6 +68,7 @@ public class ProfileActivity extends AppCompatActivity {
                         cnicNumber.getText().toString(),
                         postalAddress.getText().toString(),
                         getSelectedGender(),
+                        ""
 
                 );
 
