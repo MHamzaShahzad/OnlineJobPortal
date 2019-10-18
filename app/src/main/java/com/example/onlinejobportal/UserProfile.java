@@ -2,53 +2,83 @@ package com.example.onlinejobportal;
 
 public class UserProfile {
 
-    String firstName, lastName, emailAddress, phoneNumber, cnicNumber, postalAddress,
-    gender, imageUrl;
+    String userImage, userFirstName, userLastName, userPhone, userEmail, userGender, userAge, userMarriageStatus, userCity,
+            userIntro, userEduction, userCountry, userCurrentJob, userSkills;
 
     public UserProfile() {
     }
 
-    public UserProfile(String firstName, String lastName, String emailAddress, String phoneNumber, String cnicNumber, String postalAddress, String gender, String imageUrl) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.emailAddress = emailAddress;
-        this.phoneNumber = phoneNumber;
-        this.cnicNumber = cnicNumber;
-        this.postalAddress = postalAddress;
-        this.gender = gender;
-        this.imageUrl = imageUrl;
+    public UserProfile(String userImage, String userFirstName, String userLastName, String userPhone, String userEmail, String userGender, String userAge, String userMarriageStatus, String userCity, String userIntro, String userEduction, String userCountry, String userCurrentJob, String userSkills) {
+        this.userImage = userImage;
+        this.userFirstName = userFirstName;
+        this.userLastName = userLastName;
+        this.userPhone = userPhone;
+        this.userEmail = userEmail;
+        this.userGender = userGender;
+        this.userAge = userAge;
+        this.userMarriageStatus = userMarriageStatus;
+        this.userCity = userCity;
+        this.userIntro = userIntro;
+        this.userEduction = userEduction;
+        this.userCountry = userCountry;
+        this.userCurrentJob = userCurrentJob;
+        this.userSkills = userSkills;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getUserImage() {
+        return userImage;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getUserFirstName() {
+        return userFirstName;
     }
 
-    public String getEmailAddress() {
-        return emailAddress;
+    public String getUserLastName() {
+        return userLastName;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getUserPhone() {
+        return userPhone;
     }
 
-    public String getCnicNumber() {
-        return cnicNumber;
+    public String getUserEmail() {
+        return userEmail;
     }
 
-    public String getPostalAddress() {
-        return postalAddress;
+    public String getUserGender() {
+        return userGender;
     }
 
-    public String getGender() {
-        return gender;
+    public String getUserAge() {
+        return userAge;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public String getUserMarriageStatus() {
+        return userMarriageStatus;
+    }
+
+    public String getUserCity() {
+        return userCity;
+    }
+
+    public String getUserIntro() {
+        return userIntro;
+    }
+
+    public String getUserEduction() {
+        return userEduction;
+    }
+
+    public String getUserCountry() {
+        return userCountry;
+    }
+
+    public String getUserCurrentJob() {
+        return userCurrentJob;
+    }
+
+    public String getUserSkills() {
+        return userSkills;
     }
 }
 

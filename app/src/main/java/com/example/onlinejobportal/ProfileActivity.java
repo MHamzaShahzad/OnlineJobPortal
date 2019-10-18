@@ -20,7 +20,10 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -28,28 +31,44 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.security.PrivateKey;
 
 public class ProfileActivity extends AppCompatActivity {
 
     ImageView profileImage;
-    EditText firstName, lastName, emailAddress, phoneNumber, cnicNumber, postalAddress;
-    RadioGroup groupGender;
-    RadioButton genderMale, genderFemale, genderRatherNotSay;
+    TextInputEditText firstName, lastName, emailAddress, phoneNumber, userIntro, userSkills, userCurrentJob,
+            userEduction, userAge, userCity, userCountry;
+    RadioGroup groupGender, userMarriageStatus;
+    RadioButton genderMale, genderFemale, genderRatherNotSay, usermarried, unmarried;
     Button btnSubmit;
 
     FirebaseDatabase database;
     DatabaseReference profileRef;
+
+    FirebaseStorage firebaseStorage;
+    StorageReference profilePicturesRef;
+
     FirebaseUser firebaseUser;
     private static final int RESULT_LOAD_IMG = 1;
+
+    private Uri imageUri;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         initLayoutWidgets();
+
+        firebaseStorage = FirebaseStorage.getInstance();
+        profilePicturesRef = firebaseStorage.getReference().child("Profile");
 
         database = FirebaseDatabase.getInstance();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -59,33 +78,7 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                UserProfile profile = new UserProfile(
-
-                        firstName.getText().toString(),
-                        lastName.getText().toString(),
-                        emailAddress.getText().toString(),
-                        phoneNumber.getText().toString(),
-                        cnicNumber.getText().toString(),
-                        postalAddress.getText().toString(),
-                        getSelectedGender(),
-                        ""
-
-                );
-
-                profileRef.child(firebaseUser.getUid()).setValue(profile).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            Context context = getApplicationContext();
-                            CharSequence text = "Submitted";
-                            int duration = Toast.LENGTH_SHORT;
-
-                            Toast toast = Toast.makeText(context, text, duration);
-                            toast.show();
-                        } else
-                            task.getException().printStackTrace();
-                    }
-                });
+                uploadImageOnStorage();
 
             }
         });
@@ -97,6 +90,65 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void uploadImageOnStorage(){
+        profilePicturesRef.putFile(imageUri)
+                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        // Get a URL to the uploaded content
+                        taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                uploadUserOnDatabase(uri.toString());
+                            }
+                        });
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception exception) {
+                        // Handle unsuccessful uploads
+                        // ...
+                    }
+                });
+    }
+
+    private void uploadUserOnDatabase(String imageUrl){
+        profileRef.child(firebaseUser.getUid()).setValue(getUserInstance(imageUrl)).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    Context context = getApplicationContext();
+                    CharSequence text = "Submitted";
+                    int duration = Toast.LENGTH_SHORT;
+
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+                } else
+                    task.getException().printStackTrace();
+            }
+        });
+    }
+
+    private UserProfile getUserInstance(String imageUrl){
+        return new UserProfile(
+                imageUrl,
+                firstName.getText().toString(),
+                lastName.getText().toString(),
+                phoneNumber.getText().toString(),
+                emailAddress.getText().toString(),
+                getSelectedGender(),
+                userAge.getText().toString(),
+                getMarriageStatus(),
+                userCity.getText().toString(),
+                userIntro.getText().toString(),
+                userEduction.getText().toString(),
+                userCountry.getText().toString(),
+                userCurrentJob.getText().toString(),
+                userSkills.getText().toString()
+        );
     }
 
     @Override
@@ -114,6 +166,19 @@ public class ProfileActivity extends AppCompatActivity {
             return genderFemale.getText().toString();
         if (id == R.id.genderRatherNotSay)
             return genderRatherNotSay.getText().toString();
+
+        return null;
+
+    }
+
+    private String getMarriageStatus() {
+        int id = userMarriageStatus.getCheckedRadioButtonId();
+
+        if (id == R.id.usermarried)
+            return usermarried.getText().toString();
+
+        if (id == R.id.unmarried)
+            return unmarried.getText().toString();
 
         return null;
 
@@ -144,14 +209,24 @@ public class ProfileActivity extends AppCompatActivity {
         lastName = findViewById(R.id.lastName);
         emailAddress = findViewById(R.id.emailAddress);
         phoneNumber = findViewById(R.id.phoneNumber);
-        cnicNumber = findViewById(R.id.cnicNumber);
-        postalAddress = findViewById(R.id.postalAddress);
+        userIntro = findViewById(R.id.userIntro);
+        userSkills = findViewById(R.id.userSkills);
+        userCurrentJob = findViewById(R.id.userCurrentJob);
+        userEduction = findViewById(R.id.userEduction);
+        userAge = findViewById(R.id.userAge);
+        userCity = findViewById(R.id.userCity);
+        userCountry = findViewById(R.id.userCountry);
+
 
         groupGender = findViewById(R.id.groupGender);
+        userMarriageStatus = findViewById(R.id.userMarriageStatus);
 
         genderMale = findViewById(R.id.genderMale);
         genderFemale = findViewById(R.id.genderFemale);
         genderRatherNotSay = findViewById(R.id.genderRatherNotSay);
+        usermarried = findViewById(R.id.usermarried);
+        unmarried = findViewById(R.id.unmarried);
+
 
         btnSubmit = findViewById(R.id.btnSubmit);
 
@@ -168,15 +243,28 @@ public class ProfileActivity extends AppCompatActivity {
                         UserProfile profile = dataSnapshot.getValue(UserProfile.class);
                         if (profile != null) {
 
-                            firstName.setText(profile.getFirstName());
-                            lastName.setText(profile.getLastName());
-                            cnicNumber.setText(profile.getCnicNumber());
-                            phoneNumber.setText(profile.getPhoneNumber());
-                            emailAddress.setText(profile.getEmailAddress());
-                            postalAddress.setText(profile.getPostalAddress());
+                            try {
+                                if (profile.getUserImage() != null && !profile.getUserImage().equals("null") && !profile.getUserImage().equals(""))
+                                    Picasso.get().load(profile.getUserImage()).error(R.drawable.ic_launcher_background).placeholder(R.drawable.ic_launcher_background).centerInside().fit().into(profileImage);
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
 
 
-                            setGender(profile.getGender());
+                            firstName.setText(profile.getUserFirstName());
+                            lastName.setText(profile.getUserLastName());
+                            phoneNumber.setText(profile.getUserPhone());
+                            emailAddress.setText(profile.getUserEmail());
+                            userAge.setText(profile.getUserAge());
+                            userIntro.setText(profile.getUserIntro());
+                            userSkills.setText(profile.getUserSkills());
+                            userCurrentJob.setText(profile.getUserCurrentJob());
+                            userCountry.setText(profile.getUserCountry());
+                            userCity.setText(profile.getUserCity());
+                            userEduction.setText(profile.getUserEduction());
+
+                            setGender(profile.getUserGender());
+                            setMarriedStatus(profile.getUserMarriageStatus());
 
                         }
 
@@ -195,11 +283,23 @@ public class ProfileActivity extends AppCompatActivity {
         profileRef.child(firebaseUser.getUid()).addListenerForSingleValueEvent(valueEventListener);
     }
 
+    private void setMarriedStatus(String userMarriageStatus) {
+        if (userMarriageStatus != null) {
+            if (userMarriageStatus.equals(usermarried.getText().toString())) {
+                usermarried.setChecked(true);
+                return;
+            }
+            if (userMarriageStatus.equals(unmarried.getText().toString())) {
+                unmarried.setChecked(true);
+            }
+        }
+    }
 
-    private void getImageFromGallery(){
+
+    private void getImageFromGallery() {
         Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
         photoPickerIntent.setType("image/*");
-        startActivityForResult(photoPickerIntent,RESULT_LOAD_IMG);
+        startActivityForResult(photoPickerIntent, RESULT_LOAD_IMG);
     }
 
     @Override
@@ -208,7 +308,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         if (resultCode == RESULT_OK) {
             try {
-                final Uri imageUri = data.getData();
+                imageUri = data.getData();
                 final InputStream imageStream = getContentResolver().openInputStream(imageUri);
                 final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
                 profileImage.setImageBitmap(selectedImage);
@@ -217,8 +317,8 @@ public class ProfileActivity extends AppCompatActivity {
                 Toast.makeText(ProfileActivity.this, "Something went wrong", Toast.LENGTH_LONG).show();
             }
 
-        }else {
-            Toast.makeText(ProfileActivity.this, "You haven't picked Image",Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(ProfileActivity.this, "You haven't picked Image", Toast.LENGTH_LONG).show();
         }
     }
 }
