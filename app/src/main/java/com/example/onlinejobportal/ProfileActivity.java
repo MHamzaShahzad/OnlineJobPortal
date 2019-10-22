@@ -49,6 +49,8 @@ public class ProfileActivity extends AppCompatActivity {
     RadioButton genderMale, genderFemale, genderRatherNotSay, usermarried, unmarried;
     Button btnSubmit;
 
+
+
     FirebaseDatabase database;
     DatabaseReference profileRef;
 
