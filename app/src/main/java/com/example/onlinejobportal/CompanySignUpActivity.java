@@ -16,21 +16,23 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 
-public class SignUpActivity extends AppCompatActivity {
+public class CompanySignUpActivity extends AppCompatActivity {
 
-    private static final String TAG = SignUpActivity.class.getName();
+    private static final String TAG = CompanySignUpActivity.class.getName();
     private FirebaseAuth mAuth;
 
 
-    private TextInputEditText inputEmail, inputPassword;
+    private TextInputEditText companyName, inputEmail, inputPassword;
     private Button btnSignUp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up);
+        setContentView(R.layout.activity_company_sign_up);
 
+        companyName = findViewById(R.id.companyName);
         inputEmail = findViewById(R.id.inputEmail);
         inputPassword = findViewById(R.id.inputPassword);
         btnSignUp = findViewById(R.id.btnSignUp);
@@ -45,7 +47,7 @@ public class SignUpActivity extends AppCompatActivity {
                 if (inputEmail.length() > 0 && inputPassword.length() > 0)
                     createNewUser(inputEmail.getText().toString(), inputPassword.getText().toString());
                 else
-                    Toast.makeText(SignUpActivity.this, "Form not valid!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(CompanySignUpActivity.this, "Form not valid!", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -61,15 +63,30 @@ public class SignUpActivity extends AppCompatActivity {
                             Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             if (user != null){
-                                Intent intent = new Intent(SignUpActivity.this, HomeDrawerActivity.class);
-                                startActivity(intent);
-                                finish();
+
+                                UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                        .setDisplayName(companyName.getText().toString())
+                                        .build();
+                                user.updateProfile(profileUpdates)
+                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if (task.isSuccessful()) {
+                                                    Log.d(TAG, "User profile updated.");
+                                                    Intent intent = new Intent(CompanySignUpActivity.this, HomeDrawerActivity.class);
+                                                    startActivity(intent);
+                                                    finish();
+                                                }
+                                            }
+                                        });
+
+
                             }
                             //updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                            Toast.makeText(SignUpActivity.this, "Authentication failed.",
+                            Toast.makeText(CompanySignUpActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                             //updateUI(null);
                         }

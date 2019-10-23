@@ -17,9 +17,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
-    private static final String TAG = MainActivity.class.getName();
+    private static final String TAG = LoginActivity.class.getName();
     private FirebaseAuth mAuth;
 
 
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
         inputEmail = findViewById(R.id.inputEmail);
         inputPassword = findViewById(R.id.inputPassword);
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
                 if (inputEmail.length() > 0 && inputPassword.length() > 0)
                     sigIn(inputEmail.getText().toString(), inputPassword.getText().toString());
                 else
-                    Toast.makeText(MainActivity.this, "Form not valid!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(LoginActivity.this, "Form not valid!", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null){
-            startActivity(new Intent(MainActivity.this, HomeDrawerActivity.class));
+            startActivity(new Intent(LoginActivity.this, HomeDrawerActivity.class));
             finish();
         }
     }
@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             if (user != null) {
 
-                                Intent intent = new Intent(MainActivity.this, HomeDrawerActivity.class);
+                                Intent intent = new Intent(LoginActivity.this, HomeDrawerActivity.class);
                                 startActivity(intent);
                                 finish();
 
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
-                            Toast.makeText(MainActivity.this, "Authentication failed.",
+                            Toast.makeText(LoginActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                             //updateUI(null);
                         }
@@ -95,6 +95,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void moveToSignUp(View view) {
-        startActivity(new Intent(MainActivity.this, SignUpActivity.class));
+        startActivity(new Intent(LoginActivity.this, CompanySignUpActivity.class));
     }
 }

@@ -25,7 +25,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.squareup.picasso.Picasso;
 
 
-public class CompanySignup extends AppCompatActivity {
+public class CompanySignUp extends AppCompatActivity {
 
     TextInputEditText companyName, companyEmailAddress, companyPhoneNumber, companyCity, companyCountry;
     RadioGroup cmpnyType;

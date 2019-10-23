@@ -12,21 +12,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".UserSignUpActivity" />
+        <activity android:name=".StartActivity" />
         <activity
             android:name=".HomeDrawerActivity"
             android:label="@string/title_activity_home_drawer"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".CompanySignup" />
-        <activity android:name=".SplashActivity" />
-        <activity android:name=".UserCompanylogin" />
-        <activity android:name=".ProfileActivity" />
-        <activity android:name=".SignUpActivity" />
-        <activity android:name=".MainActivity">
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".CompanySignUp" />
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".UserCompanylogin" />
+        <activity android:name=".ProfileActivity" />
+        <activity android:name=".CompanySignUpActivity" />
+        <activity android:name=".LoginActivity">
         </activity>
     </application>
 

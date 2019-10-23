@@ -106,7 +106,7 @@ public class HomeDrawerActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_slideshow) {
 
-            startActivity(new Intent(HomeDrawerActivity.this, CompanySignup.class));
+            startActivity(new Intent(HomeDrawerActivity.this, CompanySignUp.class));
 
         } else if (id == R.id.nav_tools) {
 
@@ -126,7 +126,7 @@ public class HomeDrawerActivity extends AppCompatActivity
     private void signOut(){
 
         mAuth.signOut();
-        startActivity(new Intent(HomeDrawerActivity.this, MainActivity.class));
+        startActivity(new Intent(HomeDrawerActivity.this, StartActivity.class));
         finish();
     }
 }
