@@ -3,6 +3,8 @@ package com.example.onlinejobportal;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.onlinejobportal.company.CompanyProfileActivity;
+import com.example.onlinejobportal.user.UserProfileActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -102,11 +104,11 @@ public class HomeDrawerActivity extends AppCompatActivity
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
 
-            startActivity(new Intent(HomeDrawerActivity.this, ProfileActivity.class));
+            startActivity(new Intent(HomeDrawerActivity.this, UserProfileActivity.class));
 
         } else if (id == R.id.nav_slideshow) {
 
-            startActivity(new Intent(HomeDrawerActivity.this, CompanySignUp.class));
+            startActivity(new Intent(HomeDrawerActivity.this, CompanyProfileActivity.class));
 
         } else if (id == R.id.nav_tools) {
 

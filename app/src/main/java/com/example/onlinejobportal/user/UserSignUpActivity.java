@@ -1,8 +1,4 @@
-package com.example.onlinejobportal;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.onlinejobportal.user;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,10 +11,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.onlinejobportal.CommonFunctionsClass;
+import com.example.onlinejobportal.HomeDrawerActivity;
+import com.example.onlinejobportal.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -69,7 +73,7 @@ public class UserSignUpActivity extends AppCompatActivity {
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (inputEmail.length() > 0 && inputPassword.length() > 0 && imageUri != null)
+                if (isFormValid(view))
                     createNewUser(inputEmail.getText().toString(), inputPassword.getText().toString());
                 else
                     Toast.makeText(context, "Form not valid!", Toast.LENGTH_LONG).show();
@@ -85,13 +89,50 @@ public class UserSignUpActivity extends AppCompatActivity {
 
     }
 
+    private boolean isFormValid(View view) {
+        boolean result = true;
+
+        if (inputEmail.length() == 0) {
+            inputEmail.setError("Field is required!");
+            result = false;
+        }
+
+        if (inputEmail.length() > 0 && !CommonFunctionsClass.isEmailValid(inputEmail.getText().toString().trim())) {
+            inputEmail.setError("Email not valid!");
+            result = false;
+        }
+
+        if (inputPassword.length() == 0) {
+            inputPassword.setError("Field is required!");
+            result = false;
+        }
+
+        if (firstName.length() == 0) {
+            firstName.setError("Field is required!");
+            result = false;
+        }
+
+        if (inputPassword.length() > 0 && inputPassword.length() < 6) {
+            inputPassword.setError("Password should be at least six characters long!");
+            result = false;
+        }
+
+        if (imageUri == null) {
+            Snackbar.make(view, "Please select your profile picture.", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show();
+            result = false;
+        }
+
+        return result;
+    }
+
     private void getImageFromGallery() {
         Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
         photoPickerIntent.setType("image/*");
         startActivityForResult(photoPickerIntent, RESULT_LOAD_IMG);
     }
 
-    private void initLayoutWidgets(){
+    private void initLayoutWidgets() {
 
         profileImage = findViewById(R.id.profileImage);
         firstName = findViewById(R.id.firstName);
@@ -121,7 +162,7 @@ public class UserSignUpActivity extends AppCompatActivity {
         }
     }
 
-    private void uploadImageOnStorage(final FirebaseUser user){
+    private void uploadImageOnStorage(final FirebaseUser user) {
         profilePicturesRef.putFile(imageUri)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
@@ -162,7 +203,7 @@ public class UserSignUpActivity extends AppCompatActivity {
                 });
     }
 
-    private void createNewUser(String email, String password){
+    private void createNewUser(String email, String password) {
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -171,7 +212,7 @@ public class UserSignUpActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            if (user != null){
+                            if (user != null) {
 
                                 uploadImageOnStorage(user);
                             }

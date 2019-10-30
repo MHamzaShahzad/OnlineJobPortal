@@ -1,4 +1,4 @@
-package com.example.onlinejobportal;
+package com.example.onlinejobportal.company;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.onlinejobportal.CommonFunctionsClass;
+import com.example.onlinejobportal.HomeDrawerActivity;
+import com.example.onlinejobportal.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
@@ -44,13 +47,44 @@ public class CompanySignUpActivity extends AppCompatActivity {
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (inputEmail.length() > 0 && inputPassword.length() > 0)
+                if (isFormValid(view))
                     createNewUser(inputEmail.getText().toString(), inputPassword.getText().toString());
                 else
                     Toast.makeText(CompanySignUpActivity.this, "Form not valid!", Toast.LENGTH_LONG).show();
             }
         });
 
+    }
+
+    private boolean isFormValid(View view){
+        boolean result = true;
+
+        if (inputEmail.length() == 0){
+            inputEmail.setError("Field is required!");
+            result = false;
+        }
+
+        if (inputEmail.length() > 0 && !CommonFunctionsClass.isEmailValid(inputEmail.getText().toString().trim())){
+            inputEmail.setError("Email not valid!");
+            result = false;
+        }
+
+        if (inputPassword.length() == 0){
+            inputPassword.setError("Field is required!");
+            result = false;
+        }
+
+        if (companyName.length() == 0){
+            companyName.setError("Field is required!");
+            result = false;
+        }
+
+        if (inputPassword.length() > 0 && inputPassword.length() < 6){
+            inputPassword.setError("Password should be at least six characters long!");
+            result = false;
+        }
+
+        return result;
     }
 
     private void createNewUser(String email, String password){

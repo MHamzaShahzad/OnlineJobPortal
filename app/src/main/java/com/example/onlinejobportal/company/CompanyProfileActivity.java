@@ -1,4 +1,4 @@
-package com.example.onlinejobportal;
+package com.example.onlinejobportal.company;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +11,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.example.onlinejobportal.models.CompanyProfile;
+import com.example.onlinejobportal.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
@@ -21,11 +23,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.squareup.picasso.Picasso;
 
 
-public class CompanySignUp extends AppCompatActivity {
+public class CompanyProfileActivity extends AppCompatActivity {
 
     TextInputEditText companyName, companyEmailAddress, companyPhoneNumber, companyCity, companyCountry;
     RadioGroup cmpnyType;
@@ -40,7 +40,7 @@ public class CompanySignUp extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_company_signup);
+        setContentView(R.layout.activity_company_profile);
 
 
         database = FirebaseDatabase.getInstance();
@@ -129,8 +129,6 @@ public class CompanySignUp extends AppCompatActivity {
 
                         CompanyProfile profile = dataSnapshot.getValue(CompanyProfile.class);
                         if (profile != null) {
-
-
 
                             companyName.setText(profile.getcompanyName());
                             companyEmailAddress.setText(profile.getcompanyBusinessemail());

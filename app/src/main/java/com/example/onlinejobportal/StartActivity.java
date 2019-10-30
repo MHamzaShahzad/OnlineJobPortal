@@ -9,6 +9,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.onlinejobportal.company.CompanySignUpActivity;
+import com.example.onlinejobportal.user.UserSignUpActivity;
+
 public class StartActivity extends AppCompatActivity {
 
     private Context context;
