@@ -82,20 +82,20 @@
             android:text="Select Organization Type" />
 
         <RadioGroup
-            android:id="@+id/cmpnyType"
+            android:id="@+id/companyType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/cmpnygovt"
+                android:id="@+id/companyGovt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Government" />
 
             <RadioButton
-                android:id="@+id/cmpnyprvt"
+                android:id="@+id/companyPvt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Private LTD" />
@@ -105,7 +105,7 @@
 
 
         <Button
-            android:id="@+id/cmpnybtnSubmit"
+            android:id="@+id/companyBtnSubmit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

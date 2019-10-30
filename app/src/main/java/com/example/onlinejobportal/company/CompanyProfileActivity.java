@@ -28,9 +28,9 @@ import com.google.firebase.database.ValueEventListener;
 public class CompanyProfileActivity extends AppCompatActivity {
 
     TextInputEditText companyName, companyEmailAddress, companyPhoneNumber, companyCity, companyCountry;
-    RadioGroup cmpnyType;
-    RadioButton cmpnygovt, cmpnyprvt;
-    Button cmpnybtnSubmit;
+    RadioGroup companyType;
+    RadioButton companyGovt, companyPvt;
+    Button companyBtnSubmit;
 
     private FirebaseUser firebaseUser;
 
@@ -55,7 +55,6 @@ public class CompanyProfileActivity extends AppCompatActivity {
 
         return new CompanyProfile(
                 companyName.getText().toString(),
-                getCompanyType(),
                 companyEmailAddress.getText().toString(),
                 companyPhoneNumber.getText().toString(),
                 getCompanyType(),
@@ -65,7 +64,7 @@ public class CompanyProfileActivity extends AppCompatActivity {
 
     }
 
-    private void uploadCompanyProfileOnDatabase(){
+    private void uploadCompanyProfileOnDatabase() {
         cmpnyprofileref.child(firebaseUser.getUid()).setValue(getCompanyInstance()).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
@@ -76,14 +75,17 @@ public class CompanyProfileActivity extends AppCompatActivity {
 
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
+
+                    finish();
+
                 } else
                     task.getException().printStackTrace();
             }
         });
     }
 
-    private void setSubmitListener(){
-        cmpnybtnSubmit.setOnClickListener(new View.OnClickListener() {
+    private void setSubmitListener() {
+        companyBtnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -94,26 +96,26 @@ public class CompanyProfileActivity extends AppCompatActivity {
     }
 
     private String getCompanyType() {
-        int id = cmpnyType.getCheckedRadioButtonId();
+        int id = companyType.getCheckedRadioButtonId();
 
-        if (id == R.id.cmpnygovt)
-            return cmpnygovt.getText().toString();
+        if (id == R.id.companyGovt)
+            return companyGovt.getText().toString();
 
-        if (id == R.id.cmpnyprvt)
-            return cmpnyprvt.getText().toString();
+        if (id == R.id.companyPvt)
+            return companyPvt.getText().toString();
 
         return null;
 
     }
 
-    private void setCompanyType(String cmpnyType) {
-        if (cmpnyType != null) {
-            if (cmpnyType.equals(cmpnygovt.getText().toString())) {
-                cmpnygovt.setChecked(true);
+    private void setCompanyType(String companyType) {
+        if (companyType != null) {
+            if (companyType.equals(companyGovt.getText().toString())) {
+                companyGovt.setChecked(true);
                 return;
             }
-            if (cmpnyType.equals(cmpnyprvt.getText().toString())) {
-                cmpnyprvt.setChecked(true);
+            if (companyType.equals(companyPvt.getText().toString())) {
+                companyPvt.setChecked(true);
                 return;
             }
 
@@ -130,13 +132,13 @@ public class CompanyProfileActivity extends AppCompatActivity {
                         CompanyProfile profile = dataSnapshot.getValue(CompanyProfile.class);
                         if (profile != null) {
 
-                            companyName.setText(profile.getcompanyName());
-                            companyEmailAddress.setText(profile.getcompanyBusinessemail());
-                            companyPhoneNumber.setText(profile.getcompanyPhone());
-                            companyCity.setText(profile.getcompanyCity());
-                            companyCountry.setText(profile.getcompanyCountry());
+                            companyName.setText(profile.getCompanyName());
+                            companyEmailAddress.setText(profile.getCompanyBusinessEmail());
+                            companyPhoneNumber.setText(profile.getCompanyPhone());
+                            companyCity.setText(profile.getCompanyCity());
+                            companyCountry.setText(profile.getCompanyCountry());
 
-                            setCompanyType(profile.getselectOrganizationtype());
+                            setCompanyType(profile.getCompanyType());
 
                         }
 
@@ -163,10 +165,12 @@ public class CompanyProfileActivity extends AppCompatActivity {
         companyCity = findViewById(R.id.companyCity);
         companyCountry = findViewById(R.id.companyCountry);
 
-        cmpnygovt = findViewById(R.id.cmpnygovt);
-        cmpnyprvt = findViewById(R.id.cmpnyprvt);
+        companyGovt = findViewById(R.id.companyGovt);
+        companyPvt = findViewById(R.id.companyPvt);
 
-        cmpnybtnSubmit = findViewById(R.id.cmpnybtnSubmit);
+        companyType = findViewById(R.id.companyType);
+
+        companyBtnSubmit = findViewById(R.id.companyBtnSubmit);
 
         getOldData();
         setSubmitListener();

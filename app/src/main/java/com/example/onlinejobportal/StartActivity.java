@@ -11,6 +11,8 @@ import android.view.View;
 
 import com.example.onlinejobportal.company.CompanySignUpActivity;
 import com.example.onlinejobportal.user.UserSignUpActivity;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class StartActivity extends AppCompatActivity {
 
@@ -21,6 +23,17 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         context = this;
         setContentView(R.layout.activity_start);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (currentUser != null){
+            startActivity(new Intent(StartActivity.this, HomeDrawerActivity.class));
+            finish();
+        }
     }
 
     public void signIn(View view) {
@@ -49,7 +62,7 @@ public class StartActivity extends AppCompatActivity {
                 moveToCreate(Constants.SIGN_UP_USER);
             }
         });
-        builder.setNeutralButton("Sign In As Company", new DialogInterface.OnClickListener() {
+        builder.setNeutralButton("Sign Up As Company", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 moveToCreate(Constants.SIGN_UP_COMPANY);

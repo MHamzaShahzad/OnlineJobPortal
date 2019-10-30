@@ -2,49 +2,45 @@ package com.example.onlinejobportal.models;
 
 
 public class CompanyProfile {
-    
-    String companyName, companyBusinessemail,companyPhone, companyType, companyCity, companyCountry, 
-    selectOrganizationtype;
-    
-    public CompanyProfile(){
-        
+
+    String companyName, companyBusinessEmail, companyPhone, companyType, companyCity, companyCountry;
+
+    public CompanyProfile() {
+
     }
 
-    public CompanyProfile(String companyName, String companyBusinessemail, String companyPhone, String companyType, String companyCity, String companyCountry, String selectOrganizationtype) {
+    public CompanyProfile(String companyName, String companyBusinessEmail, String companyPhone, String companyType, String companyCity, String companyCountry) {
         this.companyName = companyName;
-        this.companyBusinessemail = companyBusinessemail;
+        this.companyBusinessEmail = companyBusinessEmail;
         this.companyPhone = companyPhone;
         this.companyType = companyType;
         this.companyCity = companyCity;
         this.companyCountry = companyCountry;
-        this.selectOrganizationtype = selectOrganizationtype;
     }
 
-    public String getcompanyName() {
+    public String getCompanyName() {
         return companyName;
     }
 
-    public String getcompanyBusinessemail() {
-        return companyBusinessemail;
+    public String getCompanyBusinessEmail() {
+        return companyBusinessEmail;
     }
 
-    public String getcompanyPhone() {
+    public String getCompanyPhone() {
         return companyPhone;
     }
 
-    public String getcompanyType() {
+    public String getCompanyType() {
         return companyType;
     }
 
-    public String getcompanyCity() {
+    public String getCompanyCity() {
         return companyCity;
     }
 
-    public String getcompanyCountry() {
+    public String getCompanyCountry() {
         return companyCountry;
     }
 
-    public String getselectOrganizationtype() {
-        return selectOrganizationtype;
-    }
 }
+
