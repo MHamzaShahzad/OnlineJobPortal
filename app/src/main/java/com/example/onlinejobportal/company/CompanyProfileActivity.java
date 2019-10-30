@@ -11,6 +11,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.example.onlinejobportal.controllers.MyFirebaseDatabase;
 import com.example.onlinejobportal.models.CompanyProfile;
 import com.example.onlinejobportal.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -34,18 +35,12 @@ public class CompanyProfileActivity extends AppCompatActivity {
 
     private FirebaseUser firebaseUser;
 
-    FirebaseDatabase database;
-    DatabaseReference cmpnyprofileref;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_company_profile);
 
-
-        database = FirebaseDatabase.getInstance();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        cmpnyprofileref = database.getReference("Company Profile");
 
 
         initLayoutWidgets();
@@ -65,7 +60,7 @@ public class CompanyProfileActivity extends AppCompatActivity {
     }
 
     private void uploadCompanyProfileOnDatabase() {
-        cmpnyprofileref.child(firebaseUser.getUid()).setValue(getCompanyInstance()).addOnCompleteListener(new OnCompleteListener<Void>() {
+        MyFirebaseDatabase.COMPANY_PROFILE_REFERENCE.child(firebaseUser.getUid()).setValue(getCompanyInstance()).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
@@ -154,7 +149,7 @@ public class CompanyProfileActivity extends AppCompatActivity {
 
             }
         };
-        cmpnyprofileref.child(firebaseUser.getUid()).addListenerForSingleValueEvent(valueEventListener);
+        MyFirebaseDatabase.COMPANY_PROFILE_REFERENCE.child(firebaseUser.getUid()).addListenerForSingleValueEvent(valueEventListener);
     }
 
     private void initLayoutWidgets() {

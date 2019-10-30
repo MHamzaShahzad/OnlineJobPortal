@@ -12,5 +12,8 @@ public class Constants {
     public static final String LOGIN_AS_COMPANY = "1";
 
 
+    public static final String STRING_COMPANY_PROFILE_REFERENCE = "Company Profile";
+    public static final String STRING_USER_PROFILE_REFERENCE = "User Profile";
 
+    public static final String STRING_PROFILE_PIC_STORAGE_REF = "profile_pictures";
 }

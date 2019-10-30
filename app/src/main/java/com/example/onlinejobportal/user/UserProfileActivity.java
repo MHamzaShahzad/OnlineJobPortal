@@ -18,6 +18,8 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.onlinejobportal.R;
+import com.example.onlinejobportal.controllers.MyFirebaseDatabase;
+import com.example.onlinejobportal.controllers.MyFirebaseStorage;
 import com.example.onlinejobportal.models.UserProfile;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -49,13 +51,6 @@ public class UserProfileActivity extends AppCompatActivity {
     Button btnSubmit;
 
 
-
-    FirebaseDatabase database;
-    DatabaseReference profileRef;
-
-    FirebaseStorage firebaseStorage;
-    StorageReference profilePicturesRef;
-
     FirebaseUser firebaseUser;
     private static final int RESULT_LOAD_IMG = 1;
 
@@ -68,12 +63,7 @@ public class UserProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile_user);
         initLayoutWidgets();
 
-        firebaseStorage = FirebaseStorage.getInstance();
-        profilePicturesRef = firebaseStorage.getReference().child("Profile");
-
-        database = FirebaseDatabase.getInstance();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        profileRef = database.getReference("Profile");
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,7 +84,7 @@ public class UserProfileActivity extends AppCompatActivity {
     }
 
     private void uploadImageOnStorage(){
-        profilePicturesRef.putFile(imageUri)
+        MyFirebaseStorage.PROFILE_PIC_STORAGE_REF.child(firebaseUser.getUid() + ".jpg").putFile(imageUri)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -117,7 +107,7 @@ public class UserProfileActivity extends AppCompatActivity {
     }
 
     private void uploadUserOnDatabase(String imageUrl){
-        profileRef.child(firebaseUser.getUid()).setValue(getUserInstance(imageUrl)).addOnCompleteListener(new OnCompleteListener<Void>() {
+        MyFirebaseDatabase.USER_PROFILE_REFERENCE.child(firebaseUser.getUid()).setValue(getUserInstance(imageUrl)).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
@@ -281,7 +271,7 @@ public class UserProfileActivity extends AppCompatActivity {
 
             }
         };
-        profileRef.child(firebaseUser.getUid()).addListenerForSingleValueEvent(valueEventListener);
+        MyFirebaseDatabase.USER_PROFILE_REFERENCE.child(firebaseUser.getUid()).addListenerForSingleValueEvent(valueEventListener);
     }
 
     private void setMarriedStatus(String userMarriageStatus) {
