@@ -102,6 +102,9 @@ public class HomeDrawerActivity extends AppCompatActivity
 
         if (id == R.id.nav_home) {
             // Handle the camera action
+
+            getSupportFragmentManager().beginTransaction().add(android.R.id.content, new FragmentAllUsers()).addToBackStack(null).commit();
+
         } else if (id == R.id.nav_gallery) {
 
             startActivity(new Intent(HomeDrawerActivity.this, UserProfileActivity.class));
@@ -130,5 +133,6 @@ public class HomeDrawerActivity extends AppCompatActivity
         mAuth.signOut();
         startActivity(new Intent(HomeDrawerActivity.this, StartActivity.class));
         finish();
+
     }
 }

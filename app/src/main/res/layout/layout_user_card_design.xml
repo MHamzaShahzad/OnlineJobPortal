@@ -35,12 +35,13 @@
                 android:id="@+id/userName"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Muhammad Bilal"
+                android:text="User Name"
                 android:textColor="#ffff"
                 android:textSize="24sp"
                 android:textStyle="bold"
 
                 />
+
             <TextView
                 android:id="@+id/userSkills"
                 android:layout_width="match_parent"
@@ -71,24 +72,21 @@
                 android:textSize="21sp"
 
                 />
+
             <RatingBar
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:numStars = "5"
+                android:isIndicator="true"
+                android:max="5"
+                android:numStars="5"
                 android:scaleX=".4"
                 android:scaleY=".70"
                 android:transformPivotX="0dp"
-                android:transformPivotY="0dp"
-                android:isIndicator="true"
-                android:max="5"
-
-                />
+                android:transformPivotY="0dp" />
 
 
         </LinearLayout>
 
-
     </RelativeLayout>
-
 
 </androidx.cardview.widget.CardView>
