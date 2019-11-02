@@ -1,6 +1,8 @@
 package com.example.onlinejobportal.models;
 
-public class UserProfile {
+import java.io.Serializable;
+
+public class UserProfile implements Serializable {
 
     String userImage, userFirstName, userLastName, userPhone, userEmail, userGender, userAge, userMarriageStatus, userCity,
             userIntro, userEduction, userCountry, userCurrentJob, userSkills;

@@ -2,6 +2,8 @@ package com.example.onlinejobportal;
 
 public class Constants {
 
+    public static final String USER_OBJECT = "userObject";
+
     public static final String SIGN_UP_AS = "signUpAS";
 
     public static final String SIGN_UP_USER = "0";

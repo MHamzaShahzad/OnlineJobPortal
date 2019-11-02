@@ -1,6 +1,7 @@
 package com.example.onlinejobportal;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,10 +9,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.onlinejobportal.models.UserProfile;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class AdapterAllUsers extends RecyclerView.Adapter<AdapterAllUsers.Holder> {
@@ -37,11 +40,20 @@ public class AdapterAllUsers extends RecyclerView.Adapter<AdapterAllUsers.Holder
 
         Log.e(TAG, "onBindViewHolder: " + usersList.get(holder.getAdapterPosition()).getUserFirstName() );
 
-        UserProfile userProfile = usersList.get(holder.getAdapterPosition());
+        final UserProfile userProfile = usersList.get(holder.getAdapterPosition());
         holder.userName.setText(userProfile.getUserFirstName());
         holder.userSkills.setText(userProfile.getUserSkills());
         holder.userCurrentJob.setText(userProfile.getUserCurrentJob());
         holder.userCity.setText(userProfile.getUserCity());
+
+       holder.userCard.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               Intent intent = new Intent(context, UserProfileDescriptionActivity.class);
+               intent.putExtra(Constants.USER_OBJECT, userProfile);
+               context.startActivity(intent);
+           }
+       });
 
     }
 
@@ -53,11 +65,13 @@ public class AdapterAllUsers extends RecyclerView.Adapter<AdapterAllUsers.Holder
 
     public class Holder extends RecyclerView.ViewHolder {
 
+        CardView userCard;
         TextView userName, userSkills, userCurrentJob, userCity;
 
         public Holder(@NonNull View itemView) {
             super(itemView);
 
+            userCard = itemView.findViewById(R.id.userCard);
             userName = itemView.findViewById(R.id.userName);
             userSkills = itemView.findViewById(R.id.userSkills);
             userCurrentJob = itemView.findViewById(R.id.userCurrentJob);
