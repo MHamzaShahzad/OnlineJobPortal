@@ -1,15 +1,15 @@
 package com.example.onlinejobportal.models;
 
 
-public class CompanyProfile {
+public class CompanyProfileModel {
 
     String companyName, companyBusinessEmail, companyPhone, companyType, companyCity, companyCountry;
 
-    public CompanyProfile() {
+    public CompanyProfileModel() {
 
     }
 
-    public CompanyProfile(String companyName, String companyBusinessEmail, String companyPhone, String companyType, String companyCity, String companyCountry) {
+    public CompanyProfileModel(String companyName, String companyBusinessEmail, String companyPhone, String companyType, String companyCity, String companyCountry) {
         this.companyName = companyName;
         this.companyBusinessEmail = companyBusinessEmail;
         this.companyPhone = companyPhone;

@@ -13,7 +13,11 @@ public class Constants {
     public static final String LOGIN_AS_USER = "0";
     public static final String LOGIN_AS_COMPANY = "1";
 
+    public static final String JOB_ACTIVE = "0";
+    public static final String JOB_COMPLETED = "1";
 
+
+    public static final String STRING_COMPANY_POSTED_JOBS_REFERENCE = "Posted Jobs";
     public static final String STRING_COMPANY_PROFILE_REFERENCE = "Company Profile";
     public static final String STRING_USER_PROFILE_REFERENCE = "User Profile";
 

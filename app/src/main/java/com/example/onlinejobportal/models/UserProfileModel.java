@@ -2,15 +2,15 @@ package com.example.onlinejobportal.models;
 
 import java.io.Serializable;
 
-public class UserProfile implements Serializable {
+public class UserProfileModel implements Serializable {
 
     String userImage, userFirstName, userLastName, userPhone, userEmail, userGender, userAge, userMarriageStatus, userCity,
             userIntro, userEduction, userCountry, userCurrentJob, userSkills;
 
-    public UserProfile() {
+    public UserProfileModel() {
     }
 
-    public UserProfile(String userImage, String userFirstName, String userLastName, String userPhone, String userEmail, String userGender, String userAge, String userMarriageStatus, String userCity, String userIntro, String userEduction, String userCountry, String userCurrentJob, String userSkills) {
+    public UserProfileModel(String userImage, String userFirstName, String userLastName, String userPhone, String userEmail, String userGender, String userAge, String userMarriageStatus, String userCity, String userIntro, String userEduction, String userCountry, String userCurrentJob, String userSkills) {
         this.userImage = userImage;
         this.userFirstName = userFirstName;
         this.userLastName = userLastName;

@@ -3,12 +3,11 @@ package com.example.onlinejobportal;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.onlinejobportal.models.UserProfile;
+import com.example.onlinejobportal.models.UserProfileModel;
 import com.squareup.picasso.Picasso;
 
 public class UserProfileDescriptionActivity extends AppCompatActivity {
@@ -25,7 +24,6 @@ public class UserProfileDescriptionActivity extends AppCompatActivity {
 
         // load user profile data
         loadData();
-
     }
 
     private void initLayoutWidgets(){
@@ -45,26 +43,26 @@ public class UserProfileDescriptionActivity extends AppCompatActivity {
         if (intent != null) {
             try {
 
-                UserProfile userProfile = (UserProfile) intent.getSerializableExtra(Constants.USER_OBJECT);
-                if (userProfile != null){
+                UserProfileModel userProfileModel = (UserProfileModel) intent.getSerializableExtra(Constants.USER_OBJECT);
+                if (userProfileModel != null){
 
-                    if (userProfile.getUserImage() != null && !userProfile.getUserImage().equals("") && !userProfile.getUserImage().equals("null") )
+                    if (userProfileModel.getUserImage() != null && !userProfileModel.getUserImage().equals("") && !userProfileModel.getUserImage().equals("null") )
                         Picasso.get()
-                                .load(userProfile.getUserImage())
+                                .load(userProfileModel.getUserImage())
                                 .placeholder(R.drawable.ic_launcher_background)
                                 .error(R.drawable.ic_launcher_background)
                                 .centerInside()
                                 .fit()
                                 .into(profileImage);
 
-                    userName.setText(userProfile.getUserFirstName() + " " + userProfile.getUserLastName());
-                    userAge.setText(userProfile.getUserAge());
-                    userSkill.setText(userProfile.getUserSkills());
-                    userCurrentJob.setText(userProfile.getUserCurrentJob());
-                    userEmail.setText(userProfile.getUserEmail());
-                    userPhoneNumber.setText(userProfile.getUserPhone());
-                    userMaritalStatus.setText(userProfile.getUserMarriageStatus());
-                    userAddress.setText(userProfile.getUserCity() + "," + userProfile.getUserCountry());
+                    userName.setText(userProfileModel.getUserFirstName() + " " + userProfileModel.getUserLastName());
+                    userAge.setText(userProfileModel.getUserAge());
+                    userSkill.setText(userProfileModel.getUserSkills());
+                    userCurrentJob.setText(userProfileModel.getUserCurrentJob());
+                    userEmail.setText(userProfileModel.getUserEmail());
+                    userPhoneNumber.setText(userProfileModel.getUserPhone());
+                    userMaritalStatus.setText(userProfileModel.getUserMarriageStatus());
+                    userAddress.setText(userProfileModel.getUserCity() + "," + userProfileModel.getUserCountry());
 
                 }
 

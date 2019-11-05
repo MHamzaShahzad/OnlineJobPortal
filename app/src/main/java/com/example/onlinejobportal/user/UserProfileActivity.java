@@ -20,7 +20,7 @@ import android.widget.Toast;
 import com.example.onlinejobportal.R;
 import com.example.onlinejobportal.controllers.MyFirebaseDatabase;
 import com.example.onlinejobportal.controllers.MyFirebaseStorage;
-import com.example.onlinejobportal.models.UserProfile;
+import com.example.onlinejobportal.models.UserProfileModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -30,11 +30,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
@@ -123,8 +119,8 @@ public class UserProfileActivity extends AppCompatActivity {
         });
     }
 
-    private UserProfile getUserInstance(String imageUrl){
-        return new UserProfile(
+    private UserProfileModel getUserInstance(String imageUrl){
+        return new UserProfileModel(
                 imageUrl,
                 firstName.getText().toString(),
                 lastName.getText().toString(),
@@ -231,7 +227,7 @@ public class UserProfileActivity extends AppCompatActivity {
                 if (dataSnapshot.exists() && dataSnapshot.getValue() != null) {
                     try {
 
-                        UserProfile profile = dataSnapshot.getValue(UserProfile.class);
+                        UserProfileModel profile = dataSnapshot.getValue(UserProfileModel.class);
                         if (profile != null) {
 
                             try {

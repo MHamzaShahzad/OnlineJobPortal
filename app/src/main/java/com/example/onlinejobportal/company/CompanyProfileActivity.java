@@ -12,7 +12,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.onlinejobportal.controllers.MyFirebaseDatabase;
-import com.example.onlinejobportal.models.CompanyProfile;
+import com.example.onlinejobportal.models.CompanyProfileModel;
 import com.example.onlinejobportal.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -21,8 +21,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 
@@ -46,9 +44,9 @@ public class CompanyProfileActivity extends AppCompatActivity {
         initLayoutWidgets();
     }
 
-    private CompanyProfile getCompanyInstance() {
+    private CompanyProfileModel getCompanyInstance() {
 
-        return new CompanyProfile(
+        return new CompanyProfileModel(
                 companyName.getText().toString(),
                 companyEmailAddress.getText().toString(),
                 companyPhoneNumber.getText().toString(),
@@ -124,7 +122,7 @@ public class CompanyProfileActivity extends AppCompatActivity {
                 if (dataSnapshot.exists() && dataSnapshot.getValue() != null) {
                     try {
 
-                        CompanyProfile profile = dataSnapshot.getValue(CompanyProfile.class);
+                        CompanyProfileModel profile = dataSnapshot.getValue(CompanyProfileModel.class);
                         if (profile != null) {
 
                             companyName.setText(profile.getCompanyName());

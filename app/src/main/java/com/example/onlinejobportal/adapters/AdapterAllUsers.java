@@ -1,4 +1,4 @@
-package com.example.onlinejobportal;
+package com.example.onlinejobportal.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,18 +12,20 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.onlinejobportal.models.UserProfile;
+import com.example.onlinejobportal.Constants;
+import com.example.onlinejobportal.R;
+import com.example.onlinejobportal.UserProfileDescriptionActivity;
+import com.example.onlinejobportal.models.UserProfileModel;
 
-import java.io.Serializable;
 import java.util.List;
 
 public class AdapterAllUsers extends RecyclerView.Adapter<AdapterAllUsers.Holder> {
 
     private static final String TAG = AdapterAllUsers.class.getName();
     private Context context;
-    private List<UserProfile> usersList;
+    private List<UserProfileModel> usersList;
 
-    public AdapterAllUsers(Context context, List<UserProfile> usersList) {
+    public AdapterAllUsers(Context context, List<UserProfileModel> usersList) {
         this.context = context;
         this.usersList = usersList;
     }
@@ -40,17 +42,17 @@ public class AdapterAllUsers extends RecyclerView.Adapter<AdapterAllUsers.Holder
 
         Log.e(TAG, "onBindViewHolder: " + usersList.get(holder.getAdapterPosition()).getUserFirstName() );
 
-        final UserProfile userProfile = usersList.get(holder.getAdapterPosition());
-        holder.userName.setText(userProfile.getUserFirstName());
-        holder.userSkills.setText(userProfile.getUserSkills());
-        holder.userCurrentJob.setText(userProfile.getUserCurrentJob());
-        holder.userCity.setText(userProfile.getUserCity());
+        final UserProfileModel userProfileModel = usersList.get(holder.getAdapterPosition());
+        holder.userName.setText(userProfileModel.getUserFirstName());
+        holder.userSkills.setText(userProfileModel.getUserSkills());
+        holder.userCurrentJob.setText(userProfileModel.getUserCurrentJob());
+        holder.userCity.setText(userProfileModel.getUserCity());
 
        holder.userCard.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
                Intent intent = new Intent(context, UserProfileDescriptionActivity.class);
-               intent.putExtra(Constants.USER_OBJECT, userProfile);
+               intent.putExtra(Constants.USER_OBJECT, userProfileModel);
                context.startActivity(intent);
            }
        });

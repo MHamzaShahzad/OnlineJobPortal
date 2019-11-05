@@ -2,12 +2,15 @@ package com.example.onlinejobportal;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.SearchView;
 
 import com.example.onlinejobportal.company.CompanySignUpActivity;
 import com.example.onlinejobportal.user.UserSignUpActivity;
@@ -17,13 +20,19 @@ import com.google.firebase.auth.FirebaseUser;
 public class StartActivity extends AppCompatActivity {
 
     private Context context;
+    private SearchView searchView;
+    private RecyclerView recyclerUsersProfiles;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = this;
         setContentView(R.layout.activity_start);
+
+        getSupportFragmentManager().beginTransaction().add(R.id.fragmentHolderUserProfiles, new FragmentAllUsers()).commit();
+
     }
+
 
     @Override
     public void onStart() {

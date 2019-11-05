@@ -7,18 +7,33 @@
     android:padding="10dp"
     tools:context=".StartActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="signIn"
-        android:text="Sign In" />
 
-    <TextView
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/layout_signIn_signUp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:onClick="signUp"
-        android:text="Sign Up" />
+        android:layout_margin="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="signIn"
+            android:text="Sign In" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:onClick="signUp"
+            android:text="Sign Up" />
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/fragmentHolderUserProfiles"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_signIn_signUp"/>
 
 </RelativeLayout>

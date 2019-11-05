@@ -13,8 +13,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.onlinejobportal.adapters.AdapterAllUsers;
 import com.example.onlinejobportal.controllers.MyFirebaseDatabase;
-import com.example.onlinejobportal.models.UserProfile;
+import com.example.onlinejobportal.models.UserProfileModel;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
@@ -35,7 +36,7 @@ public class FragmentAllUsers extends Fragment {
 
     private RecyclerView recycler_all_users;
     private AdapterAllUsers adapterAllUsers;
-    private List<UserProfile> list;
+    private List<UserProfileModel> list;
 
     private ValueEventListener usersListValueEventListener;
 
@@ -77,8 +78,8 @@ public class FragmentAllUsers extends Fragment {
 
                         Iterable<DataSnapshot> snapshots = dataSnapshot.getChildren();
                         for (DataSnapshot snapshot : snapshots){
-                            UserProfile userProfile = snapshot.getValue(UserProfile.class);
-                            list.add(userProfile);
+                            UserProfileModel userProfileModel = snapshot.getValue(UserProfileModel.class);
+                            list.add(userProfileModel);
                         }
                         adapterAllUsers.notifyDataSetChanged();
 
