@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.onlinejobportal.Constants;
 import com.example.onlinejobportal.R;
-import com.example.onlinejobportal.UserProfileDescriptionActivity;
+import com.example.onlinejobportal.user.UserProfileDescriptionActivity;
 import com.example.onlinejobportal.models.UserProfileModel;
 
 import java.util.List;

@@ -26,7 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class CompanyProfileActivity extends AppCompatActivity {
 
-    TextInputEditText companyName, companyEmailAddress, companyPhoneNumber, companyCity, companyCountry;
+    TextInputEditText companyName, companyEmailAddress, companyPhoneNumber, companyCity, companyCountry, companyAbout;
     RadioGroup companyType;
     RadioButton companyGovt, companyPvt;
     Button companyBtnSubmit;
@@ -52,7 +52,8 @@ public class CompanyProfileActivity extends AppCompatActivity {
                 companyPhoneNumber.getText().toString(),
                 getCompanyType(),
                 companyCity.getText().toString(),
-                companyCountry.getText().toString()
+                companyCountry.getText().toString(),
+                companyAbout.getText().toString()
         );
 
     }
@@ -130,6 +131,7 @@ public class CompanyProfileActivity extends AppCompatActivity {
                             companyPhoneNumber.setText(profile.getCompanyPhone());
                             companyCity.setText(profile.getCompanyCity());
                             companyCountry.setText(profile.getCompanyCountry());
+                            companyAbout.setText(profile.getCompanyAbout());
 
                             setCompanyType(profile.getCompanyType());
 
@@ -157,6 +159,7 @@ public class CompanyProfileActivity extends AppCompatActivity {
         companyPhoneNumber = findViewById(R.id.companyPhoneNumber);
         companyCity = findViewById(R.id.companyCity);
         companyCountry = findViewById(R.id.companyCountry);
+        companyAbout = findViewById(R.id.companyAbout);
 
         companyGovt = findViewById(R.id.companyGovt);
         companyPvt = findViewById(R.id.companyPvt);
