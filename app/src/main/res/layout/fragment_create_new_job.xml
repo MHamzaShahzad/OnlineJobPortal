@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Job Title"
-            android:inputType="textPersonName" />
+            android:inputType="text" />
 
         <EditText
             android:id="@+id/jobLocation"
@@ -36,6 +36,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
             android:hint="Location"
             android:inputType="textEmailAddress" />
 
@@ -44,28 +46,35 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Industry"
-            android:inputType="phone" />
+            android:inputType="text" />
 
         <EditText
             android:id="@+id/jobDepartment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Department"
-            android:inputType="phone" />
+            android:inputType="text" />
 
         <EditText
             android:id="@+id/jobEducation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Education"
-            android:inputType="phone" />
+            android:inputType="text" />
 
         <EditText
             android:id="@+id/jobCareer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Career Level"
-            android:inputType="phone" />
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/jobSalary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Salary Range"
+            android:inputType="text" />
 
         <TextView
             android:layout_width="match_parent"
@@ -143,7 +152,7 @@
             android:singleLine="false" />
 
         <Button
-            android:id="@+id/jobpostButton"
+            android:id="@+id/submitJob"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
