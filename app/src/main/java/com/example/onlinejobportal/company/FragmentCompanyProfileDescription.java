@@ -28,17 +28,12 @@ public class FragmentCompanyProfileDescription extends Fragment {
     private static final String TAG = FragmentCompanyProfileDescription.class.getName();
     private Context context;
     private View view;
-
     private CircleImageView companyProfileImage;
     private TextView companyName, companyType, companyBusiness, companyPhone;
-
     private FirebaseUser firebaseUser;
-
     public FragmentCompanyProfileDescription() {
         // Required empty public constructor
     }
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -46,9 +41,6 @@ public class FragmentCompanyProfileDescription extends Fragment {
         // Inflate the layout for this fragment
         if (view == null) {
             view = inflater.inflate(R.layout.fragment_company_profile_description, container, false);
-
-
-
             initLayoutWidgets();
         }
         return view;
@@ -67,5 +59,4 @@ public class FragmentCompanyProfileDescription extends Fragment {
     private void loadCompanyProfile(){
 
     }
-
 }

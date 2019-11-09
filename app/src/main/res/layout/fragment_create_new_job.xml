@@ -47,13 +47,6 @@
             android:inputType="phone" />
 
         <EditText
-            android:id="@+id/jobType"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Job Type"
-            android:inputType="phone" />
-
-        <EditText
             android:id="@+id/jobDepartment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -74,12 +67,46 @@
             android:hint="Career Level"
             android:inputType="phone" />
 
-        <EditText
-            android:id="@+id/jobGender"
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Gender"
-            android:inputType="phone" />
+            android:text="Select Job For"
+            />
+
+        <CheckBox
+            android:id="@+id/genderMale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Male" />
+
+        <CheckBox
+            android:id="@+id/genderFemale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Female" />
+
+        <CheckBox
+            android:id="@+id/genderOthers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Others" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Job Timimg"/>
+
+        <CheckBox
+            android:id="@+id/typeFullTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Full Time" />
+
+        <CheckBox
+            android:id="@+id/typePartTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Part Time" />
 
         <EditText
             android:id="@+id/jobDescription"
