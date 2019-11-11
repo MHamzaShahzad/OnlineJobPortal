@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.onlinejobportal.company.CompanyProfileActivity;
-import com.example.onlinejobportal.company.FragmentPostedJobs;
+import com.example.onlinejobportal.company.FragmentCreateNewJob;
 import com.example.onlinejobportal.user.UserProfileActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -120,7 +120,7 @@ public class HomeDrawerActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_share) {
 
-            getSupportFragmentManager().beginTransaction().add(android.R.id.content, new FragmentPostedJobs()).addToBackStack(null).commit();
+            getSupportFragmentManager().beginTransaction().add(android.R.id.content, new FragmentCreateNewJob()).addToBackStack(null).commit();
 
         } else if (id == R.id.nav_send) {
 
