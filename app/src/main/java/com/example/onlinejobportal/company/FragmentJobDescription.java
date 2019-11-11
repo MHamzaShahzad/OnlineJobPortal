@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.onlinejobportal.R;
 
@@ -15,6 +17,9 @@ import com.example.onlinejobportal.R;
  * A simple {@link Fragment} subclass.
  */
 public class FragmentJobDescription extends Fragment {
+
+    private ImageView companyImage;
+    private TextView jobTitle, companyName, jobLocation, jobExperience, jobDepartment, jobUploadedAt, jobDueDate, jobIndustry, jobType, jobRequiredEducation, jobCareer, jobRequiredGender, jobDescription, jobSpecification;
 
 
     public FragmentJobDescription() {
