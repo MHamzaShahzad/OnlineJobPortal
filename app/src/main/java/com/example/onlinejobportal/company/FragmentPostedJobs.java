@@ -6,7 +6,10 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,6 +41,7 @@ public class FragmentPostedJobs extends Fragment {
     private TabLayout jobsTabLayout;
     private FirebaseUser firebaseUser;
     private AdapterAllJobs adapterAllJobs;
+    private RecyclerView recyclerPostedJobs;
 
     private ValueEventListener jobsValueEventListener;
 
@@ -68,8 +72,16 @@ public class FragmentPostedJobs extends Fragment {
 
     private void initLayoutWidgets() {
         jobsTabLayout = view.findViewById(R.id.jobsTabLayout);
+        recyclerPostedJobs = view.findViewById(R.id.recyclerPostedJobs);
 
         setTabsListener();
+        setRecyclerPostedJobs();
+    }
+
+    private void setRecyclerPostedJobs(){
+        recyclerPostedJobs.setHasFixedSize(true);
+        recyclerPostedJobs.setLayoutManager(new GridLayoutManager(context, 1));
+        recyclerPostedJobs.setAdapter(adapterAllJobs);
     }
 
     private void setTabsListener() {
@@ -100,7 +112,7 @@ public class FragmentPostedJobs extends Fragment {
 
     private void getJobs(String status) {
         jobModelList.clear();
-        if (jobModelList.size() > 0) {
+        if (tempJobModelList.size() > 0) {
             for (JobModel model : tempJobModelList) {
                 if (model != null && model.getJobStatus() != null && model.getJobStatus().equals(status))
                     jobModelList.add(model);
@@ -115,6 +127,8 @@ public class FragmentPostedJobs extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists() && dataSnapshot.getValue() != null) {
+
+                    Log.e(TAG, "onDataChange: " + dataSnapshot );
 
                     tempJobModelList.clear();
 
@@ -141,12 +155,12 @@ public class FragmentPostedJobs extends Fragment {
 
             }
         };
-        MyFirebaseDatabase.COMPANY_POSTED_JOBS_REFERENCE.child(firebaseUser.getUid()).addValueEventListener(jobsValueEventListener);
+        MyFirebaseDatabase.COMPANY_POSTED_JOBS_REFERENCE.addValueEventListener(jobsValueEventListener);
     }
 
     private void removeJobsValueEventListener() {
         if (jobsValueEventListener != null)
-            MyFirebaseDatabase.COMPANY_POSTED_JOBS_REFERENCE.child(firebaseUser.getUid()).removeEventListener(jobsValueEventListener);
+            MyFirebaseDatabase.COMPANY_POSTED_JOBS_REFERENCE.removeEventListener(jobsValueEventListener);
     }
 
     @Override

@@ -4,16 +4,17 @@ import java.io.Serializable;
 
 public class JobModel implements Serializable {
 
-    private String jobId, jobStatus, uploadBy, uploadedAt, jobTitle, jobSalary, jobLocation, jobDescription;
+    private String jobId, jobStatus, uploadBy, uploadedAt, jobDueDate, jobTitle, jobSalary, jobLocation, jobDescription;
 
     public JobModel() {
     }
 
-    public JobModel(String jobId, String jobStatus, String uploadBy, String uploadedAt, String jobTitle, String jobSalary, String jobLocation, String jobDescription) {
+    public JobModel(String jobId, String jobStatus, String uploadBy, String uploadedAt,String jobDueDate, String jobTitle, String jobSalary, String jobLocation, String jobDescription) {
         this.jobId = jobId;
         this.jobStatus = jobStatus;
         this.uploadBy = uploadBy;
         this.uploadedAt = uploadedAt;
+        this.jobDueDate = jobDueDate;
         this.jobTitle = jobTitle;
         this.jobSalary = jobSalary;
         this.jobLocation = jobLocation;
@@ -34,6 +35,10 @@ public class JobModel implements Serializable {
 
     public String getUploadedAt() {
         return uploadedAt;
+    }
+
+    public String getJobDueDate() {
+        return jobDueDate;
     }
 
     public String getJobTitle() {
