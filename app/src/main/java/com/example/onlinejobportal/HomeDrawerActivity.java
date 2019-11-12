@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import com.example.onlinejobportal.company.CompanyProfileActivity;
 import com.example.onlinejobportal.company.FragmentCreateNewJob;
+import com.example.onlinejobportal.company.FragmentPostedJobs;
 import com.example.onlinejobportal.user.UserProfileActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -123,7 +124,7 @@ public class HomeDrawerActivity extends AppCompatActivity
             getSupportFragmentManager().beginTransaction().add(android.R.id.content, new FragmentCreateNewJob()).addToBackStack(null).commit();
 
         } else if (id == R.id.nav_send) {
-
+            getSupportFragmentManager().beginTransaction().add(android.R.id.content, new FragmentPostedJobs()).addToBackStack(null).commit();
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -131,7 +132,7 @@ public class HomeDrawerActivity extends AppCompatActivity
         return true;
     }
 
-    private void signOut(){
+    private void signOut() {
 
         mAuth.signOut();
         startActivity(new Intent(HomeDrawerActivity.this, StartActivity.class));

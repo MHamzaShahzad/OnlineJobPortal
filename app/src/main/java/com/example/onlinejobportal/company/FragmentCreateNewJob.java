@@ -51,7 +51,7 @@ public class FragmentCreateNewJob extends Fragment implements View.OnClickListen
     private Context context;
     private View view;
 
-    private EditText jobTitle, jobLocation, jobIndustry, jobDepartment, jobEducation, jobCareer, jobSalary, jobDescription, requiredThings;
+    private EditText jobDueDate, jobTitle, jobLocation, jobIndustry, jobDepartment, jobEducation, jobCareer, jobSalary, jobDescription, requiredThings;
     private CheckBox typeFullTime, typePartTime, genderMale, genderFemale, genderOthers;
     private Button submitJob;
     private LatLng jobLocationLatLng;
@@ -81,6 +81,7 @@ public class FragmentCreateNewJob extends Fragment implements View.OnClickListen
 
     private void initLayoutWidgets() {
 
+        jobDueDate = view.findViewById(R.id.jobDueDate);
         jobTitle = view.findViewById(R.id.jobTitle);
         jobLocation = view.findViewById(R.id.jobLocation);
         jobIndustry = view.findViewById(R.id.jobIndustry);
@@ -141,6 +142,7 @@ public class FragmentCreateNewJob extends Fragment implements View.OnClickListen
                 Constants.JOB_ACTIVE,
                 firebaseUser.getUid(),
                 getCurrentDate(),
+                jobDueDate.getText().toString(),
                 jobTitle.getText().toString().trim(),
                 jobSalary.getText().toString(),
                 jobLocation.getText().toString().trim(),
@@ -227,6 +229,5 @@ public class FragmentCreateNewJob extends Fragment implements View.OnClickListen
                 break;
         }
     }
-
 
 }
