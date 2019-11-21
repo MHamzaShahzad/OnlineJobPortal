@@ -2,7 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorWhite"
+    android:background="@drawable/gradient_background"
     android:clickable="true">
 
     <ScrollView
@@ -21,7 +21,7 @@
                 android:layout_width="200dp"
                 android:layout_height="200dp"
                 android:layout_marginBottom="10dp"
-                android:src="@drawable/ic_launcher_background"
+                android:src="@drawable/useravatar"
                 android:layout_gravity="center"/>
 
 
@@ -34,7 +34,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Your Company Name"
-                    android:inputType="text" />
+                    android:inputType="text"
+                    android:background="@drawable/edittextstyle"
+                    android:padding="10dp"
+                    android:textColor="@color/colorWhite"
+                    android:textColorHint="#3F51B5"/>
             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -49,7 +53,11 @@
                     android:hint="Business Email Address "
                     android:focusable="false"
                     android:focusableInTouchMode="false"
-                    android:inputType="textEmailAddress" />
+                    android:inputType="textEmailAddress"
+                    android:background="@drawable/edittextstyle"
+                    android:padding="10dp"
+                    android:textColor="@color/colorWhite"
+                    android:textColorHint="#3F51B5"/>
             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -62,7 +70,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Official Phone Number"
-                    android:inputType="phone" />
+                    android:inputType="phone"
+                    android:background="@drawable/edittextstyle"
+                    android:padding="10dp"
+                    android:textColor="@color/colorWhite"
+                    android:textColorHint="#3F51B5"/>
             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -75,7 +87,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Enter your City"
-                    android:inputType="text" />
+                    android:inputType="text"
+                    android:background="@drawable/edittextstyle"
+                    android:padding="10dp"
+                    android:textColor="@color/colorWhite"
+                    android:textColorHint="#3F51B5"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -87,7 +103,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Enter Your Country"
-                    android:inputType="text" />
+                    android:inputType="text"
+                    android:background="@drawable/edittextstyle"
+                    android:padding="10dp"
+                    android:textColor="@color/colorWhite"
+                    android:textColorHint="#3F51B5"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -102,33 +122,43 @@
                     android:hint="About Your Company..."
                     android:inputType="textMultiLine"
                     android:lines="7"
-                    android:scrollHorizontally="false" />
+                    android:scrollHorizontally="false"
+                    android:background="@drawable/edittextstyle"
+                    android:padding="10dp"
+                    android:textColor="@color/colorWhite"
+                    android:textColorHint="#3F51B5"/>
             </com.google.android.material.textfield.TextInputLayout>
 
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Select Organization Type" />
+                android:text="Select Organization Type"
+                android:layout_marginTop="5dp"
+                android:padding="10dp"
+                android:textStyle="bold"
+                android:textColor="@color/colorWhite"
+                android:textSize="15sp"/>
 
             <RadioGroup
                 android:id="@+id/companyType"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/companyGovt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Government" />
+                    android:text="Government"
+                    android:textColor="@color/colorWhite"/>
 
                 <RadioButton
                     android:id="@+id/companyPvt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Private LTD" />
+                    android:text="Private LTD"
+                    android:textColor="@color/colorWhite"/>
 
             </RadioGroup>
 
@@ -137,7 +167,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="SUBMIT" />
+                android:text="SUBMIT"
+                android:background="#3F51B5"
+                android:paddingLeft="60dp"
+                android:paddingRight="60dp"
+                android:textColor="#fff"
+                android:layout_marginTop="10dp"/>
 
         </LinearLayout>
 

@@ -2,7 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorWhite"
+    android:background="@drawable/gradient_background"
     android:clickable="true"
     android:padding="10dp">
 
@@ -24,7 +24,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="16dp"
                 android:text="Post New Job"
-                android:textColor="#ce3232"
+                android:textColor="#3F51B5"
                 android:textSize="40sp"
                 android:typeface="serif" />
 
@@ -33,7 +33,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Job Title"
-                android:inputType="text" />
+                android:layout_marginBottom="10dp"
+                android:inputType="text"
+                android:padding="10dp"
+                android:background="@drawable/edittextstyle"
+                android:textColor="@color/colorWhite"
+                android:textColorHint="#3F51B5"/>
 
             <EditText
                 android:id="@+id/jobLocation"
@@ -44,42 +49,76 @@
                 android:focusable="false"
                 android:focusableInTouchMode="false"
                 android:hint="Location"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                android:padding="10dp"
+                android:background="@drawable/edittextstyle"
+                android:textColor="@color/colorWhite"
+                android:textColorHint="#3F51B5"/>
 
             <EditText
                 android:id="@+id/jobIndustry"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Industry"
-                android:inputType="text" />
+                android:inputType="text"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:padding="10dp"
+                android:background="@drawable/edittextstyle"
+                android:textColor="@color/colorWhite"
+                android:textColorHint="#3F51B5"/>
 
             <EditText
                 android:id="@+id/jobDepartment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Department"
-                android:inputType="text" />
+                android:inputType="text"
+                android:padding="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/edittextstyle"
+                android:textColor="@color/colorWhite"
+                android:textColorHint="#3F51B5"/>
 
             <EditText
                 android:id="@+id/jobEducation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Education"
-                android:inputType="text" />
+                android:inputType="text"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:padding="10dp"
+                android:background="@drawable/edittextstyle"
+                android:textColor="@color/colorWhite"
+                android:textColorHint="#3F51B5"/>
 
             <EditText
                 android:id="@+id/jobCareer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Career Level"
-                android:inputType="text" />
+                android:inputType="text"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:padding="10dp"
+                android:background="@drawable/edittextstyle"
+                android:textColor="@color/colorWhite"
+                android:textColorHint="#3F51B5"/>
 
             <EditText
                 android:id="@+id/jobSalary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Salary Range"
-                android:inputType="text" />
+                android:inputType="text"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:padding="10dp"
+                android:background="@drawable/edittextstyle"
+                android:textColor="@color/colorWhite"
+                android:textColorHint="#3F51B5"/>
 
             <EditText
                 android:id="@+id/jobDueDate"
@@ -87,18 +126,37 @@
                 android:layout_height="wrap_content"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
-                android:hint="Due Date" />
+                android:hint="Due Date"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:padding="10dp"
+                android:background="@drawable/edittextstyle"
+                android:textColor="@color/colorWhite"
+                android:textColorHint="#3F51B5"/>
 
             <EditText
                 android:id="@+id/jobExperience"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Experience" />
+                android:hint="Experience"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:padding="10dp"
+                android:background="@drawable/edittextstyle"
+                android:textColor="@color/colorWhite"
+                android:textColorHint="#3F51B5"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Select Job For" />
+                android:text="Select Job For"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:padding="10dp"
+                android:textStyle="bold"
+                android:textColor="@color/colorWhite"
+                android:textSize="15sp"
+                />
 
             <RadioGroup
                 android:layout_width="match_parent"
@@ -109,32 +167,42 @@
                     android:id="@+id/genderMale"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Male" />
+                    android:text="Male"
+                    android:textColor="@color/colorWhite"/>
 
                 <RadioButton
                     android:id="@+id/genderFemale"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Female" />
+                    android:text="Female"
+                    android:textColor="@color/colorWhite"/>
 
                 <RadioButton
                     android:id="@+id/genderOthers"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Others" />
+                    android:text="Others"
+                    android:textColor="@color/colorWhite"/>
 
                 <RadioButton
                     android:id="@+id/genderAll"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="All" />
+                    android:text="All"
+                    android:textColor="@color/colorWhite"/>
 
             </RadioGroup>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Job Timimg" />
+                android:text="Job Timimg"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:padding="10dp"
+                android:textStyle="bold"
+                android:textColor="@color/colorWhite"
+                android:textSize="15sp"/>
 
             <RadioGroup
                 android:layout_width="match_parent"
@@ -145,19 +213,22 @@
                     android:id="@+id/typeFullTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Full Time" />
+                    android:text="Full Time"
+                    android:textColor="@color/colorWhite"/>
 
                 <RadioButton
                     android:id="@+id/typePartTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Part Time" />
+                    android:text="Part Time"
+                    android:textColor="@color/colorWhite"/>
 
                 <RadioButton
                     android:id="@+id/typeBoth"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Both" />
+                    android:text="Both"
+                    android:textColor="@color/colorWhite"/>
 
             </RadioGroup>
 
@@ -176,7 +247,10 @@
                 android:maxLines="30"
                 android:padding="5dp"
                 android:scrollHorizontally="false"
-                android:singleLine="false" />
+                android:singleLine="false"
+                android:background="@drawable/edittextstyle"
+                android:textColor="@color/colorWhite"
+                android:textColorHint="#3F51B5"/>
 
             <EditText
                 android:id="@+id/requiredThings"
@@ -193,14 +267,17 @@
                 android:maxLines="30"
                 android:padding="5dp"
                 android:scrollHorizontally="false"
-                android:singleLine="false" />
+                android:singleLine="false"
+                android:background="@drawable/edittextstyle"
+                android:textColor="@color/colorWhite"
+                android:textColorHint="#3F51B5"/>
 
             <Button
                 android:id="@+id/submitJob"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:background="@color/colorPrimaryDark"
+                android:background="#3F51B5"
                 android:paddingLeft="70dp"
                 android:paddingRight="70dp"
                 android:text="Submit"

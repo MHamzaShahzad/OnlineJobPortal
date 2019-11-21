@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorWhite"
+    android:background="@drawable/gradient_background"
     android:clickable="true"
     android:padding="10dp"
     tools:context=".user.FragmentUserProfileDescription">
@@ -22,16 +22,16 @@
                 android:id="@+id/layout_header"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:background="@drawable/gradient_background"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="#2682D3">
 
                 <ImageView
                     android:id="@+id/profileImage"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="35dp"
-                    android:src="@drawable/ic_launcher_background" />
+                    android:src="@drawable/useravatar" />
 
                 <TextView
                     android:id="@+id/userName"
@@ -39,8 +39,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
-                    android:textColor="#ffffff"
-                    android:textSize="21sp"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="17sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -62,13 +62,15 @@
                     android:baselineAligned="false"
                     android:gravity="center"
                     android:orientation="horizontal"
-                    android:weightSum="3">
+                    android:weightSum="3"
+                    android:background="@drawable/edittextstyle">
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        >
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -148,25 +150,33 @@
                     android:id="@+id/userEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="10dp" />
+                    android:padding="10dp"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="17sp"/>
 
                 <TextView
                     android:id="@+id/userPhoneNumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="10dp" />
+                    android:padding="10dp"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="17sp"/>
 
                 <TextView
                     android:id="@+id/userMaritalStatus"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="10dp" />
+                    android:padding="10dp"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="17sp"/>
 
                 <TextView
                     android:id="@+id/userAddress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"/>
+                    android:padding="10dp"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="17sp"/>
 
             </LinearLayout>
 

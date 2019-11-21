@@ -24,7 +24,7 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_margin="5dp"
-                android:src="@drawable/ic_launcher_background" />
+                android:src="@drawable/useravatar" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -40,30 +40,34 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Job Title"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="10dp"/>
 
                 <TextView
                     android:id="@+id/companyName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Company Name"
-                    android:textSize="17sp"
-                    android:textStyle="bold" />
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="10dp"/>
 
                 <TextView
                     android:id="@+id/jobLocation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Job Location"
-                    android:textSize="17sp" />
+                    android:textSize="17sp"
+                    android:drawableLeft="@drawable/ic_locations_on_black_24dp"/>
 
                 <TextView
                     android:id="@+id/jobDueDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Job Due Date"
-                    android:textSize="17sp" />
+                    android:textSize="17sp"
+                    android:layout_marginLeft="5dp"/>
 
             </LinearLayout>
 
