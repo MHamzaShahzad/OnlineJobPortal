@@ -5,9 +5,9 @@
 
     <dist:module dist:instant="true" />
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -17,18 +17,28 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <activity android:name=".ForgotPasswordActivity" />
+
+        <activity
+            android:name=".HomeDrawerActivityCompany"
+            android:label="@string/title_activity_home_drawer_company"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".StartMainActivity"
+            android:label="@string/title_activity_start_main" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".user.UserProfileDescriptionActivity"></activity>
         <activity android:name=".user.UserSignUpActivity" />
-        <activity android:name=".StartActivity" />
+
         <activity
-            android:name=".HomeDrawerActivity"
+            android:name=".HomeDrawerActivityUser"
             android:label="@string/title_activity_home_drawer"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".company.CompanyProfileActivity" />
+
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,10 +46,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".UserCompanylogin" />
-        <activity android:name=".user.UserProfileActivity" />
+
         <activity android:name=".company.CompanySignUpActivity" />
         <activity android:name=".LoginActivity" />
+
     </application>
 
 </manifest>

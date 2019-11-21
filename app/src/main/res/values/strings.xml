@@ -9,12 +9,19 @@
     <string name="action_settings">Settings</string>
 
     <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
-    <string name="menu_tools">Tools</string>
+    <string name="menu_profile">Profile</string>
+    <string name="menu_upload_job">Upload Job</string>
+    <string name="menu_logout">Logout</string>
     <string name="menu_share">Share</string>
-    <string name="menu_send">Send</string>
+    <string name="menu_posted_job">Posted Jobs</string>
+    <string name="title_activity_start_main">StartMainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_jobs">Jobs</string>
+    <string name="title_users">Users</string>
+    <string name="title_activity_home_drawer_company">HomeDrawerActivityCompany</string>
+
+
 </resources>

@@ -1,92 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/userCard"
     android:layout_width="match_parent"
-    android:layout_height="170dp"
-    android:layout_marginLeft="10dp"
-    android:layout_marginTop="10dp"
-    android:layout_marginRight="10dp"
-    app:cardCornerRadius="3dp">
+    android:layout_height="wrap_content">
 
-    <RelativeLayout
+    <androidx.cardview.widget.CardView
+        android:id="@+id/jobCard"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/gradientbackground"
-        android:padding="10dp">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="2.5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="2.5dp"
+        app:cardCornerRadius="3dp">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/companyImage"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:src="@drawable/ic_launcher_background" />
+            android:padding="10dp">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_toEndOf="@id/companyImage"
-            android:layout_toRightOf="@id/companyImage"
-            android:orientation="vertical">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/companyImage"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="5dp"
+                android:src="@drawable/ic_launcher_background" />
 
-
-            <TextView
-                android:id="@+id/jobTitle"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Job Title"
-                android:textColor="#ffff"
-                android:textSize="24sp"
-                android:textStyle="bold"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_toEndOf="@id/companyImage"
+                android:layout_toRightOf="@id/companyImage"
+                android:orientation="vertical">
 
-                />
+                <TextView
+                    android:id="@+id/jobTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Job Title"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/companyName"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Company Name"
-                android:textColor="#ffff"
-                android:textSize="24sp"
-                android:textStyle="bold"
+                <TextView
+                    android:id="@+id/companyName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Company Name"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
 
-                />
+                <TextView
+                    android:id="@+id/jobLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Job Location"
+                    android:textSize="17sp" />
 
-            <TextView
-                android:id="@+id/jobLocation"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Job Location"
-                android:textColor="#ffff"
-                android:textSize="21sp"
+                <TextView
+                    android:id="@+id/jobDueDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Job Due Date"
+                    android:textSize="17sp" />
 
-                />
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/jobStatus"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Job Status"
-                android:textColor="#ffff"
-                android:textSize="21sp"
+        </RelativeLayout>
 
-                />
+    </androidx.cardview.widget.CardView>
 
-            <TextView
-                android:id="@+id/jobDueDate"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Job Due Date"
-                android:textColor="#ffff"
-                android:textSize="21sp"
-
-                />
-
-
-        </LinearLayout>
-
-    </RelativeLayout>
-
-</androidx.cardview.widget.CardView>
+</LinearLayout>

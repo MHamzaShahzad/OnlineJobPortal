@@ -10,6 +10,12 @@ public class UserProfileModel implements Serializable {
     public UserProfileModel() {
     }
 
+    public UserProfileModel(String userImage, String userFirstName, String userEmail) {
+        this.userImage = userImage;
+        this.userFirstName = userFirstName;
+        this.userEmail = userEmail;
+    }
+
     public UserProfileModel(String userImage, String userFirstName, String userLastName, String userPhone, String userEmail, String userGender, String userAge, String userMarriageStatus, String userCity, String userIntro, String userEduction, String userCountry, String userCurrentJob, String userSkills) {
         this.userImage = userImage;
         this.userFirstName = userFirstName;

@@ -2,22 +2,21 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
-    tools:context=".StartActivity">
-
+    tools:context=".StartMainActivity">
 
     <RelativeLayout
         android:id="@+id/layout_signIn_signUp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp">
+        android:layout_height="wrap_content">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="signIn"
+            android:padding="10dp"
             android:text="Sign In" />
 
         <TextView
@@ -26,14 +25,25 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:onClick="signUp"
+            android:padding="10dp"
             android:text="Sign Up" />
 
     </RelativeLayout>
 
     <FrameLayout
-        android:id="@+id/fragmentHolderUserProfiles"
+        android:id="@+id/fragment_home"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/nav_view"
+        android:layout_below="@id/layout_signIn_signUp" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/nav_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/layout_signIn_signUp"/>
+        android:layout_alignParentBottom="true"
+        android:background="?android:attr/windowBackground"
+        android:layout_marginTop="2dp"
+        app:menu="@menu/bottom_nav_menu" />
 
 </RelativeLayout>

@@ -1,176 +1,213 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:background="@color/colorWhite"
+    android:clickable="true"
+    android:padding="10dp">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#FFCDD2"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-        <TextView
-            android:id="@+id/contactFormTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="16dp"
-            android:text="Post New Job"
-            android:textColor="#ce3232"
-            android:textSize="40sp"
-            android:typeface="serif" />
-
-        <EditText
-            android:id="@+id/jobTitle"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Job Title"
-            android:inputType="text" />
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/jobLocation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:focusable="false"
-            android:focusableInTouchMode="false"
-            android:hint="Location"
-            android:inputType="textEmailAddress" />
+            <TextView
+                android:id="@+id/contactFormTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="16dp"
+                android:text="Post New Job"
+                android:textColor="#ce3232"
+                android:textSize="40sp"
+                android:typeface="serif" />
 
-        <EditText
-            android:id="@+id/jobIndustry"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Industry"
-            android:inputType="text" />
+            <EditText
+                android:id="@+id/jobTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Job Title"
+                android:inputType="text" />
 
-        <EditText
-            android:id="@+id/jobDepartment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Department"
-            android:inputType="text" />
+            <EditText
+                android:id="@+id/jobLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:hint="Location"
+                android:inputType="textEmailAddress" />
 
-        <EditText
-            android:id="@+id/jobEducation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Education"
-            android:inputType="text" />
+            <EditText
+                android:id="@+id/jobIndustry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Industry"
+                android:inputType="text" />
 
-        <EditText
-            android:id="@+id/jobCareer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Career Level"
-            android:inputType="text" />
+            <EditText
+                android:id="@+id/jobDepartment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Department"
+                android:inputType="text" />
 
-        <EditText
-            android:id="@+id/jobSalary"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Salary Range"
-            android:inputType="text" />
+            <EditText
+                android:id="@+id/jobEducation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Education"
+                android:inputType="text" />
 
-        <EditText
-            android:id="@+id/jobDueDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:focusable="false"
-            android:focusableInTouchMode="false"
-            android:hint="Due Date"/>
+            <EditText
+                android:id="@+id/jobCareer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Career Level"
+                android:inputType="text" />
 
+            <EditText
+                android:id="@+id/jobSalary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Salary Range"
+                android:inputType="text" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Select Job For"
-            />
+            <EditText
+                android:id="@+id/jobDueDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:hint="Due Date" />
 
-        <CheckBox
-            android:id="@+id/genderMale"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Male" />
+            <EditText
+                android:id="@+id/jobExperience"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Experience" />
 
-        <CheckBox
-            android:id="@+id/genderFemale"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Female" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Select Job For" />
 
-        <CheckBox
-            android:id="@+id/genderOthers"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Others" />
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Job Timimg"/>
+                <RadioButton
+                    android:id="@+id/genderMale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Male" />
 
-        <CheckBox
-            android:id="@+id/typeFullTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Full Time" />
+                <RadioButton
+                    android:id="@+id/genderFemale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Female" />
 
-        <CheckBox
-            android:id="@+id/typePartTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Part Time" />
+                <RadioButton
+                    android:id="@+id/genderOthers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Others" />
 
-        <EditText
-            android:id="@+id/jobDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:breakStrategy="balanced"
-            android:fitsSystemWindows="true"
-            android:gravity="top|start"
-            android:hint="Job Description"
-            android:inputType="textMultiLine"
-            android:lines="5"
-            android:maxLines="30"
-            android:padding="5dp"
-            android:scrollHorizontally="false"
-            android:singleLine="false" />
+                <RadioButton
+                    android:id="@+id/genderAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="All" />
 
-        <EditText
-            android:id="@+id/requiredThings"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:breakStrategy="balanced"
-            android:fitsSystemWindows="true"
-            android:gravity="top|start"
-            android:hint="Must have These Things"
-            android:inputType="textMultiLine"
-            android:lines="5"
-            android:maxLines="30"
-            android:padding="5dp"
-            android:scrollHorizontally="false"
-            android:singleLine="false" />
+            </RadioGroup>
 
-        <Button
-            android:id="@+id/submitJob"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:background="@color/colorPrimaryDark"
-            android:paddingLeft="70dp"
-            android:paddingRight="70dp"
-            android:text="Submit"
-            android:textColor="#fff" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Job Timimg" />
 
-    </LinearLayout>
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-</ScrollView>
+                <RadioButton
+                    android:id="@+id/typeFullTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Full Time" />
+
+                <RadioButton
+                    android:id="@+id/typePartTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Part Time" />
+
+                <RadioButton
+                    android:id="@+id/typeBoth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Both" />
+
+            </RadioGroup>
+
+            <EditText
+                android:id="@+id/jobDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:breakStrategy="balanced"
+                android:fitsSystemWindows="true"
+                android:gravity="top|start"
+                android:hint="Job Description"
+                android:inputType="textMultiLine"
+                android:lines="5"
+                android:maxLines="30"
+                android:padding="5dp"
+                android:scrollHorizontally="false"
+                android:singleLine="false" />
+
+            <EditText
+                android:id="@+id/requiredThings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:breakStrategy="balanced"
+                android:fitsSystemWindows="true"
+                android:gravity="top|start"
+                android:hint="Must have These Things"
+                android:inputType="textMultiLine"
+                android:lines="5"
+                android:maxLines="30"
+                android:padding="5dp"
+                android:scrollHorizontally="false"
+                android:singleLine="false" />
+
+            <Button
+                android:id="@+id/submitJob"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/colorPrimaryDark"
+                android:paddingLeft="70dp"
+                android:paddingRight="70dp"
+                android:text="Submit"
+                android:textColor="#fff" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</FrameLayout>

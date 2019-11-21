@@ -3,13 +3,19 @@ package com.example.onlinejobportal.models;
 
 public class CompanyProfileModel {
 
-    String companyName, companyBusinessEmail, companyPhone, companyType, companyCity, companyCountry, companyAbout;
+    String image, companyName, companyBusinessEmail, companyPhone, companyType, companyCity, companyCountry, companyAbout;
 
     public CompanyProfileModel() {
 
     }
 
-    public CompanyProfileModel(String companyName, String companyBusinessEmail, String companyPhone, String companyType, String companyCity, String companyCountry, String companyAbout) {
+    public CompanyProfileModel(String companyName, String companyBusinessEmail) {
+        this.companyName = companyName;
+        this.companyBusinessEmail = companyBusinessEmail;
+    }
+
+    public CompanyProfileModel(String image, String companyName, String companyBusinessEmail, String companyPhone, String companyType, String companyCity, String companyCountry, String companyAbout) {
+        this.image = image;
         this.companyName = companyName;
         this.companyBusinessEmail = companyBusinessEmail;
         this.companyPhone = companyPhone;
@@ -17,6 +23,10 @@ public class CompanyProfileModel {
         this.companyCity = companyCity;
         this.companyCountry = companyCountry;
         this.companyAbout = companyAbout;
+    }
+
+    public String getImage() {
+        return image;
     }
 
     public String getCompanyName() {

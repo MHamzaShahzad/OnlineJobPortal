@@ -13,6 +13,14 @@
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/menu_profile" />
         <item
+            android:id="@+id/nav_posted_jobs"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/menu_posted_job" />
+        <item
+            android:id="@+id/nav_upload_job"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/menu_upload_job" />
+        <item
             android:id="@+id/nav_logout"
             android:icon="@drawable/ic_menu_manage"
             android:title="@string/menu_logout" />

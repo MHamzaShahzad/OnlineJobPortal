@@ -17,29 +17,20 @@ import androidx.fragment.app.Fragment;
 import com.example.onlinejobportal.interfaces.FragmentInteractionListenerInterface;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 public class FragmentMapLocation extends Fragment implements OnMapReadyCallback {
 
     private static final String TAG = FragmentMapLocation.class.getName();
     Context context;
     View view;
-    TextView text_location_address;
-    ImageView btn_submit_location;
-    RelativeLayout locationAddressLayout;
-
-    GoogleApiClient mLocationClient;
-    LocationRequest mLocationRequest;
 
     private GoogleMap mMap;
-    private LatLng latLng;
-
-    private static final int PLACE_AUTOCOMPLETE_REQUEST_CODE = 1;
-
-    private boolean shouldMoveToCurrentLocation = true;
 
     private FragmentInteractionListenerInterface mListener;
 
@@ -69,7 +60,7 @@ public class FragmentMapLocation extends Fragment implements OnMapReadyCallback 
     public void onMapReady(GoogleMap googleMap) {
         Log.e(TAG, "onMapReady: ");
         mMap = googleMap;
-
+        getLatLngLocationFromArguments();
     }
 
 
@@ -84,6 +75,30 @@ public class FragmentMapLocation extends Fragment implements OnMapReadyCallback 
 
             e.printStackTrace();
 
+        }
+    }
+
+    private void getLatLngLocationFromArguments(){
+        Bundle arguments = getArguments();
+        if (arguments != null){
+            String address = arguments.getString(Constants.STRING_LOCATION_ADDRESS);
+            double addressLat = arguments.getDouble(Constants.STRING_LOCATION_LATITUDE);
+            double addressLng = arguments.getDouble(Constants.STRING_LOCATION_LONGITUDE);
+            showMakerOnMap(address, addressLat, addressLng);
+        }
+    }
+
+    private void showMakerOnMap(String address, double latitude, double longitude){
+        if (mMap != null){
+            mMap.clear();
+            LatLng latLng = new LatLng(latitude, longitude);
+            mMap.addMarker(
+                    new MarkerOptions()
+                            .title("Address")
+                            .snippet(address)
+                            .position(latLng)
+            ).showInfoWindow();
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16));
         }
     }
 

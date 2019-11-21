@@ -3,6 +3,7 @@ package com.example.onlinejobportal;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,20 +22,25 @@ import com.google.firebase.auth.FirebaseUser;
 public class LoginActivity extends AppCompatActivity {
 
     private static final String TAG = LoginActivity.class.getName();
+    private Context context;
     private FirebaseAuth mAuth;
-
 
     private TextInputEditText inputEmail, inputPassword;
     private Button btnSignIn;
 
+    private String AUTHENTICATE_AS;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        context = this;
         setContentView(R.layout.activity_login);
 
         inputEmail = findViewById(R.id.inputEmail);
         inputPassword = findViewById(R.id.inputPassword);
         btnSignIn = findViewById(R.id.btnSignIn);
+
+        AUTHENTICATE_AS = getIntent().getStringExtra(Constants.AUTHENTICATE_AS);
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
@@ -52,17 +58,6 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser != null){
-            startActivity(new Intent(LoginActivity.this, HomeDrawerActivity.class));
-            finish();
-        }
-    }
-
     private void sigIn(String email, String password) {
 
         mAuth.signInWithEmailAndPassword(email, password)
@@ -75,11 +70,7 @@ public class LoginActivity extends AppCompatActivity {
                             Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             if (user != null) {
-
-                                Intent intent = new Intent(LoginActivity.this, HomeDrawerActivity.class);
-                                startActivity(intent);
-                                finish();
-
+                                CommonFunctionsClass.moveToHome(context, user.getUid());
                             }
                         } else {
                             // If sign in fails, display a message to the user.
@@ -96,6 +87,10 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void moveToSignUp(View view) {
-        startActivity(new Intent(LoginActivity.this, CompanySignUpActivity.class));
+        CommonFunctionsClass.moveToCreate(context, AUTHENTICATE_AS);
+    }
+
+    public void forgotPassword(View view) {
+        startActivity(new Intent(context, ForgotPasswordActivity.class));
     }
 }

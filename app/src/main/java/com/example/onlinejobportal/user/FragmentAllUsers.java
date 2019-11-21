@@ -1,4 +1,4 @@
-package com.example.onlinejobportal;
+package com.example.onlinejobportal.user;
 
 
 import android.content.Context;
@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.onlinejobportal.R;
 import com.example.onlinejobportal.adapters.AdapterAllUsers;
 import com.example.onlinejobportal.controllers.MyFirebaseDatabase;
 import com.example.onlinejobportal.models.UserProfileModel;
@@ -77,7 +78,7 @@ public class FragmentAllUsers extends Fragment {
                     try {
 
                         Iterable<DataSnapshot> snapshots = dataSnapshot.getChildren();
-                        for (DataSnapshot snapshot : snapshots){
+                        for (DataSnapshot snapshot : snapshots) {
                             UserProfileModel userProfileModel = snapshot.getValue(UserProfileModel.class);
                             list.add(userProfileModel);
                         }

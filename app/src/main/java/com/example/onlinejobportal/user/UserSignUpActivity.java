@@ -16,8 +16,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.onlinejobportal.CommonFunctionsClass;
-import com.example.onlinejobportal.HomeDrawerActivity;
+import com.example.onlinejobportal.HomeDrawerActivityUser;
 import com.example.onlinejobportal.R;
+import com.example.onlinejobportal.controllers.MyFirebaseDatabase;
+import com.example.onlinejobportal.controllers.MyFirebaseStorage;
+import com.example.onlinejobportal.models.UserProfileModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -48,9 +51,6 @@ public class UserSignUpActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
-    FirebaseStorage firebaseStorage;
-    StorageReference profilePicturesRef;
-
     private static final int RESULT_LOAD_IMG = 1;
     private Uri imageUri;
 
@@ -65,10 +65,6 @@ public class UserSignUpActivity extends AppCompatActivity {
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
-
-        // Initialize Firebase Storage
-        firebaseStorage = FirebaseStorage.getInstance();
-        profilePicturesRef = firebaseStorage.getReference().child("Profile");
 
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -163,7 +159,7 @@ public class UserSignUpActivity extends AppCompatActivity {
     }
 
     private void uploadImageOnStorage(final FirebaseUser user) {
-        profilePicturesRef.putFile(imageUri)
+        MyFirebaseStorage.PROFILE_PIC_STORAGE_REF.child(user.getUid() + ".jpg").putFile(imageUri)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -181,10 +177,7 @@ public class UserSignUpActivity extends AppCompatActivity {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 if (task.isSuccessful()) {
-                                                    Log.d(TAG, "User profile updated.");
-                                                    Intent intent = new Intent(context, HomeDrawerActivity.class);
-                                                    startActivity(intent);
-                                                    finish();
+                                                    uploadUserBasicProfile(user);
                                                 }
                                             }
                                         });
@@ -228,6 +221,19 @@ public class UserSignUpActivity extends AppCompatActivity {
                         // ...
                     }
                 });
+    }
+
+    private void uploadUserBasicProfile(FirebaseUser user){
+        MyFirebaseDatabase.USER_PROFILE_REFERENCE.child(user.getUid()).setValue(new UserProfileModel(user.getPhotoUrl().toString(), user.getDisplayName(),user.getEmail())).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()){
+                    Intent intent = new Intent(context, HomeDrawerActivityUser.class);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+        });
     }
 
 }

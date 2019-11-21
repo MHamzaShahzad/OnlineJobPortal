@@ -5,12 +5,12 @@ import java.io.Serializable;
 public class JobModel implements Serializable {
 
     private String jobId, jobStatus, uploadBy, uploadedAt, jobDueDate, jobTitle, jobSalary, jobLocation, jobLocationLatLng, jobDescription, jobIndustry,
-            jobDepartment, jobEducation, jobCareer, requiredThings, jobForGender, jobType;
+            jobDepartment, jobEducation, jobCareer, requiredThings, jobForGender, jobType, jobExperience;
 
     public JobModel() {
     }
 
-    public JobModel(String jobId, String jobStatus, String uploadBy, String uploadedAt, String jobDueDate, String jobTitle, String jobSalary, String jobLocation, String jobLocationLatLng, String jobDescription, String jobIndustry, String jobDepartment, String jobEducation, String jobCareer, String requiredThings, String jobForGender, String jobType) {
+    public JobModel(String jobId, String jobStatus, String uploadBy, String uploadedAt, String jobDueDate, String jobTitle, String jobSalary, String jobLocation, String jobLocationLatLng, String jobDescription, String jobIndustry, String jobDepartment, String jobEducation, String jobCareer, String requiredThings, String jobForGender, String jobType, String jobExperience) {
         this.jobId = jobId;
         this.jobStatus = jobStatus;
         this.uploadBy = uploadBy;
@@ -28,6 +28,7 @@ public class JobModel implements Serializable {
         this.requiredThings = requiredThings;
         this.jobForGender = jobForGender;
         this.jobType = jobType;
+        this.jobExperience = jobExperience;
     }
 
     public String getJobId() {
@@ -96,5 +97,9 @@ public class JobModel implements Serializable {
 
     public String getJobType() {
         return jobType;
+    }
+
+    public String getJobExperience() {
+        return jobExperience;
     }
 }

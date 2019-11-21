@@ -1,6 +1,23 @@
 package com.example.onlinejobportal.company;
 
 
+import android.content.Context;
+import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.example.onlinejobportal.CommonFunctionsClass;
+import com.example.onlinejobportal.R;
+
+/**
+ * A simple {@link Fragment} subclass.
+ */
+
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
@@ -48,9 +65,9 @@ import static android.app.Activity.RESULT_OK;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FragmentCreateNewJob extends Fragment implements View.OnClickListener {
+public class FragmentEditJob extends Fragment implements View.OnClickListener {
 
-    private static final String TAG = FragmentCreateNewJob.class.getName();
+    private static final String TAG = FragmentEditJob.class.getName();
     private static final int PLACE_AUTOCOMPLETE_REQUEST_CODE = 101;
     private Context context;
     private View view;
@@ -62,12 +79,13 @@ public class FragmentCreateNewJob extends Fragment implements View.OnClickListen
 
     private DatePickerDialog dialog;
     private DateFormat formatter = new SimpleDateFormat("dd MMM yyyy", Locale.ENGLISH);
-    private String currentDate;
+    private String uploadDate;
 
 
     private FirebaseUser firebaseUser;
+    private JobModel jobModel;
 
-    public FragmentCreateNewJob() {
+    public FragmentEditJob() {
         // Required empty public constructor
     }
 
@@ -83,10 +101,45 @@ public class FragmentCreateNewJob extends Fragment implements View.OnClickListen
 
 
             initLayoutWidgets();
+            oldData();
             initDatePickerDialog();
 
         }
         return view;
+    }
+
+    private void oldData() {
+        Bundle arguments = getArguments();
+        if (arguments != null) {
+
+            try {
+
+                jobModel = (JobModel) arguments.getSerializable(Constants.JOB_OBJECT);
+                if (jobModel != null) {
+
+                    uploadDate = jobModel.getUploadedAt();
+                    jobLocationLatLng = new LatLng(CommonFunctionsClass.getLocLatitude(jobModel.getJobLocationLatLng()), CommonFunctionsClass.getLocLongitude(jobModel.getJobLocationLatLng()));
+                    jobDueDate.setText(jobModel.getJobDueDate());
+                    jobTitle.setText(jobModel.getJobTitle());
+                    jobLocation.setText(jobModel.getJobLocation());
+                    jobIndustry.setText(jobModel.getJobIndustry());
+                    jobDepartment.setText(jobModel.getJobDepartment());
+                    jobEducation.setText(jobModel.getJobEducation());
+                    jobSalary.setText(jobModel.getJobSalary());
+                    jobDescription.setText(jobModel.getJobDescription());
+                    requiredThings.setText(jobModel.getRequiredThings());
+                    jobCareer.setText(jobModel.getJobCareer());
+                    jobExperience.setText(jobModel.getJobExperience());
+
+                    setJobType(jobModel.getJobType());
+                    setGenderFor(jobModel.getJobForGender());
+
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private void initLayoutWidgets() {
@@ -121,6 +174,38 @@ public class FragmentCreateNewJob extends Fragment implements View.OnClickListen
         jobDueDate.setOnClickListener(this);
     }
 
+
+    private void setJobType(String type) {
+        switch (type) {
+            case Constants.JOB_TYPE_FULL_TIME:
+                typeFullTime.setChecked(true);
+                break;
+            case Constants.JOB_TYPE_PART_TIME:
+                typePartTime.setChecked(true);
+                break;
+            case Constants.JOB_TYPE_BOTH_TIME:
+                typeBoth.setChecked(true);
+                break;
+        }
+    }
+
+    private void setGenderFor(String genderFor) {
+        switch (genderFor) {
+            case Constants.GENDER_MALE:
+                genderMale.setChecked(true);
+                break;
+            case Constants.GENDER_FEMALE:
+                genderFemale.setChecked(true);
+                break;
+            case Constants.GENDER_OTHERS:
+                genderOthers.setChecked(true);
+                break;
+            case Constants.GENDER_ALL:
+                genderAll.setChecked(true);
+                break;
+        }
+    }
+
     private String getGender() {
 
         if (genderMale.isChecked())
@@ -151,7 +236,7 @@ public class FragmentCreateNewJob extends Fragment implements View.OnClickListen
                 id,
                 Constants.JOB_ACTIVE,
                 firebaseUser.getUid(),
-                currentDate,
+                uploadDate,
                 jobDueDate.getText().toString(),
                 jobTitle.getText().toString().trim(),
                 jobSalary.getText().toString(),
@@ -239,14 +324,11 @@ public class FragmentCreateNewJob extends Fragment implements View.OnClickListen
                 mDateSetListener,
                 year, month, day
         );
-        currentDate = formatter.format(cal.getTime());
-        jobDueDate.setText(currentDate);
     }
 
     private void submitPost() {
 
-        String id = UUID.randomUUID().toString();
-        MyFirebaseDatabase.COMPANY_POSTED_JOBS_REFERENCE.child(id).setValue(buildJobModelInstance(id)).addOnCompleteListener(new OnCompleteListener<Void>() {
+        MyFirebaseDatabase.COMPANY_POSTED_JOBS_REFERENCE.child(jobModel.getJobId()).setValue(buildJobModelInstance(jobModel.getJobId())).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {

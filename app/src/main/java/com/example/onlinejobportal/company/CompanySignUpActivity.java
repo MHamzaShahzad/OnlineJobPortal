@@ -11,8 +11,11 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.onlinejobportal.CommonFunctionsClass;
-import com.example.onlinejobportal.HomeDrawerActivity;
+import com.example.onlinejobportal.HomeDrawerActivityCompany;
+import com.example.onlinejobportal.HomeDrawerActivityUser;
 import com.example.onlinejobportal.R;
+import com.example.onlinejobportal.controllers.MyFirebaseDatabase;
+import com.example.onlinejobportal.models.CompanyProfileModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
@@ -47,7 +50,7 @@ public class CompanySignUpActivity extends AppCompatActivity {
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (isFormValid(view))
+                if (isFormValid())
                     createNewUser(inputEmail.getText().toString(), inputPassword.getText().toString());
                 else
                     Toast.makeText(CompanySignUpActivity.this, "Form not valid!", Toast.LENGTH_LONG).show();
@@ -56,7 +59,7 @@ public class CompanySignUpActivity extends AppCompatActivity {
 
     }
 
-    private boolean isFormValid(View view){
+    private boolean isFormValid(){
         boolean result = true;
 
         if (inputEmail.length() == 0){
@@ -95,7 +98,7 @@ public class CompanySignUpActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
+                            final FirebaseUser user = mAuth.getCurrentUser();
                             if (user != null){
 
                                 UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
@@ -106,10 +109,7 @@ public class CompanySignUpActivity extends AppCompatActivity {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 if (task.isSuccessful()) {
-                                                    Log.d(TAG, "User profile updated.");
-                                                    Intent intent = new Intent(CompanySignUpActivity.this, HomeDrawerActivity.class);
-                                                    startActivity(intent);
-                                                    finish();
+                                                    uploadCompanyBasicProfile(user);
                                                 }
                                             }
                                         });
@@ -129,4 +129,18 @@ public class CompanySignUpActivity extends AppCompatActivity {
                     }
                 });
     }
+
+    private void uploadCompanyBasicProfile(FirebaseUser company){
+        MyFirebaseDatabase.COMPANY_PROFILE_REFERENCE.child(company.getUid()).setValue(new CompanyProfileModel(company.getDisplayName(), company.getEmail())).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()){
+                    Intent intent = new Intent(CompanySignUpActivity.this, HomeDrawerActivityCompany.class);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+        });
+    }
+
 }

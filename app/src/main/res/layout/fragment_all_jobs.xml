@@ -6,10 +6,10 @@
     android:background="@color/colorWhite"
     android:clickable="true"
     android:padding="10dp"
-    tools:context=".user.FragmentAllUsers">
+    tools:context=".company.FragmentAllActiveJobs">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_all_users"
+        android:id="@+id/recyclerAllActiveJobs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
