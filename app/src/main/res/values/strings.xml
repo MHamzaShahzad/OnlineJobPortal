@@ -23,5 +23,10 @@
     <string name="title_users">Users</string>
     <string name="title_activity_home_drawer_company">HomeDrawerActivityCompany</string>
 
+    <string name="lbl_forgot_password">Forgot password?</string>
+    <string name="forgot_password_msg">We just need your registered Email Id to sent you password reset instructions.</string>
+    <string name="btn_reset_password">Reset Password</string>
+    <string name="btn_back"><![CDATA[<< Back]]></string>
+    <string name="hint_email">Email</string>
 
 </resources>
