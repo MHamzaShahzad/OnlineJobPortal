@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -21,9 +22,12 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.onlinejobportal.CommonFunctionsClass;
+import com.example.onlinejobportal.Constants;
 import com.example.onlinejobportal.R;
+import com.example.onlinejobportal.admin.FragmentTrustRequestDescription;
 import com.example.onlinejobportal.controllers.MyFirebaseDatabase;
 import com.example.onlinejobportal.controllers.MyFirebaseStorage;
+import com.example.onlinejobportal.models.LookForTrusted;
 import com.example.onlinejobportal.models.UserProfileModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -41,6 +45,8 @@ import com.squareup.picasso.Picasso;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 import static android.app.Activity.RESULT_OK;
 
 public class FragmentCreateEditUserProfile extends Fragment {
@@ -48,18 +54,19 @@ public class FragmentCreateEditUserProfile extends Fragment {
     private Context context;
     private View view;
 
-    ImageView profileImage;
-    TextInputEditText firstName, lastName, emailAddress, phoneNumber, userIntro, userSkills, userCurrentJob,
+    private ImageView verifiedIcon, notVerifiedIcon;
+    private CircleImageView profileImage;
+    private TextInputEditText firstName, lastName, emailAddress, phoneNumber, userIntro, userSkills, userCurrentJob,
             userEduction, userAge, userCity, userCountry;
-    RadioGroup groupGender, userMarriageStatus;
-    RadioButton genderMale, genderFemale, genderRatherNotSay, usermarried, unmarried;
-    Button btnSubmit;
+    private RadioGroup groupGender, userMarriageStatus;
+    private RadioButton genderMale, genderFemale, genderRatherNotSay, usermarried, unmarried;
+    private Button btnSubmit;
 
+    private FirebaseUser firebaseUser;
 
-    FirebaseUser firebaseUser;
     private static final int RESULT_LOAD_IMG = 1;
-
     private Uri imageUri;
+
     private UserProfileModel profile;
 
     @Nullable
@@ -151,7 +158,8 @@ public class FragmentCreateEditUserProfile extends Fragment {
                 userEduction.getText().toString(),
                 userCountry.getText().toString(),
                 userCurrentJob.getText().toString(),
-                userSkills.getText().toString()
+                userSkills.getText().toString(),
+                profile.getUserStatus()
         );
     }
 
@@ -255,6 +263,8 @@ public class FragmentCreateEditUserProfile extends Fragment {
 
     private void initLayoutWidgets() {
 
+        verifiedIcon = view.findViewById(R.id.verifiedIcon);
+        notVerifiedIcon = view.findViewById(R.id.notVerifiedIcon);
         profileImage = view.findViewById(R.id.profileImage);
 
         firstName = view.findViewById(R.id.firstName);
@@ -269,7 +279,6 @@ public class FragmentCreateEditUserProfile extends Fragment {
         userCity = view.findViewById(R.id.userCity);
         userCountry = view.findViewById(R.id.userCountry);
 
-
         groupGender = view.findViewById(R.id.groupGender);
         userMarriageStatus = view.findViewById(R.id.userMarriageStatus);
 
@@ -279,9 +288,7 @@ public class FragmentCreateEditUserProfile extends Fragment {
         usermarried = view.findViewById(R.id.usermarried);
         unmarried = view.findViewById(R.id.unmarried);
 
-
         btnSubmit = view.findViewById(R.id.btnSubmit);
-
 
     }
 
@@ -323,6 +330,51 @@ public class FragmentCreateEditUserProfile extends Fragment {
                             setGender(profile.getUserGender());
                             setMarriedStatus(profile.getUserMarriageStatus());
 
+                            if (profile.getUserStatus().equals(Constants.USER_TRUSTED))
+                                verifiedIcon.setVisibility(View.VISIBLE);
+                            else {
+                                notVerifiedIcon.setVisibility(View.VISIBLE);
+                                MyFirebaseDatabase.MAKE_TRUSTED_REFERENCE.child(firebaseUser.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                        if (dataSnapshot.exists() && dataSnapshot.getValue() != null) {
+                                            try {
+                                                final LookForTrusted lookForTrusted = dataSnapshot.getValue(LookForTrusted.class);
+                                                if (lookForTrusted != null) {
+                                                    notVerifiedIcon.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View view) {
+
+                                                            FragmentTrustRequestDescription description = new FragmentTrustRequestDescription();
+                                                            Bundle bundle = new Bundle();
+                                                            bundle.putSerializable(Constants.LOOK_FOR_TRUSTED_OBJECT, lookForTrusted);
+                                                            description.setArguments(bundle);
+                                                            ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_home, description).addToBackStack(null).commit();
+
+                                                        }
+                                                    });
+                                                }
+                                            } catch (Exception e) {
+                                                e.printStackTrace();
+                                            }
+                                        } else
+                                            notVerifiedIcon.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View view) {
+                                                    FragmentApplyForVerify.newInstance().show(((FragmentActivity) context).getSupportFragmentManager(), "Apply For Verification");
+                                                }
+                                            });
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                    }
+                                });
+
+
+                            }
+
                         }
 
                     } catch (Exception e) {
@@ -351,7 +403,6 @@ public class FragmentCreateEditUserProfile extends Fragment {
         }
     }
 
-
     private void getImageFromGallery() {
         Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
         photoPickerIntent.setType("image/*");
@@ -369,4 +420,5 @@ public class FragmentCreateEditUserProfile extends Fragment {
             Toast.makeText(context, "You haven't picked Image", Toast.LENGTH_LONG).show();
         }
     }
+
 }

@@ -16,6 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.onlinejobportal.CommonFunctionsClass;
+import com.example.onlinejobportal.Constants;
 import com.example.onlinejobportal.HomeDrawerActivityUser;
 import com.example.onlinejobportal.R;
 import com.example.onlinejobportal.controllers.MyFirebaseDatabase;
@@ -224,7 +225,12 @@ public class UserSignUpActivity extends AppCompatActivity {
     }
 
     private void uploadUserBasicProfile(FirebaseUser user){
-        MyFirebaseDatabase.USER_PROFILE_REFERENCE.child(user.getUid()).setValue(new UserProfileModel(user.getPhotoUrl().toString(), user.getDisplayName(),user.getEmail())).addOnCompleteListener(new OnCompleteListener<Void>() {
+        MyFirebaseDatabase.USER_PROFILE_REFERENCE.child(user.getUid()).setValue(new UserProfileModel(
+                user.getPhotoUrl().toString(),
+                user.getDisplayName(),
+                user.getEmail(),
+                Constants.USER_NOT_TRUSTED)
+        ).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()){

@@ -9,6 +9,7 @@ import com.example.onlinejobportal.company.FragmentCreateEditCompanyProfile;
 import com.example.onlinejobportal.company.FragmentCreateNewJob;
 import com.example.onlinejobportal.company.FragmentMyPostedJobs;
 import com.example.onlinejobportal.controllers.MyFirebaseDatabase;
+import com.example.onlinejobportal.interfaces.FragmentInteractionListenerInterface;
 import com.example.onlinejobportal.models.UserProfileModel;
 import com.example.onlinejobportal.user.FragmentAllUsers;
 import com.example.onlinejobportal.user.FragmentCreateEditUserProfile;
@@ -41,7 +42,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class HomeDrawerActivityUser extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, FragmentInteractionListenerInterface {
 
     private Context context;
     private FirebaseAuth mAuth;
@@ -191,5 +192,11 @@ public class HomeDrawerActivityUser extends AppCompatActivity
     protected void onDestroy() {
         removeUserProfileEventListener();
         super.onDestroy();
+    }
+
+    @Override
+    public void onFragmentInteraction(String title) {
+        if (getSupportActionBar() != null)
+            getSupportActionBar().setTitle(title);
     }
 }

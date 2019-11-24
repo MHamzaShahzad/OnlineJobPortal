@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.onlinejobportal.CommonFunctionsClass;
 import com.example.onlinejobportal.Constants;
 import com.example.onlinejobportal.R;
 import com.example.onlinejobportal.models.UserProfileModel;
@@ -23,9 +24,9 @@ public class FragmentUserProfileDescription extends Fragment {
     private View view;
 
     private ImageView profileImage;
-    private TextView userName, userAge, userSkill, userCurrentJob, userEmail, userPhoneNumber, userMaritalStatus, userAddress;
+    private TextView userName, userAge, userSkill, userCurrentJob, userEmail, userPhoneNumber, userMaritalStatus, userAddress, userTrusted;
 
-    public FragmentUserProfileDescription(){
+    public FragmentUserProfileDescription() {
         // Empty Constructor
     }
 
@@ -55,6 +56,7 @@ public class FragmentUserProfileDescription extends Fragment {
         userPhoneNumber = view.findViewById(R.id.userPhoneNumber);
         userMaritalStatus = view.findViewById(R.id.userMaritalStatus);
         userAddress = view.findViewById(R.id.userAddress);
+        userTrusted = view.findViewById(R.id.userTrusted);
 
     }
 
@@ -84,15 +86,14 @@ public class FragmentUserProfileDescription extends Fragment {
                     userPhoneNumber.setText(userProfileModel.getUserPhone());
                     userMaritalStatus.setText(userProfileModel.getUserMarriageStatus());
                     userAddress.setText(userProfileModel.getUserCity() + ", " + userProfileModel.getUserCountry());
+                    userTrusted.setText(CommonFunctionsClass.getUserStatusString(userProfileModel.getUserStatus()));
 
                 }
 
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
         }
-
     }
 
 }

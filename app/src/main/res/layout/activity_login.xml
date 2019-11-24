@@ -8,9 +8,17 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/gradient_background"
         android:padding="10dp"
-        tools:context=".LoginActivity"
-        android:background="@drawable/gradient_background">
+        tools:context=".LoginActivity">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:onClick="loginAdmin"
+            android:text="Admin ?" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -26,12 +34,12 @@
                     android:id="@+id/inputEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress"
-                    android:hint="Email"
                     android:background="@drawable/edittextstyle"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"
                     android:padding="10dp"
                     android:textColor="@color/colorWhite"
-                    android:textColorHint="#3F51B5"/>
+                    android:textColorHint="#3F51B5" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -39,18 +47,19 @@
                 android:id="@+id/passwordTextLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="7dp"
-                android:layout_below="@id/emailTextLayout">
+                android:layout_below="@id/emailTextLayout"
+                android:layout_marginTop="7dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/inputPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/edittextstyle"
+                    android:hint="Password"
                     android:inputType="textPassword"
-                    android:hint="Password" android:background="@drawable/edittextstyle"
                     android:padding="10dp"
                     android:textColor="@color/colorWhite"
-                    android:textColorHint="#3F51B5"/>
+                    android:textColorHint="#3F51B5" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -60,19 +69,19 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/passwordTextLayout"
                 android:layout_centerInParent="true"
+                android:layout_marginTop="10dp"
                 android:background="#3F51B5"
                 android:paddingLeft="60dp"
                 android:paddingRight="60dp"
                 android:text="Submit"
-                android:textColor="#fff"
-                android:layout_marginTop="10dp"/>
+                android:textColor="#fff" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/btnSignIn"
-                android:onClick="moveToSignUp"
                 android:layout_marginTop="5dp"
+                android:onClick="moveToSignUp"
                 android:text="Create New Account." />
 
             <TextView
@@ -81,9 +90,9 @@
                 android:layout_below="@id/btnSignIn"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
+                android:layout_marginTop="5dp"
                 android:onClick="forgotPassword"
-                android:text="Forgot Password"
-                android:layout_marginTop="5dp"/>
+                android:text="Forgot Password" />
 
         </RelativeLayout>
 

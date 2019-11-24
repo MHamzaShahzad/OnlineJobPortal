@@ -5,6 +5,7 @@ public class Constants {
     public static final String USER_OBJECT = "userObject";
     public static final String JOB_OBJECT = "jobObject";
     public static final String COMPANY_OBJECT = "companyObject";
+    public static final String LOOK_FOR_TRUSTED_OBJECT = "lookForTrustedObject";
 
     public static final String AUTHENTICATE_AS = "authenticateAs";
     public static final String AUTHENTICATE_AS_USER = "0";
@@ -21,6 +22,12 @@ public class Constants {
     public static final String STRING_JOB_TYPE_PART_TIME = "Part Time";
     public static final String STRING_JOB_TYPE_BOTH_TIME = "Part Time / Full Time";
 
+    public static final String USER_NOT_TRUSTED = "0";
+    public static final String USER_TRUSTED = "1";
+
+    public static final String STRING_USER_TRUSTED = "Trusted / Verified";
+    public static final String STRING_USER_NOT_TRUSTED = "Not Trusted / Verified Yet";
+
     public static final String GENDER_MALE = "0";
     public static final String GENDER_FEMALE = "1";
     public static final String GENDER_OTHERS = "2";
@@ -34,10 +41,12 @@ public class Constants {
     public static final String STRING_COMPANY_POSTED_JOBS_REFERENCE = "Posted Jobs";
     public static final String STRING_COMPANY_PROFILE_REFERENCE = "Company Profile";
     public static final String STRING_USER_PROFILE_REFERENCE = "User Profile";
+    public static final String STRING_MAKE_TRUSTED_REFERENCE = "Make Trusted Requests";
 
     public static final String STRING_PROFILE_PIC_STORAGE_REF = "user_profile_pictures/";
     public static final String STRING_COMPANY_PROFILE_STORAGE_REF = "company_profile_pictures/";
     public static final String STRING_LOCATION_ADDRESS = "location_address";
     public static final String STRING_LOCATION_LATITUDE = "latitude";
     public static final String STRING_LOCATION_LONGITUDE = "longitude";
+
 }

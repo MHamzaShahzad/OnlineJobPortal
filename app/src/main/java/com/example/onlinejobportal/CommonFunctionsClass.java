@@ -128,4 +128,15 @@ public class CommonFunctionsClass {
             fragmentManager.popBackStack();
     }
 
+    public static String getUserStatusString(String status){
+        switch (status){
+            case Constants.USER_TRUSTED:
+                return Constants.STRING_USER_TRUSTED;
+            case Constants.USER_NOT_TRUSTED:
+                return Constants.STRING_USER_NOT_TRUSTED;
+                default:
+                    return null;
+        }
+    }
+
 }

@@ -16,14 +16,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity
+            android:name=".admin.AdminMainActivity"
+            android:label="@string/title_activity_admin_main" />
         <activity android:name=".ForgotPasswordActivity" />
-
         <activity
             android:name=".HomeDrawerActivityCompany"
             android:label="@string/title_activity_home_drawer_company"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".StartMainActivity"
             android:label="@string/title_activity_start_main" />
@@ -33,12 +33,10 @@
             android:value="@string/google_maps_key" />
 
         <activity android:name=".user.UserSignUpActivity" />
-
         <activity
             android:name=".HomeDrawerActivityUser"
             android:label="@string/title_activity_home_drawer"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -46,10 +44,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".company.CompanySignUpActivity" />
         <activity android:name=".LoginActivity" />
-
     </application>
 
 </manifest>

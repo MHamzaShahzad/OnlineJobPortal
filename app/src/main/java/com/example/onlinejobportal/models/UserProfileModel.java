@@ -4,19 +4,22 @@ import java.io.Serializable;
 
 public class UserProfileModel implements Serializable {
 
+    public static final String STRING_USER_STATUS_REF = "userStatus";
+
     String userImage, userFirstName, userLastName, userPhone, userEmail, userGender, userAge, userMarriageStatus, userCity,
-            userIntro, userEduction, userCountry, userCurrentJob, userSkills;
+            userIntro, userEduction, userCountry, userCurrentJob, userSkills, userStatus;
 
     public UserProfileModel() {
     }
 
-    public UserProfileModel(String userImage, String userFirstName, String userEmail) {
+    public UserProfileModel(String userImage, String userFirstName, String userEmail, String userStatus) {
         this.userImage = userImage;
         this.userFirstName = userFirstName;
         this.userEmail = userEmail;
+        this.userStatus = userStatus;
     }
 
-    public UserProfileModel(String userImage, String userFirstName, String userLastName, String userPhone, String userEmail, String userGender, String userAge, String userMarriageStatus, String userCity, String userIntro, String userEduction, String userCountry, String userCurrentJob, String userSkills) {
+    public UserProfileModel(String userImage, String userFirstName, String userLastName, String userPhone, String userEmail, String userGender, String userAge, String userMarriageStatus, String userCity, String userIntro, String userEduction, String userCountry, String userCurrentJob, String userSkills, String userStatus) {
         this.userImage = userImage;
         this.userFirstName = userFirstName;
         this.userLastName = userLastName;
@@ -31,6 +34,7 @@ public class UserProfileModel implements Serializable {
         this.userCountry = userCountry;
         this.userCurrentJob = userCurrentJob;
         this.userSkills = userSkills;
+        this.userStatus = userStatus;
     }
 
     public String getUserImage() {
@@ -87,6 +91,10 @@ public class UserProfileModel implements Serializable {
 
     public String getUserSkills() {
         return userSkills;
+    }
+
+    public String getUserStatus() {
+        return userStatus;
     }
 }
 
