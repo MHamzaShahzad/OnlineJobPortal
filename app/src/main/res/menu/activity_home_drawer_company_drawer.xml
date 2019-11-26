@@ -6,11 +6,11 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_home"
             android:title="@string/menu_home" />
         <item
             android:id="@+id/nav_profile"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/profile"
             android:title="@string/menu_profile" />
         <item
             android:id="@+id/nav_posted_jobs"
@@ -18,11 +18,11 @@
             android:title="@string/menu_posted_job" />
         <item
             android:id="@+id/nav_upload_job"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/upload_job"
             android:title="@string/menu_upload_job" />
         <item
             android:id="@+id/nav_logout"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/logout"
             android:title="@string/menu_logout" />
     </group>
 

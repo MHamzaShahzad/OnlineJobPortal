@@ -5,16 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SplashActivity"
-    android:background="@drawable/gradient_background">
+    android:background="@color/colorWhite">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:id="@+id/image"
+        android:layout_height="wrap_content"
+        android:src="@drawable/job_icon1"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Online Job Portal"
-        android:textSize="35sp"
-        android:textColor="#3F51B5"
+        android:textSize="30sp"
+        android:textColor="@color/colorPrimaryDark"
         android:typeface="serif"
+        android:fontFamily="@font/raleway_semi_bold"
         android:textStyle="bold"
-        android:textAlignment="center"
-        android:layout_centerInParent="true"/>
+        android:layout_below="@+id/image"
+        android:textAlignment="center" />
 
 </RelativeLayout>

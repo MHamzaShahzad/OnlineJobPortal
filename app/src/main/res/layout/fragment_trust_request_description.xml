@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorWhite"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".admin.FragmentTrustRequestDescription">
 
@@ -41,6 +42,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/userProfileImage"
                     android:layout_centerHorizontal="true"
+                    android:fontFamily="@font/ralewaylight"
+                    android:textColor="@color/colorWhite"
                     android:text="User Name"
                     android:textSize="22sp" />
 
@@ -64,11 +67,16 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="0.3"
                         android:padding="5dp"
+                        android:fontFamily="@font/raleway_semi_bold"
+                        android:textColor="@color/colorPrimaryDark"
                         android:text="Requested At" />
 
                     <TextView
                         android:id="@+id/placeRequestedAt"
                         android:layout_width="0dp"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textAlignment="center"
+                        android:fontFamily="sans-serif-light"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.7"
                         android:padding="5dp"
@@ -88,11 +96,16 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="0.3"
                         android:padding="5dp"
+                        android:fontFamily="@font/raleway_semi_bold"
+                        android:textColor="@color/colorPrimaryDark"
                         android:text="User Message" />
 
                     <TextView
                         android:id="@+id/placeUserMessage"
                         android:layout_width="0dp"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textAlignment="center"
+                        android:fontFamily="@font/ralewaylight"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.7"
                         android:text="User Message" />
@@ -112,17 +125,19 @@
                         android:layout_weight="0.9"
                         android:background="@drawable/border_style_edittext"
                         android:enabled="false"
+                        android:textColor="@color/colorPrimaryDark"
                         android:fontFamily="sans-serif-light"
                         android:hint="Date Of Interview"
+                        android:textColorHint="@color/colorPrimary"
                         android:textSize="15sp" />
 
                     <ImageView
                         android:id="@+id/interviewHeldOnDatePicker"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="40dp"
                         android:layout_gravity="center"
                         android:layout_weight="0.1"
-                        android:src="@drawable/ic_calendar" />
+                        android:src="@drawable/calender1" />
 
                 </LinearLayout>
 
@@ -139,6 +154,7 @@
                         android:layout_weight="0.9"
                         android:background="@drawable/border_style_edittext"
                         android:enabled="false"
+                        android:textColorHint="@color/colorPrimary"
                         android:fontFamily="sans-serif-light"
                         android:hint="Time Of Interview"
                         android:textSize="15sp" />
@@ -161,6 +177,9 @@
                     android:background="@drawable/border_style_edittext"
                     android:drawableLeft="@drawable/ic_add_location_black_24dp"
                     android:focusable="false"
+                    android:drawablePadding="10dp"
+                    android:textColorHint="@color/colorPrimary"
+                    android:fontFamily="@font/ralewaylight"
                     android:focusableInTouchMode="false"
                     android:hint="Interview Location"
                     android:padding="7dp"
@@ -168,20 +187,29 @@
 
                 <Button
                     android:id="@+id/btnSend"
-                    android:layout_marginTop="10dp"
-                    android:layout_width="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:fontFamily="@font/ralewaylight"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorWhite"
+                    android:background="@drawable/style_button_solid"
                     android:text="Send"
                     />
 
                 <Button
                     android:id="@+id/btnVerifyUser"
                     android:layout_marginTop="10dp"
-                    android:layout_width="wrap_content"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:textColor="@color/colorWhite"
+                    android:fontFamily="@font/ralewaylight"
+                    android:textSize="17sp"
                     android:visibility="invisible"
+                    android:textAllCaps="false"
+                    android:background="@drawable/style_button_solid_circle"
                     android:text="Verify"
                     />
 

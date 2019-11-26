@@ -19,7 +19,7 @@
             android:layout_marginRight="10dp"
             android:fontFamily="@font/ralewaylight"
             android:text="Enter details below to Verify your account!"
-            android:textColor="#146AAF"
+            android:textColor="#0C5692"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -32,7 +32,7 @@
             android:layout_marginTop="30dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/border_style_edittext"
+            android:background="@drawable/edittextstylewhite"
             android:drawablePadding="20dp"
             android:gravity="top|start"
             android:lines="4"

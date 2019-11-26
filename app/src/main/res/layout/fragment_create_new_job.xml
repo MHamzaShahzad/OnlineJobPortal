@@ -24,7 +24,8 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="16dp"
                 android:text="Post New Job"
-                android:textColor="#3F51B5"
+                android:textColor="@color/colorWhite"
+                android:fontFamily="@font/raleway_semi_bold"
                 android:textSize="40sp"
                 android:typeface="serif" />
 
@@ -36,9 +37,10 @@
                 android:layout_marginBottom="10dp"
                 android:inputType="text"
                 android:padding="10dp"
+                android:fontFamily="@font/ralewaylight"
                 android:background="@drawable/edittextstyle"
                 android:textColor="@color/colorWhite"
-                android:textColorHint="#3F51B5"/>
+                android:textColorHint="#ffffff"/>
 
             <EditText
                 android:id="@+id/jobLocation"
@@ -47,13 +49,14 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:focusable="false"
+                android:fontFamily="@font/ralewaylight"
                 android:focusableInTouchMode="false"
                 android:hint="Location"
                 android:inputType="textEmailAddress"
                 android:padding="10dp"
                 android:background="@drawable/edittextstyle"
                 android:textColor="@color/colorWhite"
-                android:textColorHint="#3F51B5"/>
+                android:textColorHint="#ffffff"/>
 
             <EditText
                 android:id="@+id/jobIndustry"
@@ -66,7 +69,8 @@
                 android:padding="10dp"
                 android:background="@drawable/edittextstyle"
                 android:textColor="@color/colorWhite"
-                android:textColorHint="#3F51B5"/>
+                android:textColorHint="#ffffff"
+                android:fontFamily="@font/ralewaylight"/>
 
             <EditText
                 android:id="@+id/jobDepartment"
@@ -79,7 +83,8 @@
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/edittextstyle"
                 android:textColor="@color/colorWhite"
-                android:textColorHint="#3F51B5"/>
+                android:textColorHint="#ffffff"
+                android:fontFamily="@font/ralewaylight"/>
 
             <EditText
                 android:id="@+id/jobEducation"
@@ -92,7 +97,8 @@
                 android:padding="10dp"
                 android:background="@drawable/edittextstyle"
                 android:textColor="@color/colorWhite"
-                android:textColorHint="#3F51B5"/>
+                android:textColorHint="#ffffff"
+                android:fontFamily="@font/ralewaylight"/>
 
             <EditText
                 android:id="@+id/jobCareer"
@@ -105,7 +111,8 @@
                 android:padding="10dp"
                 android:background="@drawable/edittextstyle"
                 android:textColor="@color/colorWhite"
-                android:textColorHint="#3F51B5"/>
+                android:textColorHint="#ffffff"
+                android:fontFamily="@font/ralewaylight"/>
 
             <EditText
                 android:id="@+id/jobSalary"
@@ -118,7 +125,8 @@
                 android:padding="10dp"
                 android:background="@drawable/edittextstyle"
                 android:textColor="@color/colorWhite"
-                android:textColorHint="#3F51B5"/>
+                android:textColorHint="#ffffff"
+                android:fontFamily="@font/ralewaylight"/>
 
             <EditText
                 android:id="@+id/jobDueDate"
@@ -132,7 +140,8 @@
                 android:padding="10dp"
                 android:background="@drawable/edittextstyle"
                 android:textColor="@color/colorWhite"
-                android:textColorHint="#3F51B5"/>
+                android:textColorHint="#ffffff"
+                android:fontFamily="@font/ralewaylight"/>
 
             <EditText
                 android:id="@+id/jobExperience"
@@ -144,7 +153,8 @@
                 android:padding="10dp"
                 android:background="@drawable/edittextstyle"
                 android:textColor="@color/colorWhite"
-                android:textColorHint="#3F51B5"/>
+                android:textColorHint="#ffffff"
+                android:fontFamily="@font/ralewaylight"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -153,6 +163,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="5dp"
                 android:padding="10dp"
+                android:fontFamily="@font/raleway_semi_bold"
                 android:textStyle="bold"
                 android:textColor="@color/colorWhite"
                 android:textSize="15sp"
@@ -168,6 +179,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Male"
+                    android:fontFamily="@font/ralewaylight"
                     android:textColor="@color/colorWhite"/>
 
                 <RadioButton
@@ -175,6 +187,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Female"
+                    android:fontFamily="@font/ralewaylight"
+                    android:layout_marginLeft="10dp"
                     android:textColor="@color/colorWhite"/>
 
                 <RadioButton
@@ -182,6 +196,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Others"
+                    android:fontFamily="@font/ralewaylight"
+                    android:layout_marginLeft="10dp"
                     android:textColor="@color/colorWhite"/>
 
                 <RadioButton
@@ -189,6 +205,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="All"
+                    android:fontFamily="@font/ralewaylight"
+                    android:layout_marginLeft="10dp"
                     android:textColor="@color/colorWhite"/>
 
             </RadioGroup>
@@ -200,6 +218,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="5dp"
                 android:padding="10dp"
+                android:fontFamily="@font/raleway_semi_bold"
                 android:textStyle="bold"
                 android:textColor="@color/colorWhite"
                 android:textSize="15sp"/>
@@ -214,6 +233,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Full Time"
+                    android:fontFamily="@font/ralewaylight"
                     android:textColor="@color/colorWhite"/>
 
                 <RadioButton
@@ -221,6 +241,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Part Time"
+                    android:fontFamily="@font/ralewaylight"
+                    android:layout_marginLeft="10dp"
                     android:textColor="@color/colorWhite"/>
 
                 <RadioButton
@@ -228,6 +250,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Both"
+                    android:fontFamily="@font/ralewaylight"
+                    android:layout_marginLeft="10dp"
                     android:textColor="@color/colorWhite"/>
 
             </RadioGroup>
@@ -246,11 +270,12 @@
                 android:lines="5"
                 android:maxLines="30"
                 android:padding="5dp"
+                android:fontFamily="@font/ralewaylight"
                 android:scrollHorizontally="false"
                 android:singleLine="false"
                 android:background="@drawable/edittextstyle"
                 android:textColor="@color/colorWhite"
-                android:textColorHint="#3F51B5"/>
+                android:textColorHint="#ffffff"/>
 
             <EditText
                 android:id="@+id/requiredThings"
@@ -268,19 +293,22 @@
                 android:padding="5dp"
                 android:scrollHorizontally="false"
                 android:singleLine="false"
+                android:fontFamily="@font/ralewaylight"
                 android:background="@drawable/edittextstyle"
                 android:textColor="@color/colorWhite"
-                android:textColorHint="#3F51B5"/>
+                android:textColorHint="#ffffff"/>
 
             <Button
                 android:id="@+id/submitJob"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:background="#3F51B5"
+                android:background="@drawable/style_button_solid"
                 android:paddingLeft="70dp"
                 android:paddingRight="70dp"
                 android:text="Submit"
+                android:textAllCaps="false"
+                android:fontFamily="@font/ralewaylight"
                 android:textColor="#fff" />
 
         </LinearLayout>

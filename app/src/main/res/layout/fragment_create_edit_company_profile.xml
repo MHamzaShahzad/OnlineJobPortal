@@ -16,10 +16,10 @@
             android:orientation="vertical"
             android:padding="10dp">
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/companyImage"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
+                android:layout_width="170dp"
+                android:layout_height="170dp"
                 android:layout_marginBottom="10dp"
                 android:src="@drawable/useravatar"
                 android:layout_gravity="center"/>
@@ -27,6 +27,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
+                style="@style/EditText.OutlinedBox"
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -37,13 +38,15 @@
                     android:inputType="text"
                     android:background="@drawable/edittextstyle"
                     android:padding="10dp"
+                    android:fontFamily="@font/ralewaylight"
                     android:textColor="@color/colorWhite"
-                    android:textColorHint="#3F51B5"/>
+                    android:textColorHint="#fff"/>
             </com.google.android.material.textfield.TextInputLayout>
 
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
+                style="@style/EditText.OutlinedBox"
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -56,13 +59,15 @@
                     android:inputType="textEmailAddress"
                     android:background="@drawable/edittextstyle"
                     android:padding="10dp"
+                    android:fontFamily="@font/ralewaylight"
                     android:textColor="@color/colorWhite"
-                    android:textColorHint="#3F51B5"/>
+                    android:textColorHint="#fff"/>
             </com.google.android.material.textfield.TextInputLayout>
 
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
+                style="@style/EditText.OutlinedBox"
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -73,13 +78,15 @@
                     android:inputType="phone"
                     android:background="@drawable/edittextstyle"
                     android:padding="10dp"
+                    android:fontFamily="@font/ralewaylight"
                     android:textColor="@color/colorWhite"
-                    android:textColorHint="#3F51B5"/>
+                    android:textColorHint="#fff"/>
             </com.google.android.material.textfield.TextInputLayout>
 
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
+                style="@style/EditText.OutlinedBox"
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -90,12 +97,14 @@
                     android:inputType="text"
                     android:background="@drawable/edittextstyle"
                     android:padding="10dp"
+                    android:fontFamily="@font/ralewaylight"
                     android:textColor="@color/colorWhite"
-                    android:textColorHint="#3F51B5"/>
+                    android:textColorHint="#fff"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
+                style="@style/EditText.OutlinedBox"
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -106,12 +115,14 @@
                     android:inputType="text"
                     android:background="@drawable/edittextstyle"
                     android:padding="10dp"
+                    android:fontFamily="@font/ralewaylight"
                     android:textColor="@color/colorWhite"
-                    android:textColorHint="#3F51B5"/>
+                    android:textColorHint="#fff"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
+                style="@style/EditText.OutlinedBox"
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -125,8 +136,9 @@
                     android:scrollHorizontally="false"
                     android:background="@drawable/edittextstyle"
                     android:padding="10dp"
+                    android:fontFamily="@font/ralewaylight"
                     android:textColor="@color/colorWhite"
-                    android:textColorHint="#3F51B5"/>
+                    android:textColorHint="#fff"/>
             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -136,6 +148,7 @@
                 android:text="Select Organization Type"
                 android:layout_marginTop="5dp"
                 android:padding="10dp"
+                android:fontFamily="@font/raleway_semi_bold"
                 android:textStyle="bold"
                 android:textColor="@color/colorWhite"
                 android:textSize="15sp"/>
@@ -151,6 +164,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Government"
+                    android:fontFamily="@font/ralewaylight"
                     android:textColor="@color/colorWhite"/>
 
                 <RadioButton
@@ -158,17 +172,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Private LTD"
+                    android:fontFamily="@font/ralewaylight"
+                    android:layout_marginLeft="20dp"
                     android:textColor="@color/colorWhite"/>
 
             </RadioGroup>
 
             <Button
                 android:id="@+id/companyBtnSubmit"
-                android:layout_width="wrap_content"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="SUBMIT"
-                android:background="#3F51B5"
+                android:fontFamily="@font/ralewaylight"
+                android:textAllCaps="false"
+                android:background="@drawable/style_button_solid"
                 android:paddingLeft="60dp"
                 android:paddingRight="60dp"
                 android:textColor="#fff"

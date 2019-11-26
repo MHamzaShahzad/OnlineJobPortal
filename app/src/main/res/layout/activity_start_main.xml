@@ -10,6 +10,9 @@
     <RelativeLayout
         android:id="@+id/layout_signIn_signUp"
         android:layout_width="match_parent"
+        android:paddingTop="7dp"
+        android:paddingBottom="7dp"
+        android:background="@drawable/style_button_solid"
         android:layout_height="wrap_content">
 
         <TextView
@@ -17,6 +20,8 @@
             android:layout_height="wrap_content"
             android:onClick="signIn"
             android:padding="10dp"
+            android:fontFamily="@font/raleway_semi_bold"
+            android:textColor="@color/colorWhite"
             android:text="Sign In" />
 
         <TextView
@@ -25,6 +30,8 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:onClick="signUp"
+            android:fontFamily="@font/raleway_semi_bold"
+            android:textColor="@color/colorWhite"
             android:padding="10dp"
             android:text="Sign Up" />
 
@@ -36,6 +43,7 @@
         android:layout_height="match_parent"
         android:layout_above="@id/nav_view"
         android:layout_below="@id/layout_signIn_signUp" />
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"

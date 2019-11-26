@@ -20,10 +20,10 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/userProfileImage"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:layout_centerVertical="true"
-                android:src="@drawable/ic_launcher_background" />
+                android:src="@drawable/useravatar" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -38,31 +38,48 @@
                     android:id="@+id/userName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/ralewaylight"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_marginTop="3dp"
                     android:text="User Name"/>
 
                 <TextView
                     android:id="@+id/userEducation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/ralewaylight"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_marginTop="2dp"
                     android:text="User Education"/>
 
                 <TextView
                     android:id="@+id/userGender"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/ralewaylight"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_marginTop="2dp"
                     android:text="User Gender"/>
-
-                <TextView
-                    android:id="@+id/userLocation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="User Location"/>
 
                 <TextView
                     android:id="@+id/requestedAt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/ralewaylight"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_marginTop="2dp"
                     android:text="Requested At"/>
+
+                <TextView
+                    android:id="@+id/userLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/ralewaylight"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="3dp"
+                    android:text="User Location"/>
+
 
             </LinearLayout>
 

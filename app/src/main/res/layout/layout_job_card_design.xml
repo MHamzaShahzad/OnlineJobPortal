@@ -21,9 +21,10 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/companyImage"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:layout_margin="5dp"
+                android:layout_centerVertical="true"
                 android:src="@drawable/useravatar" />
 
             <LinearLayout
@@ -31,6 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:layout_marginLeft="5dp"
+                android:layout_centerVertical="true"
                 android:layout_toEndOf="@id/companyImage"
                 android:layout_toRightOf="@id/companyImage"
                 android:orientation="vertical">
@@ -40,6 +42,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Job Title"
+                    android:fontFamily="@font/raleway_semi_bold"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="17sp"
                     android:textStyle="bold"
                     android:layout_marginLeft="10dp"/>
@@ -50,16 +54,10 @@
                     android:layout_height="wrap_content"
                     android:text="Company Name"
                     android:textSize="15sp"
-                    android:textStyle="bold"
+                    android:layout_marginTop="2dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:fontFamily="@font/ralewaylight"
                     android:layout_marginLeft="10dp"/>
-
-                <TextView
-                    android:id="@+id/jobLocation"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Job Location"
-                    android:textSize="17sp"
-                    android:drawableLeft="@drawable/ic_locations_on_black_24dp"/>
 
                 <TextView
                     android:id="@+id/jobDueDate"
@@ -67,7 +65,23 @@
                     android:layout_height="wrap_content"
                     android:text="Job Due Date"
                     android:textSize="17sp"
-                    android:layout_marginLeft="5dp"/>
+                    android:layout_marginTop="2dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:fontFamily="sans-serif-light"
+                    android:layout_marginLeft="10dp"/>
+                <TextView
+                    android:id="@+id/jobLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Job Location"
+                    android:layout_marginTop="2dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:fontFamily="@font/ralewaylight"
+                    android:textSize="17sp"
+                    android:drawablePadding="10dp"
+                    android:layout_marginLeft="7dp"
+                    android:drawableLeft="@drawable/ic_locations_on_black_24dp"/>
+
 
             </LinearLayout>
 

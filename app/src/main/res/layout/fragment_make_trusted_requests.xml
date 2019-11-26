@@ -16,6 +16,7 @@
             android:id="@+id/makeTrustedRequestsTabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/gradient_background"
             app:tabBackground="@android:color/holo_red_dark"
             app:tabIndicatorColor="#BFFFFFFF"
             app:tabMode="fixed"

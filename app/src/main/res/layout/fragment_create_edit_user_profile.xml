@@ -79,10 +79,12 @@
                         android:id="@+id/firstName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/edittextstyle"
+                        android:background="@drawable/edittextstylewhite"
+                        android:fontFamily="@font/ralewaylight"
                         android:hint="First Name"
                         android:inputType="textPersonName"
                         android:padding="10dp"
+                        android:textColor="@color/colorPrimaryDark"
                         android:textColorHint="#3F51B5" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -96,10 +98,12 @@
                         android:id="@+id/lastName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/edittextstyle"
+                        android:background="@drawable/edittextstylewhite"
+                        android:fontFamily="@font/ralewaylight"
                         android:hint="Last Name"
                         android:inputType="textPersonName"
                         android:padding="10dp"
+                        android:textColor="@color/colorPrimaryDark"
 
                         android:textColorHint="#3F51B5" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -112,12 +116,14 @@
                         android:id="@+id/emailAddress"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/edittextstyle"
+                        android:background="@drawable/edittextstylewhite"
                         android:focusable="false"
                         android:focusableInTouchMode="false"
+                        android:fontFamily="@font/ralewaylight"
                         android:hint="Email Address"
                         android:inputType="textEmailAddress"
                         android:padding="10dp"
+                        android:textColor="@color/colorPrimaryDark"
 
                         android:textColorHint="#3F51B5" />
 
@@ -132,10 +138,12 @@
                         android:id="@+id/phoneNumber"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/edittextstyle"
+                        android:background="@drawable/edittextstylewhite"
+                        android:fontFamily="@font/ralewaylight"
                         android:hint="Phone Number"
                         android:inputType="phone"
                         android:padding="10dp"
+                        android:textColor="@color/colorPrimaryDark"
 
                         android:textColorHint="#3F51B5" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -148,10 +156,12 @@
                         android:id="@+id/userIntro"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/edittextstyle"
+                        android:background="@drawable/edittextstylewhite"
+                        android:fontFamily="@font/ralewaylight"
                         android:hint="Introduction"
                         android:inputType="text"
                         android:padding="10dp"
+                        android:textColor="@color/colorPrimaryDark"
 
                         android:textColorHint="#3F51B5" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -164,10 +174,12 @@
                         android:id="@+id/userSkills"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/edittextstyle"
+                        android:background="@drawable/edittextstylewhite"
+                        android:fontFamily="@font/ralewaylight"
                         android:hint="Enter your Skills"
                         android:inputType="text"
                         android:padding="10dp"
+                        android:textColor="@color/colorPrimaryDark"
 
                         android:textColorHint="#3F51B5" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -180,10 +192,12 @@
                         android:id="@+id/userCurrentJob"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/edittextstyle"
+                        android:background="@drawable/edittextstylewhite"
+                        android:fontFamily="@font/ralewaylight"
                         android:hint="Current Job"
                         android:inputType="text"
                         android:padding="10dp"
+                        android:textColor="@color/colorPrimaryDark"
 
                         android:textColorHint="#3F51B5" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -196,10 +210,12 @@
                         android:id="@+id/userEduction"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/edittextstyle"
+                        android:background="@drawable/edittextstylewhite"
+                        android:fontFamily="@font/ralewaylight"
                         android:hint="Higher Education"
                         android:inputType="text"
                         android:padding="10dp"
+                        android:textColor="@color/colorPrimaryDark"
 
                         android:textColorHint="#3F51B5" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -212,10 +228,12 @@
                         android:id="@+id/userAge"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/edittextstyle"
+                        android:background="@drawable/edittextstylewhite"
+                        android:fontFamily="@font/ralewaylight"
                         android:hint="Age"
                         android:inputType="text"
                         android:padding="10dp"
+                        android:textColor="@color/colorPrimaryDark"
 
                         android:textColorHint="#3F51B5" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -229,10 +247,12 @@
                         android:id="@+id/userCity"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/edittextstyle"
+                        android:background="@drawable/edittextstylewhite"
+                        android:fontFamily="@font/ralewaylight"
                         android:hint="City"
                         android:inputType="text"
                         android:padding="10dp"
+                        android:textColor="@color/colorPrimaryDark"
 
                         android:textColorHint="#3F51B5" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -245,11 +265,12 @@
                         android:id="@+id/userCountry"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/edittextstyle"
+                        android:background="@drawable/edittextstylewhite"
+                        android:fontFamily="@font/ralewaylight"
                         android:hint="Country"
                         android:inputType="text"
                         android:padding="10dp"
-
+                        android:textColor="@color/colorPrimaryDark"
                         android:textColorHint="#3F51B5" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -259,9 +280,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="5dp"
+                    android:fontFamily="@font/raleway_semi_bold"
                     android:padding="10dp"
                     android:text="Select Marriage Status"
-
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
@@ -275,13 +297,18 @@
                         android:id="@+id/usermarried"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Married" />
+                        android:fontFamily="@font/ralewaylight"
+                        android:text="Married"
+                        android:textColor="@color/colorPrimaryDark" />
 
                     <RadioButton
                         android:id="@+id/unmarried"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Unmarried" />
+                        android:layout_marginLeft="15dp"
+                        android:fontFamily="@font/ralewaylight"
+                        android:text="Unmarried"
+                        android:textColor="@color/colorPrimaryDark" />
 
 
                 </RadioGroup>
@@ -291,9 +318,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="5dp"
+                    android:fontFamily="@font/raleway_semi_bold"
                     android:padding="10dp"
                     android:text="Select Gender"
-
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
@@ -307,29 +335,38 @@
                         android:id="@+id/genderMale"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Male" />
+                        android:fontFamily="@font/ralewaylight"
+                        android:text="Male"
+                        android:textColor="@color/colorPrimaryDark" />
 
                     <RadioButton
                         android:id="@+id/genderFemale"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Female" />
+                        android:layout_marginLeft="10dp"
+                        android:fontFamily="@font/ralewaylight"
+                        android:text="Female"
+                        android:textColor="@color/colorPrimaryDark" />
 
                     <RadioButton
                         android:id="@+id/genderRatherNotSay"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Rather Not Say" />
+                        android:layout_marginLeft="10dp"
+                        android:fontFamily="@font/ralewaylight"
+                        android:text="Rather Not Say"
+                        android:textColor="@color/colorPrimaryDark" />
 
                 </RadioGroup>
 
                 <Button
                     android:id="@+id/btnSubmit"
-                    android:layout_width="wrap_content"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/gradient_background"
+                    android:background="@drawable/style_button_solid"
+                    android:fontFamily="@font/ralewaylight"
                     android:paddingLeft="60dp"
                     android:paddingRight="60dp"
                     android:text="SUBMIT"

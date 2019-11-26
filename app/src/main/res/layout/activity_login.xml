@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fillViewport="true">
 
     <RelativeLayout
@@ -11,23 +12,33 @@
         android:background="@drawable/gradient_background"
         android:padding="10dp"
         tools:context=".LoginActivity">
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:onClick="loginAdmin"
-            android:text="Admin ?" />
+            android:layout_marginTop="5dp"
+            android:padding="10dp"
+            android:layout_marginRight="5dp"
+            android:id="@+id/admin"
+            android:fontFamily="@font/raleway_semi_bold"
+            android:textColor="@color/colorWhite"
+            android:textSize="15sp"
+            android:background="@drawable/style_button_solid_circle"
+            android:text=" Admin ?" />
 
         <RelativeLayout
             android:layout_width="match_parent"
+            android:id="@+id/login_layout"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/emailTextLayout"
                 android:layout_width="match_parent"
+                app:hintTextAppearance="@style/EditText.OutlinedBox"
+                style="@style/EditText.OutlinedBox"
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -38,14 +49,17 @@
                     android:hint="Email"
                     android:inputType="textEmailAddress"
                     android:padding="10dp"
+                    android:fontFamily="@font/ralewaylight"
                     android:textColor="@color/colorWhite"
-                    android:textColorHint="#3F51B5" />
+                    android:textColorHint="#ffffff" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/passwordTextLayout"
                 android:layout_width="match_parent"
+                app:hintTextAppearance="@style/EditText.OutlinedBox"
+                style="@style/EditText.OutlinedBox"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/emailTextLayout"
                 android:layout_marginTop="7dp">
@@ -58,43 +72,54 @@
                     android:hint="Password"
                     android:inputType="textPassword"
                     android:padding="10dp"
+                    android:fontFamily="@font/ralewaylight"
                     android:textColor="@color/colorWhite"
-                    android:textColorHint="#3F51B5" />
+                    android:textColorHint="#ffffff" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/btnSignIn"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/passwordTextLayout"
                 android:layout_centerInParent="true"
                 android:layout_marginTop="10dp"
-                android:background="#3F51B5"
+                android:background="@drawable/style_button_solid"
                 android:paddingLeft="60dp"
+                android:fontFamily="@font/ralewaylight"
+                android:textAllCaps="false"
                 android:paddingRight="60dp"
                 android:text="Submit"
                 android:textColor="#fff" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/btnSignIn"
-                android:layout_marginTop="5dp"
-                android:onClick="moveToSignUp"
-                android:text="Create New Account." />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/btnSignIn"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="5dp"
-                android:onClick="forgotPassword"
-                android:text="Forgot Password" />
-
         </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:onClick="moveToSignUp"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentBottom="true"
+            android:fontFamily="@font/raleway_semi_bold"
+            android:textColor="@color/colorWhite"
+            android:background="@drawable/border_style_edittext"
+            android:text="Create New Account." />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/raleway_semi_bold"
+            android:textColor="@color/colorWhite"
+            android:background="@drawable/border_style_edittext"
+            android:onClick="forgotPassword"
+            android:text="Forgot Password" />
 
     </RelativeLayout>
 

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorWhite"
     android:clickable="true"
     android:padding="10dp"
@@ -16,6 +17,7 @@
             android:id="@+id/jobsTabLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:tabSelectedTextColor="@color/colorWhite"
             android:background="@drawable/gradient_background">
 
             <com.google.android.material.tabs.TabItem
