@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,9 +13,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
+import android.widget.TextView;
 
 import com.example.onlinejobportal.R;
 import com.example.onlinejobportal.adapters.AdapterAllUsers;
+import com.example.onlinejobportal.common.Constants;
 import com.example.onlinejobportal.controllers.MyFirebaseDatabase;
 import com.example.onlinejobportal.models.UserProfileModel;
 import com.google.firebase.database.DataSnapshot;
@@ -37,13 +41,17 @@ public class FragmentAllUsers extends Fragment {
 
     private RecyclerView recycler_all_users;
     private AdapterAllUsers adapterAllUsers;
-    private List<UserProfileModel> list;
+    private List<UserProfileModel> list, tempList;
+
+    private SwitchCompat switchTrustedOrNot;
+    private TextView textUserTypes;
 
     private ValueEventListener usersListValueEventListener;
 
     public FragmentAllUsers() {
         // Required empty public constructor
         list = new ArrayList<>();
+        tempList = new ArrayList<>();
     }
 
 
@@ -51,10 +59,13 @@ public class FragmentAllUsers extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         context = container.getContext();
-        adapterAllUsers = new AdapterAllUsers(context, list);
+        adapterAllUsers = new AdapterAllUsers(context, tempList);
         // Inflate the layout for this fragment
         if (view == null) {
             view = inflater.inflate(R.layout.fragment_all_users, container, false);
+
+            switchTrustedOrNot = view.findViewById(R.id.switchTrustedOrNot);
+            textUserTypes = view.findViewById(R.id.textUserTypes);
 
             recycler_all_users = view.findViewById(R.id.recycler_all_users);
             recycler_all_users.setHasFixedSize(true);
@@ -63,10 +74,23 @@ public class FragmentAllUsers extends Fragment {
 
 
             getUsersListFromFirebaseDatabase();
+            setSwitchTrustedOrNot();
         }
         return view;
     }
 
+    private void setSwitchTrustedOrNot(){
+        switchTrustedOrNot.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                getUsers(b);
+                if (b)
+                    textUserTypes.setText(Constants.STRING_USER_TRUSTED);
+                else
+                    textUserTypes.setText("All Users");
+            }
+        });
+    }
 
     private void getUsersListFromFirebaseDatabase() {
 
@@ -74,6 +98,7 @@ public class FragmentAllUsers extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
+                list.clear();
                 if (dataSnapshot.exists() && dataSnapshot.getValue() != null) {
                     try {
 
@@ -82,13 +107,12 @@ public class FragmentAllUsers extends Fragment {
                             UserProfileModel userProfileModel = snapshot.getValue(UserProfileModel.class);
                             list.add(userProfileModel);
                         }
-                        adapterAllUsers.notifyDataSetChanged();
 
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
-
+                getUsers(switchTrustedOrNot.isChecked());
             }
 
             @Override
@@ -98,6 +122,25 @@ public class FragmentAllUsers extends Fragment {
         };
 
         MyFirebaseDatabase.USER_PROFILE_REFERENCE.addValueEventListener(usersListValueEventListener);
+
+    }
+
+    private void getUsers(boolean showOnlyTrusted){
+
+        if (showOnlyTrusted){
+            if (list.size() > 0){
+                tempList.clear();
+                for (UserProfileModel userProfileModel : list){
+                    if (userProfileModel.getUserStatus() != null && userProfileModel.getUserStatus().equals(Constants.USER_TRUSTED))
+                        tempList.add(userProfileModel);
+                }
+                adapterAllUsers.notifyDataSetChanged();
+            }
+        }else {
+            tempList.clear();
+            tempList.addAll(list);
+            adapterAllUsers.notifyDataSetChanged();
+        }
 
     }
 

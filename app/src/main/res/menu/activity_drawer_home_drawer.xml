@@ -12,6 +12,17 @@
             android:id="@+id/nav_profile"
             android:icon="@drawable/profile"
             android:title="@string/menu_profile" />
+
+        <item
+            android:id="@+id/nav_hiring_req"
+            android:icon="@drawable/upload_job"
+            android:title="@string/menu_hiring_req" />
+
+        <item
+            android:id="@+id/nav_applying_req"
+            android:icon="@drawable/upload_job"
+            android:title="@string/menu_applying_req" />
+
         <item
             android:id="@+id/nav_logout"
             android:icon="@drawable/logout"

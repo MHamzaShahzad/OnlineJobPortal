@@ -1,7 +1,6 @@
 package com.example.onlinejobportal.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,11 +13,12 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.onlinejobportal.Constants;
+import com.example.onlinejobportal.common.Constants;
 import com.example.onlinejobportal.R;
 import com.example.onlinejobportal.user.FragmentUserProfileDescription;
 import com.example.onlinejobportal.models.UserProfileModel;
-import com.google.android.gms.maps.model.Circle;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -30,10 +30,12 @@ public class AdapterAllUsers extends RecyclerView.Adapter<AdapterAllUsers.Holder
     private static final String TAG = AdapterAllUsers.class.getName();
     private Context context;
     private List<UserProfileModel> usersList;
+    private FirebaseUser firebaseUser;
 
     public AdapterAllUsers(Context context, List<UserProfileModel> usersList) {
         this.context = context;
         this.usersList = usersList;
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
     }
 
     @NonNull
@@ -71,8 +73,10 @@ public class AdapterAllUsers extends RecyclerView.Adapter<AdapterAllUsers.Holder
                 Bundle bundle = new Bundle();
                 bundle.putSerializable(Constants.USER_OBJECT, userProfileModel);
                 fragmentUserProfileDescription.setArguments(bundle);
-                ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().add(R.id.fragment_home, fragmentUserProfileDescription).addToBackStack(null).commit();
-
+                if (firebaseUser == null)
+                    ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().add(android.R.id.content, fragmentUserProfileDescription).addToBackStack(null).commit();
+                else
+                    ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_home, fragmentUserProfileDescription).addToBackStack(null).commit();
             }
         });
 

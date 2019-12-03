@@ -1,4 +1,4 @@
-package com.example.onlinejobportal;
+package com.example.onlinejobportal.common;
 
 public class Constants {
 
@@ -6,6 +6,8 @@ public class Constants {
     public static final String JOB_OBJECT = "jobObject";
     public static final String COMPANY_OBJECT = "companyObject";
     public static final String LOOK_FOR_TRUSTED_OBJECT = "lookForTrustedObject";
+    public static final String APPLYING_REQ_OBJ = "applying_req_obj";
+    public static final String HIRING_REQ_OBJ = "hiring_req_obj";
 
     public static final String AUTHENTICATE_AS = "authenticateAs";
     public static final String AUTHENTICATE_AS_USER = "0";
@@ -42,6 +44,11 @@ public class Constants {
     public static final String STRING_COMPANY_PROFILE_REFERENCE = "Company Profile";
     public static final String STRING_USER_PROFILE_REFERENCE = "User Profile";
     public static final String STRING_MAKE_TRUSTED_REFERENCE = "Make Trusted Requests";
+    public static final String STRING_HIRING_REQUEST_REFERENCE = "HiringRequests";
+    public static final String STRING_APPLYING_REQUEST_REFERENCE = "ApplyingRequests";
+
+    public static final String STRING_HIRING_REQ = "HireReq";
+    public static final String STRING_APPLYING_REQ = "ApplyingReq";
 
     public static final String STRING_PROFILE_PIC_STORAGE_REF = "user_profile_pictures/";
     public static final String STRING_COMPANY_PROFILE_STORAGE_REF = "company_profile_pictures/";
@@ -49,4 +56,22 @@ public class Constants {
     public static final String STRING_LOCATION_LATITUDE = "latitude";
     public static final String STRING_LOCATION_LONGITUDE = "longitude";
 
+    public static final String IS_HIRING_SEEN_BY_COMPANY = "seen_by_company";
+    public static final String IS_APPLYING_SEEN_BY_COMPANY = "seen_by_company";
+
+    public static final String REQUEST_STATUS_PENDING = "0";
+    public static final String REQUEST_STATUS_ACCEPTED = "1";
+    public static final String REQUEST_STATUS_REJECTED = "2";
+    public static final String REQUEST_STATUS_HIRED = "3";
+    public static final String REQUEST_STATUS_NOT_HIRED = "4";
+
+    public static final String STRING_REQUEST_STATUS_PENDING = "Pending";
+    public static final String STRING_REQUEST_STATUS_ACCEPTED = "Accepted";
+    public static final String STRING_REQUEST_STATUS_REJECTED = "Rejected";
+    public static final String STRING_REQUEST_STATUS_HIRED = "Hired";
+    public static final String STRING_REQUEST_STATUS_NOT_HIRED = "Not Hired";
+
+    public static final String STRING_CHATS_REFERENCE = "Chats";
+    public static final String CHAT_ID_REF = "chat_id";
+    public static final String MESSAGE_RECEIVER_ID = "message_receiver_id";
 }

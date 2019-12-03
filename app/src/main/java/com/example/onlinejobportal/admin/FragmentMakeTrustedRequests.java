@@ -9,12 +9,10 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.onlinejobportal.Constants;
 import com.example.onlinejobportal.R;
 import com.example.onlinejobportal.adapters.AdapterTrustedUsers;
 import com.example.onlinejobportal.controllers.MyFirebaseDatabase;

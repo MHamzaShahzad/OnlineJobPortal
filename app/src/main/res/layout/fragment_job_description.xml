@@ -5,379 +5,393 @@
     android:background="@drawable/gradient_background"
     android:clickable="true">
 
-    <ScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:layout_height="match_parent">
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="10dp">
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/edittextstyle">
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/companyImage"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="7dp"
-                    android:src="@drawable/useravatar" />
-
-                <TextView
-                    android:id="@+id/jobTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Job Title"
-                    android:fontFamily="@font/raleway_semi_bold"
-                    android:textAlignment="center"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="17sp"
-                    android:textStyle="bold"
-                    android:layout_below="@+id/companyImage"
-                    android:layout_margin="5dp"/>
-
-
-                <TextView
-                    android:id="@+id/companyName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Company Name"
-                    android:fontFamily="@font/ralewaylight"
-                    android:textAlignment="center"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="17sp"
-                    android:layout_below="@id/jobTitle"
-                    android:layout_margin="5dp"/>
-
-
-
-                <TextView
-                    android:id="@+id/jobLocation"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Location"
-                    android:drawableLeft="@drawable/ic_location_on_black_24dp"
-                    android:textAlignment="center"
-                    android:fontFamily="@font/ralewaylight"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="17sp"
-                    android:layout_margin="5dp"
-                    android:layout_below="@+id/companyName"
-                    android:drawableStart="@drawable/ic_location_on_black_24dp" />
-
-
-                <TextView
-                    android:id="@+id/jobExperience"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Experience"
-                    android:textAlignment="center"
-                    android:fontFamily="@font/ralewaylight"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="17sp"
-                    android:layout_margin="5dp"
-                    android:layout_below="@+id/jobLocation"/>
-
-
-                <TextView
-                    android:id="@+id/jobDepartment"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Job Department"
-                    android:textAlignment="center"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="17sp"
-                    android:fontFamily="@font/ralewaylight"
-                    android:layout_margin="5dp"
-                    android:layout_below="@+id/jobExperience"/>
-            </RelativeLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="2">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginRight="2dp"
-                    android:background="@drawable/edittextstyle"
-                    android:orientation="vertical"
-                    android:layout_marginTop="5dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textAlignment="center"
-                        android:fontFamily="@font/ralewaylight"
-                        android:text="Uploaded At"
-                        android:textSize="17sp"
-                        android:textColor="@color/colorWhite"/>
-
-                    <TextView
-                        android:id="@+id/jobUploadedAt"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textAlignment="center"
-                        android:padding="2dp"
-                        android:text=""
-                        android:fontFamily="sans-serif-light"
-                        android:textSize="14sp"
-                        android:textColor="@color/colorWhite"/>
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="2dp"
-                    android:background="@drawable/edittextstyle"
-                    android:orientation="vertical"
-                    android:layout_marginTop="5dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textAlignment="center"
-                        android:fontFamily="@font/ralewaylight"
-                        android:text="Due Date"
-                        android:textSize="17sp"
-                        android:textColor="@color/colorWhite"/>
-
-                    <TextView
-                        android:id="@+id/jobDueDate"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:padding="2dp"
-                        android:text=""
-                        android:fontFamily="sans-serif-light"
-                        android:textColor="@color/colorWhite"
-                        android:textSize="14sp"/>
-
-                </LinearLayout>
-
-            </LinearLayout>
+            android:layout_height="match_parent"
+            android:layout_marginBottom="55dp"
+            android:fillViewport="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:background="@drawable/edittextstyle"
-                android:layout_marginTop="5dp">
+                android:padding="10dp">
 
-
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <RelativeLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="5dp">
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/edittextstyle">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/companyImage"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="7dp"
+                        android:src="@drawable/useravatar" />
 
                     <TextView
-                        android:layout_width="0dp"
+                        android:id="@+id/jobTitle"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.3"
-                        android:text="Industry"
+                        android:layout_below="@+id/companyImage"
+                        android:layout_margin="5dp"
                         android:fontFamily="@font/raleway_semi_bold"
-                        android:textSize="17sp"
-                        android:textColor="@color/colorWhite"/>
-
-
-                    <TextView
-                        android:id="@+id/jobIndustry"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.7"
-                        android:fontFamily="@font/ralewaylight"
+                        android:text="Job Title"
                         android:textAlignment="center"
                         android:textColor="@color/colorWhite"
-                        android:textSize="14sp"/>
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:id="@+id/companyName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/jobTitle"
+                        android:layout_margin="5dp"
+                        android:fontFamily="@font/ralewaylight"
+                        android:text="Company Name"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="17sp" />
+
+
+                    <TextView
+                        android:id="@+id/jobLocation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/companyName"
+                        android:layout_margin="5dp"
+                        android:drawableStart="@drawable/ic_location_on_black_24dp"
+                        android:drawableLeft="@drawable/ic_location_on_black_24dp"
+                        android:fontFamily="@font/ralewaylight"
+                        android:text="Location"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="17sp" />
+
+
+                    <TextView
+                        android:id="@+id/jobExperience"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/jobLocation"
+                        android:layout_margin="5dp"
+                        android:fontFamily="@font/ralewaylight"
+                        android:text="Experience"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="17sp" />
+
+
+                    <TextView
+                        android:id="@+id/jobDepartment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/jobExperience"
+                        android:layout_margin="5dp"
+                        android:fontFamily="@font/ralewaylight"
+                        android:text="Job Department"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="17sp" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="2dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/edittextstyle"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/ralewaylight"
+                            android:text="Uploaded At"
+                            android:textAlignment="center"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="17sp" />
+
+                        <TextView
+                            android:id="@+id/jobUploadedAt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-light"
+                            android:padding="2dp"
+                            android:text=""
+                            android:textAlignment="center"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/edittextstyle"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/ralewaylight"
+                            android:text="Due Date"
+                            android:textAlignment="center"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="17sp" />
+
+                        <TextView
+                            android:id="@+id/jobDueDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-light"
+                            android:gravity="center"
+                            android:padding="2dp"
+                            android:text=""
+                            android:textColor="@color/colorWhite"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="5dp">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.3"
-                        android:text="Job Type"
-                        android:textSize="17sp"
-                        android:fontFamily="@font/raleway_semi_bold"
-                        android:textColor="@color/colorWhite"/>
-
-
-                    <TextView
-                        android:id="@+id/jobType"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.7"
-                        android:fontFamily="@font/ralewaylight"
-                        android:textAlignment="center"
-                        android:textSize="14sp"
-                        android:textColor="@color/colorWhite"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="5dp">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.3"
-                        android:text="Education"
-                        android:fontFamily="@font/raleway_semi_bold"
-                        android:textSize="17sp"
-                        android:textColor="@color/colorWhite"/>
-
-
-                    <TextView
-                        android:id="@+id/jobRequiredEducation"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.7"
-                        android:fontFamily="@font/ralewaylight"
-                        android:textAlignment="center"
-                        android:textSize="14sp"
-                        android:textColor="@color/colorWhite"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="5dp">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.3"
-                        android:text="Career Level"
-                        android:textSize="17sp"
-                        android:fontFamily="@font/raleway_semi_bold"
-                        android:textColor="@color/colorWhite"/>
-
-
-                    <TextView
-                        android:id="@+id/jobCareer"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.7"
-                        android:fontFamily="@font/ralewaylight"
-                        android:textAlignment="center"
-                        android:textSize="14sp"
-                        android:textColor="@color/colorWhite"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="5dp">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.3"
-                        android:text="Gender"
-                        android:fontFamily="@font/raleway_semi_bold"
-                        android:textSize="17sp"
-                        android:textColor="@color/colorWhite"/>
-
-
-                    <TextView
-                        android:id="@+id/jobRequiredGender"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.7"
-                        android:textSize="14sp"
-                        android:fontFamily="@font/ralewaylight"
-                        android:textAlignment="center"
-                        android:textColor="@color/colorWhite"/>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Description"
                     android:layout_marginTop="5dp"
-                    android:fontFamily="@font/raleway_semi_bold"
-                    android:textSize="17sp"
-                    android:textColor="@color/colorWhite"/>
+                    android:background="@drawable/edittextstyle"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/jobDescription"
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.3"
+                            android:fontFamily="@font/raleway_semi_bold"
+                            android:text="Industry"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="17sp" />
+
+
+                        <TextView
+                            android:id="@+id/jobIndustry"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.7"
+                            android:fontFamily="@font/ralewaylight"
+                            android:textAlignment="center"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.3"
+                            android:fontFamily="@font/raleway_semi_bold"
+                            android:text="Job Type"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="17sp" />
+
+
+                        <TextView
+                            android:id="@+id/jobType"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.7"
+                            android:fontFamily="@font/ralewaylight"
+                            android:textAlignment="center"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.3"
+                            android:fontFamily="@font/raleway_semi_bold"
+                            android:text="Education"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="17sp" />
+
+
+                        <TextView
+                            android:id="@+id/jobRequiredEducation"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.7"
+                            android:fontFamily="@font/ralewaylight"
+                            android:textAlignment="center"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.3"
+                            android:fontFamily="@font/raleway_semi_bold"
+                            android:text="Career Level"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="17sp" />
+
+
+                        <TextView
+                            android:id="@+id/jobCareer"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.7"
+                            android:fontFamily="@font/ralewaylight"
+                            android:textAlignment="center"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.3"
+                            android:fontFamily="@font/raleway_semi_bold"
+                            android:text="Gender"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="17sp" />
+
+
+                        <TextView
+                            android:id="@+id/jobRequiredGender"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.7"
+                            android:fontFamily="@font/ralewaylight"
+                            android:textAlignment="center"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:padding="5dp"
-                    android:fontFamily="@font/ralewaylight"
-                    android:text=""
-                    android:textSize="14sp"
-                    android:background="@drawable/edittextstyle"
-                    android:textColor="@color/colorWhite"/>
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/raleway_semi_bold"
+                        android:text="Description"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="17sp" />
+
+                    <TextView
+                        android:id="@+id/jobDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edittextstyle"
+                        android:fontFamily="@font/ralewaylight"
+                        android:padding="5dp"
+                        android:text=""
+                        android:textColor="@color/colorWhite"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/raleway_semi_bold"
+                        android:text="Specifications"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="17sp" />
+
+                    <TextView
+                        android:id="@+id/jobSpecification"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edittextstyle"
+                        android:fontFamily="@font/ralewaylight"
+                        android:padding="5dp"
+                        android:text=""
+                        android:textColor="@color/colorWhite"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+        </ScrollView>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Specifications"
-                    android:textSize="17sp"
-                    android:layout_marginTop="5dp"
-                    android:fontFamily="@font/raleway_semi_bold"
-                    android:textColor="@color/colorWhite"/>
+        <Button
+            android:id="@+id/btnApplyForJob"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorWhite"
+            android:text="Apply" />
 
-                <TextView
-                    android:id="@+id/jobSpecification"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text=""
-                    android:fontFamily="@font/ralewaylight"
-                    android:textSize="14sp"
-                    android:padding="5dp"
-                    android:background="@drawable/edittextstyle"
-                    android:textColor="@color/colorWhite"/>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </ScrollView>
+    </RelativeLayout>
 
 </FrameLayout>

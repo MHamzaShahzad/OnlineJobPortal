@@ -5,7 +5,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StartMainActivity">
+    tools:context=".activities.StartMainActivity">
 
     <RelativeLayout
         android:id="@+id/layout_signIn_signUp"

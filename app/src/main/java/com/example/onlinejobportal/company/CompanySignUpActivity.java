@@ -10,9 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.onlinejobportal.CommonFunctionsClass;
-import com.example.onlinejobportal.HomeDrawerActivityCompany;
-import com.example.onlinejobportal.HomeDrawerActivityUser;
+import com.example.onlinejobportal.common.CommonFunctionsClass;
+import com.example.onlinejobportal.activities.HomeDrawerActivityCompany;
 import com.example.onlinejobportal.R;
 import com.example.onlinejobportal.controllers.MyFirebaseDatabase;
 import com.example.onlinejobportal.models.CompanyProfileModel;

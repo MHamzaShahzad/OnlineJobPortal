@@ -8,7 +8,6 @@ import androidx.fragment.app.FragmentActivity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -20,7 +19,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.example.onlinejobportal.CommonFunctionsClass;
+import com.example.onlinejobportal.common.CommonFunctionsClass;
 import com.example.onlinejobportal.controllers.MyFirebaseDatabase;
 import com.example.onlinejobportal.controllers.MyFirebaseStorage;
 import com.example.onlinejobportal.models.CompanyProfileModel;

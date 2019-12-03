@@ -4,4 +4,8 @@
     <color name="colorPrimaryDark">#1D2E8A</color>
     <color name="colorAccent">#1D2E8A</color>
     <color name="colorWhite">#fff</color>
+    <color name="colorButtonDisable">#C2B8B8</color>
+
+    <color name="myMessage">#39B6EC</color>
+    <color name="otherMessage">#C2B8B8</color>
 </resources>

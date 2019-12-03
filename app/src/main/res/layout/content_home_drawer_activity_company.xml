@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".HomeDrawerActivityCompany"
+    tools:context=".activities.HomeDrawerActivityCompany"
     tools:showIn="@layout/app_bar_home_drawer_activity_company">
 
     <FrameLayout

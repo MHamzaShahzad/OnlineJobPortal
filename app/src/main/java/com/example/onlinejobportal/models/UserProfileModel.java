@@ -6,20 +6,22 @@ public class UserProfileModel implements Serializable {
 
     public static final String STRING_USER_STATUS_REF = "userStatus";
 
-    String userImage, userFirstName, userLastName, userPhone, userEmail, userGender, userAge, userMarriageStatus, userCity,
+    String userId, userImage, userFirstName, userLastName, userPhone, userEmail, userGender, userAge, userMarriageStatus, userCity,
             userIntro, userEduction, userCountry, userCurrentJob, userSkills, userStatus;
 
     public UserProfileModel() {
     }
 
-    public UserProfileModel(String userImage, String userFirstName, String userEmail, String userStatus) {
+    public UserProfileModel(String userId, String userImage, String userFirstName, String userEmail, String userStatus) {
+        this.userId = userId;
         this.userImage = userImage;
         this.userFirstName = userFirstName;
         this.userEmail = userEmail;
         this.userStatus = userStatus;
     }
 
-    public UserProfileModel(String userImage, String userFirstName, String userLastName, String userPhone, String userEmail, String userGender, String userAge, String userMarriageStatus, String userCity, String userIntro, String userEduction, String userCountry, String userCurrentJob, String userSkills, String userStatus) {
+    public UserProfileModel(String userId, String userImage, String userFirstName, String userLastName, String userPhone, String userEmail, String userGender, String userAge, String userMarriageStatus, String userCity, String userIntro, String userEduction, String userCountry, String userCurrentJob, String userSkills, String userStatus) {
+        this.userId = userId;
         this.userImage = userImage;
         this.userFirstName = userFirstName;
         this.userLastName = userLastName;
@@ -35,6 +37,10 @@ public class UserProfileModel implements Serializable {
         this.userCurrentJob = userCurrentJob;
         this.userSkills = userSkills;
         this.userStatus = userStatus;
+    }
+
+    public String getUserId() {
+        return userId;
     }
 
     public String getUserImage() {

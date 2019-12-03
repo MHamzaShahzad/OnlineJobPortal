@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:background="@drawable/gradient_background"
-        tools:context=".LoginActivity">
+        tools:context=".activities.LoginActivity">
 
         <LinearLayout
             android:layout_width="match_parent"

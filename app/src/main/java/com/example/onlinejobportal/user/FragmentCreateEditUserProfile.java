@@ -2,14 +2,11 @@ package com.example.onlinejobportal.user;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -21,8 +18,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.example.onlinejobportal.CommonFunctionsClass;
-import com.example.onlinejobportal.Constants;
+import com.example.onlinejobportal.common.CommonFunctionsClass;
+import com.example.onlinejobportal.common.Constants;
 import com.example.onlinejobportal.R;
 import com.example.onlinejobportal.admin.FragmentTrustRequestDescription;
 import com.example.onlinejobportal.controllers.MyFirebaseDatabase;
@@ -41,9 +38,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
-
-import java.io.FileNotFoundException;
-import java.io.InputStream;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -145,6 +139,7 @@ public class FragmentCreateEditUserProfile extends Fragment {
 
     private UserProfileModel getUserInstance(String imageUrl) {
         return new UserProfileModel(
+                firebaseUser.getUid(),
                 imageUrl,
                 firstName.getText().toString(),
                 lastName.getText().toString(),
@@ -167,11 +162,11 @@ public class FragmentCreateEditUserProfile extends Fragment {
         int id = groupGender.getCheckedRadioButtonId();
 
         if (id == R.id.genderMale)
-            return genderMale.getText().toString();
+            return Constants.GENDER_MALE;
         if (id == R.id.genderFemale)
-            return genderFemale.getText().toString();
+            return Constants.GENDER_FEMALE;
         if (id == R.id.genderRatherNotSay)
-            return genderRatherNotSay.getText().toString();
+            return Constants.GENDER_OTHERS;
 
         return null;
 
@@ -192,15 +187,15 @@ public class FragmentCreateEditUserProfile extends Fragment {
 
     private void setGender(String gender) {
         if (gender != null) {
-            if (gender.equals(genderMale.getText().toString())) {
+            if (gender.equals(Constants.GENDER_MALE)) {
                 genderMale.setChecked(true);
                 return;
             }
-            if (gender.equals(genderFemale.getText().toString())) {
+            if (gender.equals(Constants.GENDER_FEMALE)) {
                 genderFemale.setChecked(true);
                 return;
             }
-            if (gender.equals(genderRatherNotSay.getText().toString())) {
+            if (gender.equals(Constants.GENDER_OTHERS)) {
                 genderRatherNotSay.setChecked(true);
             }
         }

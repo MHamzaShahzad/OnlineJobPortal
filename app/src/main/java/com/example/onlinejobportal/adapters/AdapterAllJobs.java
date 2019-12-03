@@ -12,7 +12,7 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.onlinejobportal.Constants;
+import com.example.onlinejobportal.common.Constants;
 import com.example.onlinejobportal.R;
 import com.example.onlinejobportal.company.FragmentEditJob;
 import com.example.onlinejobportal.company.FragmentJobDescription;
@@ -68,12 +68,15 @@ public class AdapterAllJobs extends RecyclerView.Adapter<AdapterAllJobs.Holder> 
                 if (firebaseUser != null && firebaseUser.getUid().equals(jobModel.getUploadBy())) {
                     FragmentEditJob fragmentEditJob = new FragmentEditJob();
                     fragmentEditJob.setArguments(bundle);
-                    ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().add(R.id.fragment_home, fragmentEditJob).addToBackStack(null).commit();
+                    ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_home, fragmentEditJob).addToBackStack(null).commit();
 
                 } else {
                     FragmentJobDescription fragmentJobDescription = new FragmentJobDescription();
                     fragmentJobDescription.setArguments(bundle);
-                    ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().add(R.id.fragment_home, fragmentJobDescription).addToBackStack(null).commit();
+                    if (firebaseUser == null)
+                        ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().add(android.R.id.content, fragmentJobDescription).addToBackStack(null).commit();
+                    else
+                        ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_home, fragmentJobDescription).addToBackStack(null).commit();
                 }
             }
         });

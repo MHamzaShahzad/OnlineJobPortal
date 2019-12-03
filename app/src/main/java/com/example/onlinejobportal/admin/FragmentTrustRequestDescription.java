@@ -6,7 +6,6 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -25,11 +24,10 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.example.onlinejobportal.CommonFunctionsClass;
-import com.example.onlinejobportal.Constants;
-import com.example.onlinejobportal.FragmentMapLocation;
+import com.example.onlinejobportal.common.CommonFunctionsClass;
+import com.example.onlinejobportal.common.Constants;
+import com.example.onlinejobportal.common.FragmentMapLocation;
 import com.example.onlinejobportal.R;
-import com.example.onlinejobportal.adapters.AdapterTrustedUsers;
 import com.example.onlinejobportal.controllers.MyFirebaseDatabase;
 import com.example.onlinejobportal.models.LookForTrusted;
 import com.example.onlinejobportal.models.UserProfileModel;

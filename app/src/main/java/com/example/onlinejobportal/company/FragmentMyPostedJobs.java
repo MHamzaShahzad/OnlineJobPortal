@@ -14,7 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.onlinejobportal.Constants;
+import com.example.onlinejobportal.common.Constants;
 import com.example.onlinejobportal.R;
 import com.example.onlinejobportal.adapters.AdapterAllJobs;
 import com.example.onlinejobportal.controllers.MyFirebaseDatabase;

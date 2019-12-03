@@ -1,21 +1,17 @@
-package com.example.onlinejobportal;
+package com.example.onlinejobportal.activities;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.onlinejobportal.company.CompanySignUpActivity;
+import com.example.onlinejobportal.common.CommonFunctionsClass;
+import com.example.onlinejobportal.common.Constants;
+import com.example.onlinejobportal.R;
 import com.example.onlinejobportal.company.FragmentAllActiveJobs;
-import com.example.onlinejobportal.controllers.MyFirebaseDatabase;
 import com.example.onlinejobportal.user.FragmentAllUsers;
-import com.example.onlinejobportal.user.UserSignUpActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.ValueEventListener;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;

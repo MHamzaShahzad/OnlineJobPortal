@@ -1,19 +1,21 @@
-package com.example.onlinejobportal;
+package com.example.onlinejobportal.activities;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.onlinejobportal.common.CommonFunctionsClass;
+import com.example.onlinejobportal.common.Constants;
+import com.example.onlinejobportal.R;
+import com.example.onlinejobportal.common.FragmentJobsAppliedAt;
 import com.example.onlinejobportal.company.FragmentCreateEditCompanyProfile;
 import com.example.onlinejobportal.company.FragmentCreateNewJob;
+import com.example.onlinejobportal.common.FragmentHiringRequests;
 import com.example.onlinejobportal.company.FragmentMyPostedJobs;
 import com.example.onlinejobportal.controllers.MyFirebaseDatabase;
 import com.example.onlinejobportal.interfaces.FragmentInteractionListenerInterface;
 import com.example.onlinejobportal.models.CompanyProfileModel;
-import com.example.onlinejobportal.models.UserProfileModel;
 import com.example.onlinejobportal.user.FragmentAllUsers;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import android.view.View;
 
@@ -76,6 +78,12 @@ public class HomeDrawerActivityCompany extends AppCompatActivity
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        CommonFunctionsClass.subscribeToTopic(context, firebaseUser.getUid(), true);
+    }
+
+    @Override
     public void onBackPressed() {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
@@ -130,6 +138,18 @@ public class HomeDrawerActivityCompany extends AppCompatActivity
 
             getSupportFragmentManager().beginTransaction().add(R.id.fragment_home, new FragmentCreateNewJob()).addToBackStack(null).commit();
 
+        }else if (id == R.id.nav_hiring_req) {
+
+            Bundle bundle = new Bundle();
+            bundle.putBoolean(Constants.IS_HIRING_SEEN_BY_COMPANY, true);
+            getSupportFragmentManager().beginTransaction().add(R.id.fragment_home, FragmentHiringRequests.getInstance(bundle)).addToBackStack(null).commit();
+
+        }else if (id == R.id.nav_applying_req) {
+
+            Bundle bundle = new Bundle();
+            bundle.putBoolean(Constants.IS_APPLYING_SEEN_BY_COMPANY, true);
+            getSupportFragmentManager().beginTransaction().add(R.id.fragment_home, FragmentJobsAppliedAt.getInstance(bundle)).addToBackStack(null).commit();
+
         } else if (id == R.id.nav_logout) {
 
             signOut();
@@ -148,6 +168,7 @@ public class HomeDrawerActivityCompany extends AppCompatActivity
     private void signOut() {
 
         mAuth.signOut();
+        CommonFunctionsClass.unSubscribeFromTopic(context, firebaseUser.getUid(), true);
         startActivity(new Intent(context, StartMainActivity.class));
         finish();
 

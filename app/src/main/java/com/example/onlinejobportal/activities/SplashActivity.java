@@ -1,10 +1,12 @@
-package com.example.onlinejobportal;
+package com.example.onlinejobportal.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
+import com.example.onlinejobportal.R;
 
 public class SplashActivity extends AppCompatActivity {
 

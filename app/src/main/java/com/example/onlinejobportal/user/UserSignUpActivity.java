@@ -15,9 +15,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.onlinejobportal.CommonFunctionsClass;
-import com.example.onlinejobportal.Constants;
-import com.example.onlinejobportal.HomeDrawerActivityUser;
+import com.example.onlinejobportal.common.CommonFunctionsClass;
+import com.example.onlinejobportal.common.Constants;
+import com.example.onlinejobportal.activities.HomeDrawerActivityUser;
 import com.example.onlinejobportal.R;
 import com.example.onlinejobportal.controllers.MyFirebaseDatabase;
 import com.example.onlinejobportal.controllers.MyFirebaseStorage;
@@ -32,8 +32,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.FileNotFoundException;
@@ -226,6 +224,7 @@ public class UserSignUpActivity extends AppCompatActivity {
 
     private void uploadUserBasicProfile(FirebaseUser user){
         MyFirebaseDatabase.USER_PROFILE_REFERENCE.child(user.getUid()).setValue(new UserProfileModel(
+                user.getUid(),
                 user.getPhotoUrl().toString(),
                 user.getDisplayName(),
                 user.getEmail(),

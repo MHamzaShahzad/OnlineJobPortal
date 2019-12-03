@@ -1,4 +1,4 @@
-package com.example.onlinejobportal;
+package com.example.onlinejobportal.common;
 
 
 import android.app.Activity;
@@ -8,15 +8,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.onlinejobportal.R;
 import com.example.onlinejobportal.interfaces.FragmentInteractionListenerInterface;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;

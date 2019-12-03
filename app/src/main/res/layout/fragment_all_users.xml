@@ -8,9 +8,36 @@
     android:padding="10dp"
     tools:context=".user.FragmentAllUsers">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_all_users"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/layout_switch_trusted_not_trusted"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switchTrustedOrNot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true" />
+
+            <TextView
+                android:id="@+id/textUserTypes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="All Users"/>
+
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_all_users"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layout_switch_trusted_not_trusted"/>
+
+    </RelativeLayout>
 
 </FrameLayout>

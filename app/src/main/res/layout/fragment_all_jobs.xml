@@ -5,12 +5,66 @@
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
     android:clickable="true"
-    android:padding="10dp"
     tools:context=".company.FragmentAllActiveJobs">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerAllActiveJobs"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:background="@drawable/gradient_background" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="70dp"
+            android:layout_marginRight="20dp">
+
+            <EditText
+                android:id="@+id/inputJobTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Job Title..."
+                android:textColor="@color/colorWhite"
+                android:textColorHint="@color/colorWhite" />
+
+            <EditText
+                android:id="@+id/inputJobCity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/inputJobTitle"
+                android:hint="City Name"
+                android:textColor="@color/colorWhite"
+                android:textColorHint="@color/colorWhite" />
+
+            <Button
+                android:id="@+id/btnSearchJobs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/inputJobCity"
+                android:layout_centerHorizontal="true"
+                android:text="Search" />
+
+        </RelativeLayout>
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imageView">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerAllActiveJobs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp" />
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    </RelativeLayout>
 
 </FrameLayout>

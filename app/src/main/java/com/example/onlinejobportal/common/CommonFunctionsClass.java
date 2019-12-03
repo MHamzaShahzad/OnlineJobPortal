@@ -1,24 +1,78 @@
-package com.example.onlinejobportal;
+package com.example.onlinejobportal.common;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.util.Patterns;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentManager;
 
+import com.example.onlinejobportal.activities.HomeDrawerActivityCompany;
+import com.example.onlinejobportal.activities.HomeDrawerActivityUser;
+import com.example.onlinejobportal.activities.LoginActivity;
 import com.example.onlinejobportal.company.CompanySignUpActivity;
 import com.example.onlinejobportal.controllers.MyFirebaseDatabase;
 import com.example.onlinejobportal.user.UserSignUpActivity;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.firebase.auth.FirebaseUser;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.messaging.FirebaseMessaging;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class CommonFunctionsClass {
 
+    private static final String TAG = CommonFunctionsClass.class.getName();
+
+    public static void subscribeToTopic(final Context context, final String topic, final boolean isHidden){
+        FirebaseMessaging.getInstance().subscribeToTopic(topic).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()){
+                    if (isHidden)
+                        Log.d(TAG, "onComplete: subscription to " + topic + " successful!" );
+                    else
+                        Toast.makeText(context, "Subscription to "+ topic + " successful.", Toast.LENGTH_LONG).show();
+                }else {
+                    if (isHidden)
+                        Log.d(TAG, "onComplete: can't subscribe successfully to " + topic );
+                    else
+                        Toast.makeText(context, "Subscription to "+ topic + " failed.", Toast.LENGTH_LONG).show();
+
+                }
+
+            }
+        });
+    }
+
+    public static void unSubscribeFromTopic(final Context context, final String topic, final boolean isHidden){
+        FirebaseMessaging.getInstance().unsubscribeFromTopic(topic).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()){
+                    if (isHidden)
+                        Log.d(TAG, "onComplete: un-subscribed from " + topic + " successful!" );
+                    else
+                        Toast.makeText(context, "Un-Subscribed from "+ topic + " successful.", Toast.LENGTH_LONG).show();
+                }else {
+                    if (isHidden)
+                        Log.d(TAG, "onComplete: can't un-subscribe successfully from " + topic );
+                    else
+                        Toast.makeText(context, "Un-Subscribed from "+ topic + " failed.", Toast.LENGTH_LONG).show();
+
+                }
+
+            }
+        });
+    }
 
     public static boolean isEmailValid(CharSequence charSequence) {
         return Patterns.EMAIL_ADDRESS.matcher(charSequence).matches();
@@ -102,7 +156,7 @@ public class CommonFunctionsClass {
             case Constants.GENDER_ALL:
                 return Constants.STRING_GENDER_ALL;
         }
-        return "";
+        return gender;
     }
 
     public static double getLocLatitude(String latLng) {
@@ -137,6 +191,10 @@ public class CommonFunctionsClass {
                 default:
                     return null;
         }
+    }
+
+    public static String getCurrentDateTime(){
+        return new SimpleDateFormat("dd MM yyyy hh:mm a").format(Calendar.getInstance().getTime());
     }
 
 }

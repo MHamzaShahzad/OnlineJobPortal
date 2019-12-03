@@ -32,5 +32,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="menu_hiring_req">Hiring Requests</string>
+    <string name="menu_applying_req">Applyer Requests</string>
 
 </resources>

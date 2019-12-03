@@ -1,6 +1,6 @@
 package com.example.onlinejobportal.controllers;
 
-import com.example.onlinejobportal.Constants;
+import com.example.onlinejobportal.common.Constants;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
