@@ -74,4 +74,24 @@ public class Constants {
     public static final String STRING_CHATS_REFERENCE = "Chats";
     public static final String CHAT_ID_REF = "chat_id";
     public static final String MESSAGE_RECEIVER_ID = "message_receiver_id";
+
+    public static final String TITLE_JOBS = "Jobs";
+    public static final String TITLE_YOUR_PROFILE = "Your Profile";
+    public static final String TITLE_POST_NEW_JOB = "Post a Job";
+    public static final String TITLE_EDIT_YOUR_JOB = "Edit Your Job";
+    public static final String TITLE_JOB_DESCRIPTION = "Job Description";
+    public static final String TITLE_YOUR_POSTED_JOBS = "Posted Jobs";
+    public static final String TITLE_USERS_LIST = "User List";
+    public static final String TITLE_USER_DESCRIPTION = "User Description";
+    public static final String TITLE_APPLICANT_REQUEST = "Applicant Requests";
+    public static final String TITLE_YOUR_REQUEST = "Your Request";
+    public static final String TITLE_CHAT = "Chat";
+    public static final String TITLE_HIRING_REQUESTS = "Hiring Requests";
+    public static final String TITLE_YOUR_REQUEST_DESCRIPTION = "Request Description";
+    public static final String TITLE_HIRING_REQUESTS_DESCRIPTION = "Hiring Request Description";
+    public static final String TITLE_APPLICANT_REQUEST_DESCRIPTION = "Applicant Request Description";
+    public static final String TITLE_INTERVIEW_LOCATION = "Interview Location";
+    public static final String TITLE_JOB_LOCATION = "Job Location";
+    public static final String TITLE_APPROVAL_REQUEST = "Approval Request(s)";
+    public static final String TITLE_APPROVAL_REQUEST_DESCRIPTION = "Request Description";
 }

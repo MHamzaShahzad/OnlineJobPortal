@@ -8,6 +8,7 @@ import com.example.onlinejobportal.common.CommonFunctionsClass;
 import com.example.onlinejobportal.common.Constants;
 import com.example.onlinejobportal.R;
 import com.example.onlinejobportal.company.FragmentAllActiveJobs;
+import com.example.onlinejobportal.interfaces.FragmentInteractionListenerInterface;
 import com.example.onlinejobportal.user.FragmentAllUsers;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -20,7 +21,7 @@ import androidx.annotation.NonNull;
 import android.view.MenuItem;
 import android.view.View;
 
-public class StartMainActivity extends AppCompatActivity {
+public class StartMainActivity extends AppCompatActivity implements FragmentInteractionListenerInterface {
 
     private Context context;
     private FragmentAllActiveJobs fragmentAllActiveJobs;
@@ -33,10 +34,10 @@ public class StartMainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_jobs:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_home, fragmentAllActiveJobs).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_home, fragmentAllActiveJobs, Constants.TITLE_JOBS).commit();
                     return true;
                 case R.id.navigation_users:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_home, fragmentAllUsers).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_home, fragmentAllUsers, Constants.TITLE_USERS_LIST).commit();
                     return true;
             }
             return false;
@@ -101,6 +102,13 @@ public class StartMainActivity extends AppCompatActivity {
         });
         builder.create().show();
 
+    }
+
+    @Override
+    public void onFragmentInteraction(String title) {
+        if (getSupportActionBar() != null){
+            getSupportActionBar().setTitle(title);
+        }
     }
 
 }

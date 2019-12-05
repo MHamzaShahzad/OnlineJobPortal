@@ -16,12 +16,11 @@
             android:id="@+id/makeTrustedRequestsTabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/gradient_background"
-            app:tabBackground="@android:color/holo_red_dark"
+            app:tabBackground="@color/colorPrimary"
             app:tabIndicatorColor="#BFFFFFFF"
             app:tabMode="fixed"
-            app:tabSelectedTextColor="#FFFFFF"
-            app:tabTextColor="#BFFFFFFF" />
+            app:tabSelectedTextColor="@color/colorWhite"
+            app:tabTextColor="@color/colorWhite"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerMakeTrusted"

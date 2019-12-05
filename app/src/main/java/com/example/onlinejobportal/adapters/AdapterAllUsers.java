@@ -74,9 +74,9 @@ public class AdapterAllUsers extends RecyclerView.Adapter<AdapterAllUsers.Holder
                 bundle.putSerializable(Constants.USER_OBJECT, userProfileModel);
                 fragmentUserProfileDescription.setArguments(bundle);
                 if (firebaseUser == null)
-                    ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().add(android.R.id.content, fragmentUserProfileDescription).addToBackStack(null).commit();
+                    ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().add(android.R.id.content, fragmentUserProfileDescription, Constants.TITLE_USER_DESCRIPTION).addToBackStack(Constants.TITLE_USER_DESCRIPTION).commit();
                 else
-                    ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_home, fragmentUserProfileDescription).addToBackStack(null).commit();
+                    ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_home, fragmentUserProfileDescription, Constants.TITLE_USER_DESCRIPTION).addToBackStack(Constants.TITLE_USER_DESCRIPTION).commit();
             }
         });
 

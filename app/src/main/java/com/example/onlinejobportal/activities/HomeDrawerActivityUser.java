@@ -71,7 +71,7 @@ public class HomeDrawerActivityUser extends AppCompatActivity
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
-        getSupportFragmentManager().beginTransaction().add(R.id.fragment_home, new FragmentAllActiveJobs()).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_home, new FragmentAllActiveJobs(), Constants.TITLE_JOBS).commit();
         loadUserProfileDataInNavigationHeader(navigationView.getHeaderView(0));
     }
 
@@ -125,7 +125,7 @@ public class HomeDrawerActivityUser extends AppCompatActivity
 
         } else if (id == R.id.nav_profile) {
 
-            getSupportFragmentManager().beginTransaction().add(R.id.fragment_home, new FragmentCreateEditUserProfile()).addToBackStack(null).commit();
+            getSupportFragmentManager().beginTransaction().add(R.id.fragment_home, new FragmentCreateEditUserProfile(), Constants.TITLE_YOUR_PROFILE).addToBackStack(Constants.TITLE_YOUR_PROFILE).commit();
 
         } else if (id == R.id.nav_hiring_req) {
 

@@ -1,6 +1,7 @@
 package com.example.onlinejobportal.company;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 
@@ -21,6 +22,7 @@ import com.example.onlinejobportal.common.Constants;
 import com.example.onlinejobportal.R;
 import com.example.onlinejobportal.adapters.AdapterAllJobs;
 import com.example.onlinejobportal.controllers.MyFirebaseDatabase;
+import com.example.onlinejobportal.interfaces.FragmentInteractionListenerInterface;
 import com.example.onlinejobportal.models.JobModel;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -46,6 +48,8 @@ public class FragmentAllActiveJobs extends Fragment implements SwipeRefreshLayou
     private Button btnSearchJobs;
 
     private SwipeRefreshLayout mSwipeRefreshLayout;
+    private FragmentInteractionListenerInterface mListener;
+
 
     public FragmentAllActiveJobs() {
         // Required empty public constructor
@@ -56,6 +60,9 @@ public class FragmentAllActiveJobs extends Fragment implements SwipeRefreshLayou
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        if (mListener != null)
+            mListener.onFragmentInteraction(this.getTag());
+
         context = container.getContext();
         adapterAllJobs = new AdapterAllJobs(context, jobModelList);
         // Inflate the layout for this fragment
@@ -185,6 +192,8 @@ public class FragmentAllActiveJobs extends Fragment implements SwipeRefreshLayou
     public void onResume() {
         initSwipeRefreshLayout();
         super.onResume();
+        if (mListener != null)
+            mListener.onFragmentInteraction(this.getTag());
     }
 
     @Override
@@ -197,4 +206,27 @@ public class FragmentAllActiveJobs extends Fragment implements SwipeRefreshLayou
     public void onRefresh() {
         initJobsValueEventListener();
     }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        try {
+            mListener = (FragmentInteractionListenerInterface) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString() +
+                    "must implement OnFragmentInteractionListener");
+        }
+
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        if (mListener != null) {
+            mListener.onFragmentInteraction(this.getTag());
+        }
+        mListener = null;
+    }
+
 }

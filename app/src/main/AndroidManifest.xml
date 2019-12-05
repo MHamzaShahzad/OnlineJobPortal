@@ -35,7 +35,8 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".user.UserSignUpActivity" />
+        <activity android:name=".user.UserSignUpActivity"
+            android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".activities.HomeDrawerActivityUser"
             android:label="@string/title_activity_home_drawer"
@@ -49,8 +50,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".company.CompanySignUpActivity" />
-        <activity android:name=".activities.LoginActivity" />
+        <activity android:name=".company.CompanySignUpActivity"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".activities.LoginActivity"
+            android:windowSoftInputMode="stateHidden"/>
 
         <service
             android:name=".services.MyFirebaseMessagingService"

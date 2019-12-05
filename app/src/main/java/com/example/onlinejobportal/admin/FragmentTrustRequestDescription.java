@@ -29,6 +29,7 @@ import com.example.onlinejobportal.common.Constants;
 import com.example.onlinejobportal.common.FragmentMapLocation;
 import com.example.onlinejobportal.R;
 import com.example.onlinejobportal.controllers.MyFirebaseDatabase;
+import com.example.onlinejobportal.interfaces.FragmentInteractionListenerInterface;
 import com.example.onlinejobportal.models.LookForTrusted;
 import com.example.onlinejobportal.models.UserProfileModel;
 import com.example.onlinejobportal.user.FragmentUserProfileDescription;
@@ -78,6 +79,8 @@ public class FragmentTrustRequestDescription extends Fragment {
     private DateFormat formatter = new SimpleDateFormat("dd MMM yyyy", Locale.ENGLISH);
 
     private FirebaseUser firebaseUser;
+    private FragmentInteractionListenerInterface mListener;
+
 
     public FragmentTrustRequestDescription() {
         // Required empty public constructor
@@ -87,6 +90,8 @@ public class FragmentTrustRequestDescription extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        if (mListener != null)
+            mListener.onFragmentInteraction(this.getTag());
         context = container.getContext();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         // Inflate the layout for this fragment
@@ -146,7 +151,7 @@ public class FragmentTrustRequestDescription extends Fragment {
                         bundle.putDouble(Constants.STRING_LOCATION_LATITUDE, CommonFunctionsClass.getLocLatitude(lookForTrusted.getInterViewLatLng()));
                         bundle.putDouble(Constants.STRING_LOCATION_LONGITUDE, CommonFunctionsClass.getLocLongitude(lookForTrusted.getInterViewLatLng()));
                         mapLocation.setArguments(bundle);
-                        ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().add(R.id.fragment_home, mapLocation).addToBackStack(null).commit();
+                        ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().add(R.id.fragment_home, mapLocation, Constants.TITLE_INTERVIEW_LOCATION).addToBackStack(Constants.TITLE_INTERVIEW_LOCATION).commit();
 
                     }
                 }
@@ -439,5 +444,32 @@ public class FragmentTrustRequestDescription extends Fragment {
             }
         }
     } // onActivityResult Ended...
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (mListener != null)
+            mListener.onFragmentInteraction(this.getTag());
+    }
 
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        try {
+            mListener = (FragmentInteractionListenerInterface) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString() +
+                    "must implement OnFragmentInteractionListener");
+        }
+
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        if (mListener != null) {
+            mListener.onFragmentInteraction(this.getTag());
+        }
+        mListener = null;
+    }
 }

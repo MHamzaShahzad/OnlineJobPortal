@@ -1,6 +1,7 @@
 package com.example.onlinejobportal.common;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 
@@ -20,6 +21,7 @@ import android.widget.TextView;
 import com.example.onlinejobportal.R;
 import com.example.onlinejobportal.controllers.MyFirebaseDatabase;
 import com.example.onlinejobportal.controllers.SendPushNotificationFirebase;
+import com.example.onlinejobportal.interfaces.FragmentInteractionListenerInterface;
 import com.example.onlinejobportal.models.ApplyingRequest;
 import com.example.onlinejobportal.models.CompanyProfileModel;
 import com.example.onlinejobportal.models.JobModel;
@@ -61,6 +63,9 @@ public class FragmentAppliedAtJobDescription extends Fragment {
 
     private TextView btnChat, applicantName, applicantTrustedOrNot, applicantAge, applicantEmail, applicantMaritalStatus, applicantSkills, applicantEducation, applicantCurrentJob, applicantCurrentAddress;
 
+    private FragmentInteractionListenerInterface mListener;
+
+
     public static FragmentAppliedAtJobDescription getInstance(Bundle arguments) {
         return new FragmentAppliedAtJobDescription(arguments);
     }
@@ -74,6 +79,7 @@ public class FragmentAppliedAtJobDescription extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         context = container.getContext();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         // Inflate the layout for this fragment
@@ -127,12 +133,6 @@ public class FragmentAppliedAtJobDescription extends Fragment {
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        getArgumentsData();
-    }
-
-    @Override
     public void onDestroy() {
         super.onDestroy();
         removeJobEventListener();
@@ -150,9 +150,13 @@ public class FragmentAppliedAtJobDescription extends Fragment {
                 if (applyingRequest != null) {
                     initJobReqListener(applyingRequest.getRequestId());
                     if (isAppliedAtJobSeenByCompany) {
+                        if (mListener != null)
+                            mListener.onFragmentInteraction(Constants.TITLE_APPLICANT_REQUEST_DESCRIPTION);
                         loadUserDetails(applyingRequest.getApplierId());
                         setStartChatWithUser(applyingRequest.getChatId(), applyingRequest.getApplierId());
                     }else {
+                        if (mListener != null)
+                            mListener.onFragmentInteraction(Constants.TITLE_YOUR_REQUEST_DESCRIPTION);
                         setChatWithCompany(applyingRequest.getChatId(), applyingRequest.getApplyingAtCompanyId());
                     }
                     loadCompanyDetails(applyingRequest.getApplyingAtCompanyId());
@@ -330,7 +334,7 @@ public class FragmentAppliedAtJobDescription extends Fragment {
                                     bundle.putDouble(Constants.STRING_LOCATION_LATITUDE, CommonFunctionsClass.getLocLatitude(jobModel.getJobLocationLatLng()));
                                     bundle.putDouble(Constants.STRING_LOCATION_LONGITUDE, CommonFunctionsClass.getLocLongitude(jobModel.getJobLocationLatLng()));
                                     mapLocationForTask.setArguments(bundle);
-                                    ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().add(R.id.fragment_home, mapLocationForTask).addToBackStack(null).commit();
+                                    ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().add(R.id.fragment_home, mapLocationForTask, Constants.TITLE_JOB_LOCATION).addToBackStack(Constants.TITLE_JOB_LOCATION).commit();
 
                                 }
                             });
@@ -502,6 +506,38 @@ public class FragmentAppliedAtJobDescription extends Fragment {
                     Snackbar.make(view, "Can't Update, Something went wrong, please try again!", Snackbar.LENGTH_LONG).show();
             }
         });
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getArgumentsData();
+        if (mListener != null)
+            mListener.onFragmentInteraction(this.getTag());
+    }
+
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        try {
+            mListener = (FragmentInteractionListenerInterface) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString() +
+                    "must implement OnFragmentInteractionListener");
+        }
+
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        if (mListener != null) {
+            mListener.onFragmentInteraction(this.getTag());
+        }
+        mListener = null;
     }
 
 }

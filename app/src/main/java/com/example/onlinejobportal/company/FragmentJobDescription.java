@@ -1,6 +1,7 @@
 package com.example.onlinejobportal.company;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,6 +25,7 @@ import com.example.onlinejobportal.common.FragmentMapLocation;
 import com.example.onlinejobportal.R;
 import com.example.onlinejobportal.controllers.MyFirebaseDatabase;
 import com.example.onlinejobportal.controllers.SendPushNotificationFirebase;
+import com.example.onlinejobportal.interfaces.FragmentInteractionListenerInterface;
 import com.example.onlinejobportal.models.ApplyingRequest;
 import com.example.onlinejobportal.models.CompanyProfileModel;
 import com.example.onlinejobportal.models.JobModel;
@@ -55,6 +57,8 @@ public class FragmentJobDescription extends Fragment {
     private Button btnApplyForJob;
 
     private FirebaseUser firebaseUser;
+    private FragmentInteractionListenerInterface mListener;
+
 
     public FragmentJobDescription() {
         // Required empty public constructor
@@ -64,6 +68,8 @@ public class FragmentJobDescription extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        if (mListener != null)
+            mListener.onFragmentInteraction(this.getTag());
         context = container.getContext();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         // Inflate the layout for this fragment
@@ -206,7 +212,7 @@ public class FragmentJobDescription extends Fragment {
                             bundle.putDouble(Constants.STRING_LOCATION_LATITUDE, CommonFunctionsClass.getLocLatitude(jobModel.getJobLocationLatLng()));
                             bundle.putDouble(Constants.STRING_LOCATION_LONGITUDE, CommonFunctionsClass.getLocLongitude(jobModel.getJobLocationLatLng()));
                             mapLocationForTask.setArguments(bundle);
-                            ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().add(R.id.fragment_home, mapLocationForTask).addToBackStack(null).commit();
+                            ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().add(R.id.fragment_home, mapLocationForTask, Constants.TITLE_JOB_LOCATION).addToBackStack(Constants.TITLE_JOB_LOCATION).commit();
 
                         }
                     });
@@ -256,6 +262,35 @@ public class FragmentJobDescription extends Fragment {
 
             }
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (mListener != null)
+            mListener.onFragmentInteraction(this.getTag());
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        try {
+            mListener = (FragmentInteractionListenerInterface) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString() +
+                    "must implement OnFragmentInteractionListener");
+        }
+
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        if (mListener != null) {
+            mListener.onFragmentInteraction(this.getTag());
+        }
+        mListener = null;
     }
 
 }

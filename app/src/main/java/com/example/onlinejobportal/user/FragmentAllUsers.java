@@ -1,6 +1,7 @@
 package com.example.onlinejobportal.user;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 
@@ -20,6 +21,7 @@ import com.example.onlinejobportal.R;
 import com.example.onlinejobportal.adapters.AdapterAllUsers;
 import com.example.onlinejobportal.common.Constants;
 import com.example.onlinejobportal.controllers.MyFirebaseDatabase;
+import com.example.onlinejobportal.interfaces.FragmentInteractionListenerInterface;
 import com.example.onlinejobportal.models.UserProfileModel;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -47,6 +49,8 @@ public class FragmentAllUsers extends Fragment {
     private TextView textUserTypes;
 
     private ValueEventListener usersListValueEventListener;
+    private FragmentInteractionListenerInterface mListener;
+
 
     public FragmentAllUsers() {
         // Required empty public constructor
@@ -58,6 +62,8 @@ public class FragmentAllUsers extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        if (mListener != null)
+            mListener.onFragmentInteraction(this.getTag());
         context = container.getContext();
         adapterAllUsers = new AdapterAllUsers(context, tempList);
         // Inflate the layout for this fragment
@@ -150,4 +156,35 @@ public class FragmentAllUsers extends Fragment {
         if (usersListValueEventListener != null)
             MyFirebaseDatabase.USER_PROFILE_REFERENCE.removeEventListener(usersListValueEventListener);
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (mListener != null)
+            mListener.onFragmentInteraction(this.getTag());
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        try {
+            mListener = (FragmentInteractionListenerInterface) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString() +
+                    "must implement OnFragmentInteractionListener");
+        }
+
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        if (mListener != null) {
+            mListener.onFragmentInteraction(this.getTag());
+        }
+        mListener = null;
+    }
+
+
 }

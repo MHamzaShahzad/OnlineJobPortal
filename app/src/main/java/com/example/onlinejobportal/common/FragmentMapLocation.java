@@ -37,9 +37,9 @@ public class FragmentMapLocation extends Fragment implements OnMapReadyCallback 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        if (mListener != null)
+            mListener.onFragmentInteraction(this.getTag());
         context = container.getContext();
-        /*if (mListener != null)
-            mListener.onFragmentInteraction(Constant.TITLE_SELECT_LOCATION);*/
         // Inflate the layout for this fragment
         if (view == null) {
 
@@ -117,8 +117,9 @@ public class FragmentMapLocation extends Fragment implements OnMapReadyCallback 
     @Override
     public void onResume() {
         super.onResume();
-        /*if (mListener != null)
-            mListener.onFragmentInteraction(Constant.TITLE_SELECT_LOCATION);*/
+        if (mListener != null)
+            mListener.onFragmentInteraction(this.getTag());
     }
+
 
 }

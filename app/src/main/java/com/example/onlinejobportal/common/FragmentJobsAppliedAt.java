@@ -1,6 +1,7 @@
 package com.example.onlinejobportal.common;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 
@@ -17,6 +18,7 @@ import android.view.ViewGroup;
 import com.example.onlinejobportal.R;
 import com.example.onlinejobportal.adapters.AdapterJobsAppliedAt;
 import com.example.onlinejobportal.controllers.MyFirebaseDatabase;
+import com.example.onlinejobportal.interfaces.FragmentInteractionListenerInterface;
 import com.example.onlinejobportal.models.ApplyingRequest;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
@@ -36,6 +38,8 @@ public class FragmentJobsAppliedAt extends Fragment {
     private static final String TAG = FragmentJobsAppliedAt.class.getName();
     private Context context;
     private View view;
+
+    private FragmentInteractionListenerInterface mListener;
 
     public FragmentJobsAppliedAt() {
         // Required empty public constructor
@@ -68,6 +72,7 @@ public class FragmentJobsAppliedAt extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         context = container.getContext();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         adapterJobsAppliedAt = new AdapterJobsAppliedAt(context, applyingRequestListTemp, arguments.getBoolean(Constants.IS_APPLYING_SEEN_BY_COMPANY));
@@ -159,7 +164,7 @@ public class FragmentJobsAppliedAt extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 applyingRequestList.clear();
-                Log.e(TAG, "initAppliedAtRequestsListener-onDataChange: " + dataSnapshot );
+                Log.e(TAG, "initAppliedAtRequestsListener-onDataChange: " + dataSnapshot);
                 if (dataSnapshot.exists() && dataSnapshot.getValue() != null) {
 
                     Iterable<DataSnapshot> snapshots = dataSnapshot.getChildren();
@@ -180,7 +185,7 @@ public class FragmentJobsAppliedAt extends Fragment {
         MyFirebaseDatabase.APPLYING_REQUESTS_REFERENCE.child(reqId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Log.e(TAG, "loadRequests-onDataChange: " + dataSnapshot );
+                Log.e(TAG, "loadRequests-onDataChange: " + dataSnapshot);
                 if (dataSnapshot.exists() && dataSnapshot.getValue() != null) {
 
                     try {
@@ -205,10 +210,15 @@ public class FragmentJobsAppliedAt extends Fragment {
     }
 
     private void getApplyingRequests() {
-        if (arguments.getBoolean(Constants.IS_APPLYING_SEEN_BY_COMPANY))
+        if (arguments.getBoolean(Constants.IS_APPLYING_SEEN_BY_COMPANY)) {
+            if (mListener != null)
+                mListener.onFragmentInteraction(Constants.TITLE_APPLICANT_REQUEST);
             MyFirebaseDatabase.COMPANY_PROFILE_REFERENCE.child(firebaseUser.getUid()).child(Constants.STRING_APPLYING_REQ).addValueEventListener(applyingRequestsEventListener);
-        else
+        } else {
+            if (mListener != null)
+                mListener.onFragmentInteraction(Constants.TITLE_YOUR_REQUEST);
             MyFirebaseDatabase.USER_PROFILE_REFERENCE.child(firebaseUser.getUid()).child(Constants.STRING_APPLYING_REQ).addValueEventListener(applyingRequestsEventListener);
+        }
     }
 
     private void removeApplyingReqListener() {
@@ -231,6 +241,29 @@ public class FragmentJobsAppliedAt extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         removeApplyingReqListener();
+    }
+
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        try {
+            mListener = (FragmentInteractionListenerInterface) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString() +
+                    "must implement OnFragmentInteractionListener");
+        }
+
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        if (mListener != null) {
+            mListener.onFragmentInteraction(this.getTag());
+        }
+        mListener = null;
     }
 
 }

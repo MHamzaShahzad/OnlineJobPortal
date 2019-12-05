@@ -58,7 +58,7 @@ public class AdapterTrustedUsers extends RecyclerView.Adapter<AdapterTrustedUser
                 Bundle bundle = new Bundle();
                 bundle.putSerializable(Constants.LOOK_FOR_TRUSTED_OBJECT, lookForTrusted);
                 description.setArguments(bundle);
-                ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_home_admin, description).addToBackStack(null).commit();
+                ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_home_admin, description, Constants.TITLE_APPROVAL_REQUEST_DESCRIPTION).addToBackStack(Constants.TITLE_APPROVAL_REQUEST_DESCRIPTION).commit();
             }
         });
 

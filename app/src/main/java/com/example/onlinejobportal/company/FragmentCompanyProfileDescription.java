@@ -1,6 +1,7 @@
 package com.example.onlinejobportal.company;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 
@@ -13,6 +14,7 @@ import android.widget.TextView;
 
 import com.example.onlinejobportal.R;
 import com.example.onlinejobportal.controllers.MyFirebaseDatabase;
+import com.example.onlinejobportal.interfaces.FragmentInteractionListenerInterface;
 import com.google.firebase.auth.FirebaseUser;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -31,12 +33,18 @@ public class FragmentCompanyProfileDescription extends Fragment {
     private CircleImageView companyProfileImage;
     private TextView companyName, companyType, companyBusiness, companyPhone;
     private FirebaseUser firebaseUser;
+
+    private FragmentInteractionListenerInterface mListener;
+
+
     public FragmentCompanyProfileDescription() {
         // Required empty public constructor
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        if (mListener != null)
+            mListener.onFragmentInteraction(this.getTag());
         context = container.getContext();
         // Inflate the layout for this fragment
         if (view == null) {
@@ -56,7 +64,33 @@ public class FragmentCompanyProfileDescription extends Fragment {
 
     }
 
-    private void loadCompanyProfile(){
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (mListener != null)
+            mListener.onFragmentInteraction(this.getTag());
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        try {
+            mListener = (FragmentInteractionListenerInterface) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString() +
+                    "must implement OnFragmentInteractionListener");
+        }
 
     }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        if (mListener != null) {
+            mListener.onFragmentInteraction(this.getTag());
+        }
+        mListener = null;
+    }
+
 }

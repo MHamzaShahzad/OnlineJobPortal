@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -24,6 +25,7 @@ import com.example.onlinejobportal.R;
 import com.example.onlinejobportal.admin.FragmentTrustRequestDescription;
 import com.example.onlinejobportal.controllers.MyFirebaseDatabase;
 import com.example.onlinejobportal.controllers.MyFirebaseStorage;
+import com.example.onlinejobportal.interfaces.FragmentInteractionListenerInterface;
 import com.example.onlinejobportal.models.LookForTrusted;
 import com.example.onlinejobportal.models.UserProfileModel;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -62,10 +64,16 @@ public class FragmentCreateEditUserProfile extends Fragment {
     private Uri imageUri;
 
     private UserProfileModel profile;
+    private FragmentInteractionListenerInterface mListener;
+
+    public FragmentCreateEditUserProfile() {
+    }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        if (mListener != null)
+            mListener.onFragmentInteraction(this.getTag());
         context = container.getContext();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         if (view == null) {
@@ -344,7 +352,7 @@ public class FragmentCreateEditUserProfile extends Fragment {
                                                             Bundle bundle = new Bundle();
                                                             bundle.putSerializable(Constants.LOOK_FOR_TRUSTED_OBJECT, lookForTrusted);
                                                             description.setArguments(bundle);
-                                                            ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_home, description).addToBackStack(null).commit();
+                                                            ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_home, description, Constants.TITLE_APPROVAL_REQUEST_DESCRIPTION).addToBackStack(Constants.TITLE_APPROVAL_REQUEST_DESCRIPTION).commit();
 
                                                         }
                                                     });
@@ -414,6 +422,35 @@ public class FragmentCreateEditUserProfile extends Fragment {
         } else {
             Toast.makeText(context, "You haven't picked Image", Toast.LENGTH_LONG).show();
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (mListener != null)
+            mListener.onFragmentInteraction(this.getTag());
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        try {
+            mListener = (FragmentInteractionListenerInterface) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString() +
+                    "must implement OnFragmentInteractionListener");
+        }
+
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        if (mListener != null) {
+            mListener.onFragmentInteraction(this.getTag());
+        }
+        mListener = null;
     }
 
 }

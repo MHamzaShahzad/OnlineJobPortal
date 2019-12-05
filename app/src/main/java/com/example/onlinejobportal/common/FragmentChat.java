@@ -1,6 +1,7 @@
 package com.example.onlinejobportal.common;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 
@@ -21,6 +22,7 @@ import com.example.onlinejobportal.R;
 import com.example.onlinejobportal.adapters.AdapterChat;
 import com.example.onlinejobportal.controllers.MyFirebaseDatabase;
 import com.example.onlinejobportal.controllers.SendPushNotificationFirebase;
+import com.example.onlinejobportal.interfaces.FragmentInteractionListenerInterface;
 import com.example.onlinejobportal.models.ChatModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -52,6 +54,8 @@ public class FragmentChat extends Fragment {
 
     private Bundle arguments;
     private FirebaseUser firebaseUser;
+    private FragmentInteractionListenerInterface mListener;
+
 
     public static FragmentChat getInstance(Bundle arguments) {
         return new FragmentChat(arguments);
@@ -68,6 +72,8 @@ public class FragmentChat extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        if (mListener != null)
+            mListener.onFragmentInteraction(Constants.TITLE_CHAT);
         context = container.getContext();
         adapterChat = new AdapterChat(context, chatModelList);
         // Inflate the layout for this fragment
@@ -176,11 +182,36 @@ public class FragmentChat extends Fragment {
     public void onResume() {
         super.onResume();
         initChatEventListener();
+        if (mListener != null)
+            mListener.onFragmentInteraction(this.getTag());
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
         removeChatEventListener();
+    }
+
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        try {
+            mListener = (FragmentInteractionListenerInterface) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString() +
+                    "must implement OnFragmentInteractionListener");
+        }
+
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        if (mListener != null) {
+            mListener.onFragmentInteraction(Constants.TITLE_CHAT);
+        }
+        mListener = null;
     }
 }

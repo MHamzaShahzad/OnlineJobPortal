@@ -68,13 +68,13 @@ public class AdapterAllJobs extends RecyclerView.Adapter<AdapterAllJobs.Holder> 
                 if (firebaseUser != null && firebaseUser.getUid().equals(jobModel.getUploadBy())) {
                     FragmentEditJob fragmentEditJob = new FragmentEditJob();
                     fragmentEditJob.setArguments(bundle);
-                    ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_home, fragmentEditJob).addToBackStack(null).commit();
+                    ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_home, fragmentEditJob, Constants.TITLE_EDIT_YOUR_JOB).addToBackStack(Constants.TITLE_EDIT_YOUR_JOB).commit();
 
                 } else {
                     FragmentJobDescription fragmentJobDescription = new FragmentJobDescription();
                     fragmentJobDescription.setArguments(bundle);
                     if (firebaseUser == null)
-                        ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().add(android.R.id.content, fragmentJobDescription).addToBackStack(null).commit();
+                        ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().add(android.R.id.content, fragmentJobDescription, Constants.TITLE_JOB_DESCRIPTION).addToBackStack(Constants.TITLE_JOB_DESCRIPTION).commit();
                     else
                         ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_home, fragmentJobDescription).addToBackStack(null).commit();
                 }

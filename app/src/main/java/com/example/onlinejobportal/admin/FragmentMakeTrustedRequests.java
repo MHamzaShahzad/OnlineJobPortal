@@ -1,6 +1,7 @@
 package com.example.onlinejobportal.admin;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 
@@ -9,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +18,7 @@ import android.view.ViewGroup;
 import com.example.onlinejobportal.R;
 import com.example.onlinejobportal.adapters.AdapterTrustedUsers;
 import com.example.onlinejobportal.controllers.MyFirebaseDatabase;
+import com.example.onlinejobportal.interfaces.FragmentInteractionListenerInterface;
 import com.example.onlinejobportal.models.LookForTrusted;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.database.DataSnapshot;
@@ -34,10 +37,11 @@ public class FragmentMakeTrustedRequests extends Fragment {
 
     private TabLayout makeTrustedRequestsTabs;
     private RecyclerView recyclerMakeTrusted;
-    private AdapterTrustedUsers adapterTrustedUsers;
     private List<LookForTrusted> lookForTrustedList, lookForTrustedListTemp;
 
     private ValueEventListener requestsValueEventListener;
+    private FragmentInteractionListenerInterface mListener;
+
 
     public FragmentMakeTrustedRequests() {
         // Required empty public constructor
@@ -49,9 +53,9 @@ public class FragmentMakeTrustedRequests extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
+        if (mListener != null)
+            mListener.onFragmentInteraction(this.getTag());
         context = container.getContext();
-        adapterTrustedUsers = new AdapterTrustedUsers(context, lookForTrustedListTemp);
         // Inflate the layout for this fragment
         if (view == null) {
 
@@ -65,9 +69,6 @@ public class FragmentMakeTrustedRequests extends Fragment {
             recyclerMakeTrusted = view.findViewById(R.id.recyclerMakeTrusted);
             recyclerMakeTrusted.setHasFixedSize(true);
             recyclerMakeTrusted.setLayoutManager(new LinearLayoutManager(context));
-            recyclerMakeTrusted.setAdapter(adapterTrustedUsers);
-
-            loadRequests();
 
         }
 
@@ -90,7 +91,7 @@ public class FragmentMakeTrustedRequests extends Fragment {
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-
+                loadTasksBasedOnTabSelected(tab.getPosition());
             }
         });
     }
@@ -110,18 +111,22 @@ public class FragmentMakeTrustedRequests extends Fragment {
     private void getRequests(boolean notified) {
 
         lookForTrustedListTemp.clear();
+        Log.e(TAG, "getRequests:-0 " + lookForTrustedListTemp.size() );
 
-        for (final LookForTrusted lookForTrusted : lookForTrustedList)
+        for (final LookForTrusted lookForTrusted : lookForTrustedList) {
             if (lookForTrusted != null && lookForTrusted.isNotified() == notified) {
+                Log.e(TAG, "getRequests: " + notified + " = " + lookForTrusted.isNotified());
                 lookForTrustedListTemp.add(lookForTrusted);
             }
+        }
 
-        adapterTrustedUsers.notifyDataSetChanged();
+        Log.e(TAG, "getRequests:-1 " + lookForTrustedListTemp.size() );
+        recyclerMakeTrusted.setAdapter(new AdapterTrustedUsers(context, lookForTrustedListTemp));
 
     }
 
     private void loadRequests() {
-
+        removeRequestsValueEventListener();
         requestsValueEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -165,4 +170,35 @@ public class FragmentMakeTrustedRequests extends Fragment {
         super.onDestroy();
         removeRequestsValueEventListener();
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadRequests();
+        if (mListener != null)
+            mListener.onFragmentInteraction(this.getTag());
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        try {
+            mListener = (FragmentInteractionListenerInterface) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString() +
+                    "must implement OnFragmentInteractionListener");
+        }
+
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        if (mListener != null) {
+            mListener.onFragmentInteraction(this.getTag());
+        }
+        mListener = null;
+    }
+
 }

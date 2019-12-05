@@ -22,6 +22,7 @@ import android.widget.Toast;
 import com.example.onlinejobportal.common.CommonFunctionsClass;
 import com.example.onlinejobportal.controllers.MyFirebaseDatabase;
 import com.example.onlinejobportal.controllers.MyFirebaseStorage;
+import com.example.onlinejobportal.interfaces.FragmentInteractionListenerInterface;
 import com.example.onlinejobportal.models.CompanyProfileModel;
 import com.example.onlinejobportal.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -55,13 +56,17 @@ public class FragmentCreateEditCompanyProfile extends Fragment {
     private Uri imageUri;
     private CompanyProfileModel profile;
 
+    private FragmentInteractionListenerInterface mListener;
+
+
     public FragmentCreateEditCompanyProfile() {
 
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, @Nullable Bundle savedInstanceState) {
-
+        if (mListener != null)
+            mListener.onFragmentInteraction(this.getTag());
         context = container.getContext();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         if (view == null) {
@@ -307,4 +312,34 @@ public class FragmentCreateEditCompanyProfile extends Fragment {
             companyImage.setImageURI(imageUri);
         }
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (mListener != null)
+            mListener.onFragmentInteraction(this.getTag());
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        try {
+            mListener = (FragmentInteractionListenerInterface) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString() +
+                    "must implement OnFragmentInteractionListener");
+        }
+
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        if (mListener != null) {
+            mListener.onFragmentInteraction(this.getTag());
+        }
+        mListener = null;
+    }
+
 }

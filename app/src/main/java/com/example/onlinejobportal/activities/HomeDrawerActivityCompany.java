@@ -73,7 +73,7 @@ public class HomeDrawerActivityCompany extends AppCompatActivity
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
-        getSupportFragmentManager().beginTransaction().add(R.id.fragment_home, new FragmentAllUsers()).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_home, new FragmentAllUsers(), Constants.TITLE_USERS_LIST).commit();
         loadCompanyProfileDataInNavigationHeader(navigationView.getHeaderView(0));
     }
 
@@ -128,15 +128,15 @@ public class HomeDrawerActivityCompany extends AppCompatActivity
 
         } else if (id == R.id.nav_profile) {
 
-            getSupportFragmentManager().beginTransaction().add(R.id.fragment_home, new FragmentCreateEditCompanyProfile()).addToBackStack(null).commit();
+            getSupportFragmentManager().beginTransaction().add(R.id.fragment_home, new FragmentCreateEditCompanyProfile(), Constants.TITLE_YOUR_PROFILE).addToBackStack(Constants.TITLE_YOUR_PROFILE).commit();
 
         } else if (id == R.id.nav_posted_jobs) {
 
-            getSupportFragmentManager().beginTransaction().add(R.id.fragment_home, new FragmentMyPostedJobs()).addToBackStack(null).commit();
+            getSupportFragmentManager().beginTransaction().add(R.id.fragment_home, new FragmentMyPostedJobs(), Constants.TITLE_YOUR_POSTED_JOBS).addToBackStack(Constants.TITLE_YOUR_POSTED_JOBS).commit();
 
         } else if (id == R.id.nav_upload_job) {
 
-            getSupportFragmentManager().beginTransaction().add(R.id.fragment_home, new FragmentCreateNewJob()).addToBackStack(null).commit();
+            getSupportFragmentManager().beginTransaction().add(R.id.fragment_home, new FragmentCreateNewJob(), Constants.TITLE_POST_NEW_JOB).addToBackStack(null).commit();
 
         }else if (id == R.id.nav_hiring_req) {
 

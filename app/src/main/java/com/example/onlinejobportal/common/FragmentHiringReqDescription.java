@@ -1,6 +1,7 @@
 package com.example.onlinejobportal.common;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 
@@ -22,6 +23,7 @@ import com.example.onlinejobportal.R;
 import com.example.onlinejobportal.adapters.AdapterJobsAppliedAt;
 import com.example.onlinejobportal.controllers.MyFirebaseDatabase;
 import com.example.onlinejobportal.controllers.SendPushNotificationFirebase;
+import com.example.onlinejobportal.interfaces.FragmentInteractionListenerInterface;
 import com.example.onlinejobportal.models.CompanyProfileModel;
 import com.example.onlinejobportal.models.HiringRequest;
 import com.example.onlinejobportal.models.JobModel;
@@ -67,6 +69,9 @@ public class FragmentHiringReqDescription extends Fragment {
     private Button btnAcceptRequest, btnRejectRequest, btnHire, btnNotHire;
     private RelativeLayout layout_user_description, layout_company_description;
 
+    private FragmentInteractionListenerInterface mListener;
+
+
     public static FragmentHiringReqDescription getInstance(Bundle arguments) {
         return new FragmentHiringReqDescription(arguments);
     }
@@ -80,6 +85,7 @@ public class FragmentHiringReqDescription extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         context = container.getContext();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         // Inflate the layout for this fragment
@@ -154,9 +160,13 @@ public class FragmentHiringReqDescription extends Fragment {
 
                     initHiringReqEventListener(hiringRequest.getHiringId());
                     if (isHiringSeenByCompany) {
+                        if (mListener != null)
+                            mListener.onFragmentInteraction(Constants.TITLE_YOUR_REQUEST_DESCRIPTION);
                         loadUserDetails(hiringRequest.getHiringUserId());
                         setStartChatWithUser(hiringRequest.getChatId(), hiringRequest.getHiringUserId());
                     } else {
+                        if (mListener != null)
+                            mListener.onFragmentInteraction(Constants.TITLE_HIRING_REQUESTS_DESCRIPTION);
                         loadCompanyDetails(hiringRequest.getHiredByCompanyId());
                         setChatWithCompany(hiringRequest.getChatId(), hiringRequest.getHiredByCompanyId());
                     }
@@ -461,5 +471,28 @@ public class FragmentHiringReqDescription extends Fragment {
                     Snackbar.make(view, "Can't Update, Something went wrong, please try again!", Snackbar.LENGTH_LONG).show();
             }
         });
+    }
+
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        try {
+            mListener = (FragmentInteractionListenerInterface) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString() +
+                    "must implement OnFragmentInteractionListener");
+        }
+
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        if (mListener != null) {
+            mListener.onFragmentInteraction(this.getTag());
+        }
+        mListener = null;
     }
 }

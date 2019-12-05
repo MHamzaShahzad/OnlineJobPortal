@@ -1,6 +1,7 @@
 package com.example.onlinejobportal.common;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 
@@ -17,6 +18,7 @@ import android.view.ViewGroup;
 import com.example.onlinejobportal.R;
 import com.example.onlinejobportal.adapters.AdapterHiringRequests;
 import com.example.onlinejobportal.controllers.MyFirebaseDatabase;
+import com.example.onlinejobportal.interfaces.FragmentInteractionListenerInterface;
 import com.example.onlinejobportal.models.HiringRequest;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
@@ -47,6 +49,8 @@ public class FragmentHiringRequests extends Fragment {
     private ValueEventListener hiringRequestsEventListener;
 
     private Bundle arguments;
+    private FragmentInteractionListenerInterface mListener;
+
 
     public static FragmentHiringRequests getInstance(Bundle arguments) {
         return new FragmentHiringRequests(arguments);
@@ -63,6 +67,7 @@ public class FragmentHiringRequests extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         context = container.getContext();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         adapterHiringRequests = new AdapterHiringRequests(context, hiringRequestListTemp, arguments.getBoolean(Constants.IS_HIRING_SEEN_BY_COMPANY));
@@ -155,7 +160,7 @@ public class FragmentHiringRequests extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 hiringRequestList.clear();
-                Log.e(TAG, "initHiringRequestsListener-onDataChange: " + dataSnapshot );
+                Log.e(TAG, "initHiringRequestsListener-onDataChange: " + dataSnapshot);
                 if (dataSnapshot.exists() && dataSnapshot.getValue() != null) {
 
                     Iterable<DataSnapshot> snapshots = dataSnapshot.getChildren();
@@ -176,7 +181,7 @@ public class FragmentHiringRequests extends Fragment {
         MyFirebaseDatabase.HIRING_REQUESTS_REFERENCE.child(reqId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Log.e(TAG, "loadRequests-onDataChange: " + dataSnapshot );
+                Log.e(TAG, "loadRequests-onDataChange: " + dataSnapshot);
                 if (dataSnapshot.exists() && dataSnapshot.getValue() != null) {
 
                     try {
@@ -203,10 +208,15 @@ public class FragmentHiringRequests extends Fragment {
     }
 
     private void getHiringRequests() {
-        if (arguments.getBoolean(Constants.IS_HIRING_SEEN_BY_COMPANY))
+        if (arguments.getBoolean(Constants.IS_HIRING_SEEN_BY_COMPANY)) {
+            if (mListener != null)
+                mListener.onFragmentInteraction(Constants.TITLE_YOUR_REQUEST);
             MyFirebaseDatabase.COMPANY_PROFILE_REFERENCE.child(firebaseUser.getUid()).child(Constants.STRING_HIRING_REQ).addValueEventListener(hiringRequestsEventListener);
-        else
+        } else {
+            if (mListener != null)
+                mListener.onFragmentInteraction(Constants.TITLE_HIRING_REQUESTS);
             MyFirebaseDatabase.USER_PROFILE_REFERENCE.child(firebaseUser.getUid()).child(Constants.STRING_HIRING_REQ).addValueEventListener(hiringRequestsEventListener);
+        }
     }
 
     private void removeHiringReqListener() {
@@ -230,4 +240,27 @@ public class FragmentHiringRequests extends Fragment {
         super.onDestroy();
         removeHiringReqListener();
     }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        try {
+            mListener = (FragmentInteractionListenerInterface) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString() +
+                    "must implement OnFragmentInteractionListener");
+        }
+
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        if (mListener != null) {
+            mListener.onFragmentInteraction(this.getTag());
+        }
+        mListener = null;
+    }
+
 }
