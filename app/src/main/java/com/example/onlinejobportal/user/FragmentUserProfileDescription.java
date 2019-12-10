@@ -5,15 +5,19 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.onlinejobportal.activities.LoginActivity;
 import com.example.onlinejobportal.common.CommonFunctionsClass;
@@ -29,6 +33,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.UUID;
@@ -130,9 +137,53 @@ public class FragmentUserProfileDescription extends Fragment {
             @Override
             public void onClick(final View v) {
 
-                if (firebaseUser != null)
-                    loadHireInstanceOnDatabase(userProfileModel);
-                else {
+                if (firebaseUser != null) {
+
+
+                    MyFirebaseDatabase.HIRING_REQUESTS_REFERENCE.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            if (dataSnapshot.exists() && dataSnapshot.getValue() != null) {
+
+
+                                boolean isRequested = false;
+
+                                Iterable<DataSnapshot> snapshots = dataSnapshot.getChildren();
+                                for (DataSnapshot snapshot : snapshots) {
+                                    try {
+
+                                        HiringRequest hiringRequest = snapshot.getValue(HiringRequest.class);
+                                        if (hiringRequest != null
+                                                && hiringRequest.getHiringUserId().equals(userProfileModel.getUserId())
+                                                && !hiringRequest.getHireStatus().equals(Constants.REQUEST_STATUS_HIRED)
+                                                && !hiringRequest.getHireStatus().equals(Constants.REQUEST_STATUS_ACCEPTED)
+                                        ) {
+                                            isRequested = true;
+                                            Snackbar.make(view, "Already requested", Snackbar.LENGTH_LONG).show();
+                                            return;
+                                        }
+
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+
+                                if (!isRequested)
+                                    showDialogForProposal(userProfileModel);
+
+                            } else
+                                showDialogForProposal(userProfileModel);
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+
+
+                } else {
                     Snackbar.make(view, "Sign In or create new account to continue!", Snackbar.LENGTH_LONG).show();
                     startActivity(new Intent(context, LoginActivity.class));
                 }
@@ -141,10 +192,10 @@ public class FragmentUserProfileDescription extends Fragment {
         });
     }
 
-    private void loadHireInstanceOnDatabase(final UserProfileModel userProfileModel){
+    private void loadHireInstanceOnDatabase(final UserProfileModel userProfileModel, String proposal, final AlertDialog dialog) {
         final String id = UUID.randomUUID().toString();
 
-        MyFirebaseDatabase.HIRING_REQUESTS_REFERENCE.child(id).setValue(buildHiringRequests(id, userProfileModel)).addOnCompleteListener(new OnCompleteListener<Void>() {
+        MyFirebaseDatabase.HIRING_REQUESTS_REFERENCE.child(id).setValue(buildHiringRequests(id, userProfileModel, proposal)).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
@@ -173,13 +224,17 @@ public class FragmentUserProfileDescription extends Fragment {
                         }
                     });
 
+                    dialog.dismiss();
+
                 } else
                     Snackbar.make(view, "Error sending request!", Snackbar.LENGTH_LONG).show();
+
+
             }
         });
     }
 
-    private HiringRequest buildHiringRequests(String id, UserProfileModel userProfileModel) {
+    private HiringRequest buildHiringRequests(String id, UserProfileModel userProfileModel, String proposal) {
         return new HiringRequest(
                 id,
                 firebaseUser.getUid(),
@@ -190,8 +245,33 @@ public class FragmentUserProfileDescription extends Fragment {
                 "",
                 "",
                 "",
-                ""
+                "",
+                proposal
         );
+    }
+
+    private void showDialogForProposal(final UserProfileModel userProfileModel) {
+        View view = LayoutInflater.from(context).inflate(R.layout.layout_write_proposal, null);
+
+        final EditText inputProposal = view.findViewById(R.id.inputProposal);
+        Button btnSubmit = view.findViewById(R.id.btnSubmit);
+
+        final AlertDialog dialog = new AlertDialog.Builder(context)
+                .setView(view).create();
+
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (TextUtils.isEmpty(inputProposal.getText())) {
+                    inputProposal.setError("Field is required!");
+                } else if (inputProposal.length() < 50) {
+                    inputProposal.setError("At least 50 characters required!");
+                } else
+                    loadHireInstanceOnDatabase(userProfileModel, inputProposal.getText().toString().trim(), dialog);
+            }
+        });
+
+        dialog.show();
     }
 
     @Override

@@ -3,6 +3,8 @@ package com.example.onlinejobportal.company;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,9 +34,14 @@ public class CompanySignUpActivity extends AppCompatActivity {
     private TextInputEditText companyName, inputEmail, inputPassword;
     private Button btnSignUp;
 
+    private Context context;
+    private ProgressDialog progressDialog;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        context = this;
         setContentView(R.layout.activity_company_sign_up);
 
         companyName = findViewById(R.id.companyName);
@@ -56,6 +63,25 @@ public class CompanySignUpActivity extends AppCompatActivity {
             }
         });
 
+        initProgressDialog();
+
+    }
+
+    private void initProgressDialog() {
+        progressDialog = new ProgressDialog(context);
+        progressDialog.setMessage("Loading...");
+        progressDialog.setCancelable(false);
+        progressDialog.setCanceledOnTouchOutside(false);
+    }
+
+    private void showProgressDialog() {
+        if (progressDialog != null && !progressDialog.isShowing())
+            progressDialog.show();
+    }
+
+    private void hideProgressDialog() {
+        if (progressDialog != null && progressDialog.isShowing())
+            progressDialog.dismiss();
     }
 
     private boolean isFormValid(){
@@ -90,6 +116,7 @@ public class CompanySignUpActivity extends AppCompatActivity {
     }
 
     private void createNewUser(String email, String password){
+        showProgressDialog();
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -109,7 +136,8 @@ public class CompanySignUpActivity extends AppCompatActivity {
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 if (task.isSuccessful()) {
                                                     uploadCompanyBasicProfile(user);
-                                                }
+                                                }else
+                                                    hideProgressDialog();
                                             }
                                         });
 
@@ -122,6 +150,7 @@ public class CompanySignUpActivity extends AppCompatActivity {
                             Toast.makeText(CompanySignUpActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                             //updateUI(null);
+                            hideProgressDialog();
                         }
 
                         // ...
@@ -138,6 +167,7 @@ public class CompanySignUpActivity extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 }
+                hideProgressDialog();
             }
         });
     }

@@ -61,7 +61,10 @@ public class FragmentAppliedAtJobDescription extends Fragment {
     private RelativeLayout layout_applicant_details;
     private Button btnAcceptRequest, btnRejectRequest, btnHire, btnNotHire;
 
-    private TextView btnChat, applicantName, applicantTrustedOrNot, applicantAge, applicantEmail, applicantMaritalStatus, applicantSkills, applicantEducation, applicantCurrentJob, applicantCurrentAddress;
+    private TextView
+            btnChat, applicantName, applicantTrustedOrNot, applicantAge, applicantEmail,
+            applicantMaritalStatus, applicantSkills, applicantEducation,
+            applicantCurrentJob, applicantCurrentAddress, jobProposal;
 
     private FragmentInteractionListenerInterface mListener;
 
@@ -119,6 +122,7 @@ public class FragmentAppliedAtJobDescription extends Fragment {
         jobRequiredGender = view.findViewById(R.id.jobRequiredGender);
         jobDescription = view.findViewById(R.id.jobDescription);
         jobSpecification = view.findViewById(R.id.jobSpecification);
+        jobProposal = view.findViewById(R.id.jobProposal);
 
         applicantName = view.findViewById(R.id.applicantName);
         applicantTrustedOrNot = view.findViewById(R.id.applicantTrustedOrNot);
@@ -273,7 +277,7 @@ public class FragmentAppliedAtJobDescription extends Fragment {
                                     break;
                                 default:
                             }
-
+                            jobProposal.setText(applyingRequest.getRequestProposal());
                         }
 
                     } catch (Exception e) {

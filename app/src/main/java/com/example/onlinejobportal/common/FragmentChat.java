@@ -94,7 +94,7 @@ public class FragmentChat extends Fragment {
         setBtnSendMessage();
     }
 
-    private void setBtnSendMessage(){
+    private void setBtnSendMessage() {
         btnSendMessage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -106,26 +106,27 @@ public class FragmentChat extends Fragment {
         });
     }
 
-    private void sendMessage(){
+    private void sendMessage() {
         MyFirebaseDatabase.CHATS_REFERENCE.child(arguments.getString(Constants.CHAT_ID_REF)).push().setValue(buildChatInstance()).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()){
+                if (task.isSuccessful()) {
                     inputTextMessage.setText("");
                     recyclerChat.scrollToPosition(chatModelList.size() - 1);
-                    SendPushNotificationFirebase.buildAndSendNotification(
-                            context,
-                            arguments.getString(Constants.MESSAGE_RECEIVER_ID),
-                            "New Message",
-                            inputTextMessage.getText().toString().trim()
-                    );
+                    if (!firebaseUser.getUid().equals(arguments.getString(Constants.MESSAGE_RECEIVER_ID)))
+                        SendPushNotificationFirebase.buildAndSendNotification(
+                                context,
+                                arguments.getString(Constants.MESSAGE_RECEIVER_ID),
+                                "New Message",
+                                inputTextMessage.getText().toString().trim()
+                        );
 
                 }
             }
         });
     }
 
-    private ChatModel buildChatInstance(){
+    private ChatModel buildChatInstance() {
         return new ChatModel(
                 firebaseUser.getUid(),
                 inputTextMessage.getText().toString().trim(),

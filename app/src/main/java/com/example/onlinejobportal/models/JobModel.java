@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 public class JobModel implements Serializable {
 
+    public static final String STRING_JOB_STATUS = "jobStatus";
+
     private String jobId, jobStatus, uploadBy, uploadedAt, jobDueDate, jobTitle, jobSalary, jobLocation, jobLocationLatLng, jobDescription, jobIndustry,
             jobDepartment, jobEducation, jobCareer, requiredThings, jobForGender, jobType, jobExperience;
 

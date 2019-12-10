@@ -96,7 +96,7 @@ public class HomeDrawerActivityCompany extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.home_drawer_activity_company, menu);
+        //getMenuInflater().inflate(R.menu.home_drawer_activity_company, menu);
         return true;
     }
 
@@ -138,13 +138,13 @@ public class HomeDrawerActivityCompany extends AppCompatActivity
 
             getSupportFragmentManager().beginTransaction().add(R.id.fragment_home, new FragmentCreateNewJob(), Constants.TITLE_POST_NEW_JOB).addToBackStack(null).commit();
 
-        }else if (id == R.id.nav_hiring_req) {
+        } else if (id == R.id.nav_hiring_req) {
 
             Bundle bundle = new Bundle();
             bundle.putBoolean(Constants.IS_HIRING_SEEN_BY_COMPANY, true);
             getSupportFragmentManager().beginTransaction().add(R.id.fragment_home, FragmentHiringRequests.getInstance(bundle)).addToBackStack(null).commit();
 
-        }else if (id == R.id.nav_applying_req) {
+        } else if (id == R.id.nav_applying_req) {
 
             Bundle bundle = new Bundle();
             bundle.putBoolean(Constants.IS_APPLYING_SEEN_BY_COMPANY, true);
@@ -154,7 +154,10 @@ public class HomeDrawerActivityCompany extends AppCompatActivity
 
             signOut();
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_contact_us) {
+
+
+        } else if (id == R.id.nav_about_us) {
 
 
         }
@@ -168,7 +171,8 @@ public class HomeDrawerActivityCompany extends AppCompatActivity
     private void signOut() {
 
         mAuth.signOut();
-        CommonFunctionsClass.unSubscribeFromTopic(context, firebaseUser.getUid(), true);
+        if (firebaseUser != null)
+            CommonFunctionsClass.unSubscribeFromTopic(context, firebaseUser.getUid(), true);
         startActivity(new Intent(context, StartMainActivity.class));
         finish();
 
@@ -180,18 +184,18 @@ public class HomeDrawerActivityCompany extends AppCompatActivity
             getSupportActionBar().setTitle(title);
     }
 
-    private void loadCompanyProfileDataInNavigationHeader(View headerView){
+    private void loadCompanyProfileDataInNavigationHeader(View headerView) {
         final ImageView headerImageCompany = headerView.findViewById(R.id.companyProfileImageView);
         final TextView headerCompanyName = headerView.findViewById(R.id.companyNameText);
         final TextView headerCompanyEmail = headerView.findViewById(R.id.companyEmailText);
         companyProfileValueEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists() && dataSnapshot.getValue() != null){
+                if (dataSnapshot.exists() && dataSnapshot.getValue() != null) {
                     try {
 
                         CompanyProfileModel companyProfileModel = dataSnapshot.getValue(CompanyProfileModel.class);
-                        if (companyProfileModel != null){
+                        if (companyProfileModel != null) {
                             if (companyProfileModel.getImage() != null && !companyProfileModel.getImage().equals("null") && !companyProfileModel.getImage().equals(""))
                                 Picasso.get()
                                         .load(companyProfileModel.getImage())
@@ -204,7 +208,7 @@ public class HomeDrawerActivityCompany extends AppCompatActivity
                             headerCompanyEmail.setText(companyProfileModel.getCompanyBusinessEmail());
                         }
 
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
@@ -218,8 +222,8 @@ public class HomeDrawerActivityCompany extends AppCompatActivity
         MyFirebaseDatabase.COMPANY_PROFILE_REFERENCE.child(firebaseUser.getUid()).addValueEventListener(companyProfileValueEventListener);
     }
 
-    private void removeCompanyProfileEventListener(){
-        if (companyProfileValueEventListener != null){
+    private void removeCompanyProfileEventListener() {
+        if (companyProfileValueEventListener != null) {
             MyFirebaseDatabase.COMPANY_PROFILE_REFERENCE.child(firebaseUser.getUid()).removeEventListener(companyProfileValueEventListener);
         }
     }

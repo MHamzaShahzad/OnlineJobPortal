@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -48,6 +49,7 @@ public class AdapterAllUsers extends RecyclerView.Adapter<AdapterAllUsers.Holder
     @Override
     public void onBindViewHolder(@NonNull AdapterAllUsers.Holder holder, int position) {
 
+        holder.verifiedIcon.setVisibility(View.INVISIBLE);
         Log.e(TAG, "onBindViewHolder: " + usersList.get(holder.getAdapterPosition()).getUserFirstName());
 
         final UserProfileModel userProfileModel = usersList.get(holder.getAdapterPosition());
@@ -59,6 +61,9 @@ public class AdapterAllUsers extends RecyclerView.Adapter<AdapterAllUsers.Holder
                     .placeholder(R.drawable.ic_launcher_background)
                     .centerInside().fit()
                     .into(holder.userProfileImage);
+
+        if (userProfileModel.getUserStatus() != null && userProfileModel.getUserStatus().equals(Constants.USER_TRUSTED))
+            holder.verifiedIcon.setVisibility(View.VISIBLE);
 
         holder.userName.setText(userProfileModel.getUserFirstName());
         holder.userSkills.setText(userProfileModel.getUserSkills());
@@ -92,12 +97,14 @@ public class AdapterAllUsers extends RecyclerView.Adapter<AdapterAllUsers.Holder
 
         CardView userCard;
         CircleImageView userProfileImage;
+        ImageView verifiedIcon;
         TextView userName, userSkills, userCurrentJob, userCity;
 
         public Holder(@NonNull View itemView) {
             super(itemView);
 
             userProfileImage = itemView.findViewById(R.id.userProfileImage);
+            verifiedIcon = itemView.findViewById(R.id.verifiedIcon);
             userCard = itemView.findViewById(R.id.userCard);
             userName = itemView.findViewById(R.id.userName);
             userSkills = itemView.findViewById(R.id.userSkills);

@@ -12,12 +12,12 @@ public class HiringRequest implements Serializable {
     public static final String STRING_STATUS = "hireStatus";
 
     String hiringId, hiredByCompanyId, hiringUserId, hireStatus, hireRequestedAt, acceptedByUserAt,
-            rejectedByUserAt, hiringRejectedAt, hiringAcceptedAt, chatId;
+            rejectedByUserAt, hiringRejectedAt, hiringAcceptedAt, chatId, companyProposal;
 
     public HiringRequest() {
     }
 
-    public HiringRequest(String hiringId, String hiredByCompanyId, String hiringUserId, String hireStatus, String hireRequestedAt, String acceptedByUserAt, String rejectedByUserAt, String hiringRejectedAt, String hiringAcceptedAt, String chatId) {
+    public HiringRequest(String hiringId, String hiredByCompanyId, String hiringUserId, String hireStatus, String hireRequestedAt, String acceptedByUserAt, String rejectedByUserAt, String hiringRejectedAt, String hiringAcceptedAt, String chatId, String companyProposal) {
         this.hiringId = hiringId;
         this.hiredByCompanyId = hiredByCompanyId;
         this.hiringUserId = hiringUserId;
@@ -28,6 +28,7 @@ public class HiringRequest implements Serializable {
         this.hiringRejectedAt = hiringRejectedAt;
         this.hiringAcceptedAt = hiringAcceptedAt;
         this.chatId = chatId;
+        this.companyProposal = companyProposal;
     }
 
     public String getHiringId() {
@@ -68,5 +69,9 @@ public class HiringRequest implements Serializable {
 
     public String getChatId() {
         return chatId;
+    }
+
+    public String getCompanyProposal() {
+        return companyProposal;
     }
 }

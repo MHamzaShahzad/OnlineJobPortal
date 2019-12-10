@@ -16,9 +16,10 @@
             android:layout_height="wrap_content"
             android:fillViewport="true">
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
                 <RelativeLayout
                     android:id="@+id/layout_user_description"
@@ -167,6 +168,7 @@
                                     android:textColor="@color/colorPrimaryDark"
                                     android:textSize="13sp"
                                     android:textStyle="bold" />
+
                             </LinearLayout>
 
                         </LinearLayout>
@@ -406,7 +408,33 @@
 
                 </RelativeLayout>
 
-            </RelativeLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Company Proposal"
+                        android:textColor="@color/colorWhite"
+                        android:fontFamily="@font/raleway_semi_bold"
+                        android:layout_marginBottom="5dp"
+                        android:textSize="19sp"/>
+
+                    <TextView
+                        android:id="@+id/textCompanyProposal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/edittextstyle"
+                        android:textColor="@color/colorWhite"
+                        android:fontFamily="@font/ralewaylight"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
 
         </ScrollView>
 

@@ -64,7 +64,7 @@ public class FragmentEditJob extends Fragment implements View.OnClickListener {
 
     private EditText jobDueDate, jobTitle, jobLocation, jobIndustry, jobDepartment, jobEducation, jobCareer, jobSalary, jobDescription, requiredThings, jobExperience;
     private RadioButton typeFullTime, typePartTime, typeBoth, genderMale, genderFemale, genderOthers, genderAll;
-    private Button submitJob;
+    private Button submitJob, btnCompleteJob;
     private LatLng jobLocationLatLng;
 
     private DatePickerDialog dialog;
@@ -129,6 +129,9 @@ public class FragmentEditJob extends Fragment implements View.OnClickListener {
                     setJobType(jobModel.getJobType());
                     setGenderFor(jobModel.getJobForGender());
 
+                    if (jobModel.getJobStatus().equals(Constants.JOB_ACTIVE))
+                        setBtnCompleteJob(jobModel);
+
                 }
 
             } catch (Exception e) {
@@ -158,6 +161,7 @@ public class FragmentEditJob extends Fragment implements View.OnClickListener {
         genderAll = view.findViewById(R.id.genderAll);
         jobExperience = view.findViewById(R.id.jobExperience);
         submitJob = view.findViewById(R.id.submitJob);
+        btnCompleteJob = view.findViewById(R.id.btnCompleteJob);
 
 
         setClickListeners();
@@ -248,6 +252,23 @@ public class FragmentEditJob extends Fragment implements View.OnClickListener {
                 jobExperience.getText().toString().trim()
         );
     }
+
+    private void setBtnCompleteJob(final JobModel jobModel) {
+        btnCompleteJob.setVisibility(View.VISIBLE);
+        btnCompleteJob.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MyFirebaseDatabase.COMPANY_POSTED_JOBS_REFERENCE.child(jobModel.getJobId()).child(JobModel.STRING_JOB_STATUS).setValue(Constants.JOB_COMPLETED).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful())
+                            ((FragmentActivity) context).getSupportFragmentManager().popBackStack();
+                    }
+                });
+            }
+        });
+    }
+
 
     private DatePickerDialog.OnDateSetListener mDateSetListener = new DatePickerDialog.OnDateSetListener() {
         @Override

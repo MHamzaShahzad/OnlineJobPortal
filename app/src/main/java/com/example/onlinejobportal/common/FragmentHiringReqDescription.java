@@ -64,6 +64,7 @@ public class FragmentHiringReqDescription extends Fragment {
     private CircleImageView profileImage, companyProfileImage;
     private TextView userName, userAge, userSkill, userCurrentJob, userEmail, userPhoneNumber, userMaritalStatus, userAddress, userTrusted, startChatWithUser;
     private TextView companyName, companyType, companyBusinessEmail, companyPhone, companyAbout, companyLocation, chatWithCompany;
+    private TextView textCompanyProposal;
 
     private LinearLayout layout_controls, layout_accept_reject_request, layout_hire_not_hire_request;
     private Button btnAcceptRequest, btnRejectRequest, btnHire, btnNotHire;
@@ -125,6 +126,8 @@ public class FragmentHiringReqDescription extends Fragment {
         userAddress = view.findViewById(R.id.userAddress);
         userTrusted = view.findViewById(R.id.userTrusted);
         startChatWithUser = view.findViewById(R.id.startChatWithUser);
+
+        textCompanyProposal = view.findViewById(R.id.textCompanyProposal);
 
         layout_controls = view.findViewById(R.id.layout_controls);
         layout_accept_reject_request = view.findViewById(R.id.layout_accept_reject_request);
@@ -277,7 +280,7 @@ public class FragmentHiringReqDescription extends Fragment {
                                 default:
                             }
 
-
+                            textCompanyProposal.setText(hiringRequest.getCompanyProposal());
                         }
 
                     } catch (Exception e) {

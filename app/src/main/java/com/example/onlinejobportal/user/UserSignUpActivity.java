@@ -1,5 +1,6 @@
 package com.example.onlinejobportal.user;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -32,6 +33,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.FileNotFoundException;
@@ -52,6 +54,8 @@ public class UserSignUpActivity extends AppCompatActivity {
 
     private static final int RESULT_LOAD_IMG = 1;
     private Uri imageUri;
+
+    private ProgressDialog progressDialog;
 
 
     @Override
@@ -81,7 +85,24 @@ public class UserSignUpActivity extends AppCompatActivity {
             }
         });
 
+        initProgressDialog();
+    }
 
+    private void initProgressDialog() {
+        progressDialog = new ProgressDialog(context);
+        progressDialog.setMessage("Loading...");
+        progressDialog.setCancelable(false);
+        progressDialog.setCanceledOnTouchOutside(false);
+    }
+
+    private void showProgressDialog() {
+        if (progressDialog != null && !progressDialog.isShowing())
+            progressDialog.show();
+    }
+
+    private void hideProgressDialog() {
+        if (progressDialog != null && progressDialog.isShowing())
+            progressDialog.dismiss();
     }
 
     private boolean isFormValid(View view) {
@@ -177,7 +198,7 @@ public class UserSignUpActivity extends AppCompatActivity {
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 if (task.isSuccessful()) {
                                                     uploadUserBasicProfile(user);
-                                                }
+                                                }else hideProgressDialog();
                                             }
                                         });
 
@@ -191,11 +212,20 @@ public class UserSignUpActivity extends AppCompatActivity {
                     public void onFailure(@NonNull Exception exception) {
                         // Handle unsuccessful uploads
                         // ...
+                        hideProgressDialog();
                     }
-                });
+                }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot
+                        .getTotalByteCount());
+                progressDialog.setMessage("Uploaded " + (int) progress + "%");
+            }
+        });
     }
 
     private void createNewUser(String email, String password) {
+        showProgressDialog();
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -207,7 +237,8 @@ public class UserSignUpActivity extends AppCompatActivity {
                             if (user != null) {
 
                                 uploadImageOnStorage(user);
-                            }
+                            }else
+                                hideProgressDialog();
                             //updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
@@ -215,6 +246,7 @@ public class UserSignUpActivity extends AppCompatActivity {
                             Toast.makeText(context, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                             //updateUI(null);
+                            hideProgressDialog();
                         }
 
                         // ...
@@ -237,6 +269,7 @@ public class UserSignUpActivity extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 }
+                hideProgressDialog();
             }
         });
     }

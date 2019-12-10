@@ -34,5 +34,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="menu_hiring_req">Hiring Requests</string>
     <string name="menu_applying_req">Applyer Requests</string>
+    <string name="menu_contact_us">Contact Us</string>
+    <string name="menu_about_us">About Us</string>
 
 </resources>

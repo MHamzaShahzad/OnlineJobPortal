@@ -57,6 +57,7 @@
                     android:layout_marginStart="-25dp"
                     android:layout_marginLeft="-25dp"
                     android:layout_marginTop="-25dp"
+                    android:elevation="1dp"
                     android:layout_toEndOf="@id/profileImage"
                     android:layout_toRightOf="@id/profileImage"
                     android:visibility="invisible"
@@ -72,6 +73,7 @@
                 android:orientation="vertical">
 
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Colored.EditText.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -79,18 +81,17 @@
                         android:id="@+id/firstName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/edittextstylewhite"
+                        android:background="@drawable/edittextstyle"
                         android:fontFamily="@font/ralewaylight"
                         android:hint="First Name"
                         android:inputType="textPersonName"
-                        android:padding="10dp"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textColorHint="#3F51B5" />
+                        android:padding="10dp"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
 
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Colored.EditText.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -102,13 +103,12 @@
                         android:fontFamily="@font/ralewaylight"
                         android:hint="Last Name"
                         android:inputType="textPersonName"
-                        android:padding="10dp"
-                        android:textColor="@color/colorPrimaryDark"
+                        android:padding="10dp" />
 
-                        android:textColorHint="#3F51B5" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Colored.EditText.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -122,15 +122,13 @@
                         android:fontFamily="@font/ralewaylight"
                         android:hint="Email Address"
                         android:inputType="textEmailAddress"
-                        android:padding="10dp"
-                        android:textColor="@color/colorPrimaryDark"
-
-                        android:textColorHint="#3F51B5" />
+                        android:padding="10dp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
 
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Colored.EditText.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -142,13 +140,12 @@
                         android:fontFamily="@font/ralewaylight"
                         android:hint="Phone Number"
                         android:inputType="phone"
-                        android:padding="10dp"
-                        android:textColor="@color/colorPrimaryDark"
+                        android:padding="10dp"/>
 
-                        android:textColorHint="#3F51B5" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Colored.EditText.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -160,13 +157,12 @@
                         android:fontFamily="@font/ralewaylight"
                         android:hint="Introduction"
                         android:inputType="text"
-                        android:padding="10dp"
-                        android:textColor="@color/colorPrimaryDark"
+                        android:padding="10dp"/>
 
-                        android:textColorHint="#3F51B5" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Colored.EditText.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -178,13 +174,12 @@
                         android:fontFamily="@font/ralewaylight"
                         android:hint="Enter your Skills"
                         android:inputType="text"
-                        android:padding="10dp"
-                        android:textColor="@color/colorPrimaryDark"
+                        android:padding="10dp"/>
 
-                        android:textColorHint="#3F51B5" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Colored.EditText.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -196,13 +191,12 @@
                         android:fontFamily="@font/ralewaylight"
                         android:hint="Current Job"
                         android:inputType="text"
-                        android:padding="10dp"
-                        android:textColor="@color/colorPrimaryDark"
+                        android:padding="10dp"/>
 
-                        android:textColorHint="#3F51B5" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Colored.EditText.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -214,13 +208,12 @@
                         android:fontFamily="@font/ralewaylight"
                         android:hint="Higher Education"
                         android:inputType="text"
-                        android:padding="10dp"
-                        android:textColor="@color/colorPrimaryDark"
+                        android:padding="10dp"/>
 
-                        android:textColorHint="#3F51B5" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Colored.EditText.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -232,14 +225,13 @@
                         android:fontFamily="@font/ralewaylight"
                         android:hint="Age"
                         android:inputType="text"
-                        android:padding="10dp"
-                        android:textColor="@color/colorPrimaryDark"
+                        android:padding="10dp" />
 
-                        android:textColorHint="#3F51B5" />
                 </com.google.android.material.textfield.TextInputLayout>
 
 
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Colored.EditText.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -251,13 +243,12 @@
                         android:fontFamily="@font/ralewaylight"
                         android:hint="City"
                         android:inputType="text"
-                        android:padding="10dp"
-                        android:textColor="@color/colorPrimaryDark"
+                        android:padding="10dp"/>
 
-                        android:textColorHint="#3F51B5" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Colored.EditText.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -269,9 +260,8 @@
                         android:fontFamily="@font/ralewaylight"
                         android:hint="Country"
                         android:inputType="text"
-                        android:padding="10dp"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textColorHint="#3F51B5" />
+                        android:padding="10dp"/>
+
                 </com.google.android.material.textfield.TextInputLayout>
 
 

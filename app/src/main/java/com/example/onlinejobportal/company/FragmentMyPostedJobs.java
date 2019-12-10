@@ -71,7 +71,6 @@ public class FragmentMyPostedJobs extends Fragment {
             view = inflater.inflate(R.layout.fragment_posted_jobs, container, false);
             initLayoutWidgets();
 
-            initJobsValueEventListener();
         }
         return view;
     }
@@ -80,7 +79,9 @@ public class FragmentMyPostedJobs extends Fragment {
         jobsTabLayout = view.findViewById(R.id.jobsTabLayout);
         recyclerPostedJobs = view.findViewById(R.id.recyclerPostedJobs);
 
-        setTabsListener();
+        jobsTabLayout.addTab(jobsTabLayout.newTab().setText("Active"), true);
+        jobsTabLayout.addTab(jobsTabLayout.newTab().setText("Completed"));
+
         setRecyclerPostedJobs();
     }
 
@@ -111,7 +112,14 @@ public class FragmentMyPostedJobs extends Fragment {
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-
+                switch (tab.getPosition()) {
+                    case 0:
+                        getJobs(Constants.JOB_ACTIVE);
+                        break;
+                    case 1:
+                        getJobs(Constants.JOB_COMPLETED);
+                        break;
+                }
             }
         });
     }
@@ -123,44 +131,50 @@ public class FragmentMyPostedJobs extends Fragment {
                 if (model != null && model.getJobStatus() != null && model.getJobStatus().equals(status))
                     jobModelList.add(model);
             }
-            adapterAllJobs.notifyDataSetChanged();
         }
+        adapterAllJobs.notifyDataSetChanged();
+    }
+
+    private void startJobsEventListener() {
+        if (jobsValueEventListener != null)
+            MyFirebaseDatabase.COMPANY_POSTED_JOBS_REFERENCE.addValueEventListener(jobsValueEventListener);
     }
 
     private void initJobsValueEventListener() {
-        jobsValueEventListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists() && dataSnapshot.getValue() != null) {
+        if (jobsValueEventListener == null)
+            jobsValueEventListener = new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists() && dataSnapshot.getValue() != null) {
 
-                    Log.e(TAG, "onDataChange: " + dataSnapshot);
+                        Log.e(TAG, "onDataChange: " + dataSnapshot);
 
-                    tempJobModelList.clear();
+                        tempJobModelList.clear();
 
-                    Iterable<DataSnapshot> snapshots = dataSnapshot.getChildren();
-                    for (DataSnapshot snapshot : snapshots) {
-                        try {
+                        Iterable<DataSnapshot> snapshots = dataSnapshot.getChildren();
+                        for (DataSnapshot snapshot : snapshots) {
+                            try {
 
-                            JobModel jobModel = snapshot.getValue(JobModel.class);
-                            if (jobModel != null && jobModel.getUploadBy().equals(firebaseUser.getUid()))
-                                tempJobModelList.add(jobModel);
+                                JobModel jobModel = snapshot.getValue(JobModel.class);
+                                if (jobModel != null && jobModel.getUploadBy().equals(firebaseUser.getUid()))
+                                    tempJobModelList.add(jobModel);
 
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                         }
-                    }
 
-                    getJobs((jobsTabLayout.getSelectedTabPosition() == 0) ? Constants.JOB_ACTIVE : Constants.JOB_COMPLETED);
+                        Log.e(TAG, "onDataChange: " + jobsTabLayout.getSelectedTabPosition() );
+                        getJobs((jobsTabLayout.getSelectedTabPosition() == 0) ? Constants.JOB_ACTIVE : Constants.JOB_COMPLETED);
+
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
 
                 }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        };
-        MyFirebaseDatabase.COMPANY_POSTED_JOBS_REFERENCE.addValueEventListener(jobsValueEventListener);
+            };
     }
 
     private void removeJobsValueEventListener() {
@@ -177,6 +191,10 @@ public class FragmentMyPostedJobs extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        setRecyclerPostedJobs();
+        setTabsListener();
+        initJobsValueEventListener();
+        startJobsEventListener();
         if (mListener != null)
             mListener.onFragmentInteraction(this.getTag());
     }

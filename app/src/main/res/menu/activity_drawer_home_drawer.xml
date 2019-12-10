@@ -15,12 +15,12 @@
 
         <item
             android:id="@+id/nav_hiring_req"
-            android:icon="@drawable/upload_job"
+            android:icon="@drawable/ic_hiring_requests_black_24dp"
             android:title="@string/menu_hiring_req" />
 
         <item
             android:id="@+id/nav_applying_req"
-            android:icon="@drawable/upload_job"
+            android:icon="@drawable/ic_applier_reqests_black_24dp"
             android:title="@string/menu_applying_req" />
 
         <item
@@ -32,9 +32,14 @@
     <item android:title="Communicate">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="@string/menu_share" />
+                android:id="@+id/nav_contact_us"
+                android:icon="@drawable/ic_contact_us_black_24dp"
+                android:title="@string/menu_contact_us" />
+
+            <item
+                android:id="@+id/nav_about_us"
+                android:icon="@drawable/ic_info_black_24dp"
+                android:title="@string/menu_about_us" />
         </menu>
     </item>
 

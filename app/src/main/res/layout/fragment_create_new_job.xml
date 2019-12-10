@@ -3,316 +3,331 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background"
-    android:clickable="true"
-    android:padding="10dp">
+    android:clickable="true">
 
-    <ScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:layout_height="match_parent">
 
-        <LinearLayout
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="55dp"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/contactFormTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="16dp"
+                    android:fontFamily="@font/raleway_semi_bold"
+                    android:text="Post New Job"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="40sp"
+                    android:typeface="serif" />
+
+                <EditText
+                    android:id="@+id/jobTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/edittextstyle"
+                    android:fontFamily="@font/ralewaylight"
+                    android:hint="Job Title"
+                    android:inputType="text"
+                    android:padding="10dp"
+                    android:textColor="@color/colorWhite"
+                    android:textColorHint="#ffffff" />
+
+                <EditText
+                    android:id="@+id/jobLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/edittextstyle"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:fontFamily="@font/ralewaylight"
+                    android:hint="Location"
+                    android:inputType="textEmailAddress"
+                    android:padding="10dp"
+                    android:textColor="@color/colorWhite"
+                    android:textColorHint="#ffffff" />
+
+                <EditText
+                    android:id="@+id/jobIndustry"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/edittextstyle"
+                    android:fontFamily="@font/ralewaylight"
+                    android:hint="Industry"
+                    android:inputType="text"
+                    android:padding="10dp"
+                    android:textColor="@color/colorWhite"
+                    android:textColorHint="#ffffff" />
+
+                <EditText
+                    android:id="@+id/jobDepartment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/edittextstyle"
+                    android:fontFamily="@font/ralewaylight"
+                    android:hint="Department"
+                    android:inputType="text"
+                    android:padding="10dp"
+                    android:textColor="@color/colorWhite"
+                    android:textColorHint="#ffffff" />
+
+                <EditText
+                    android:id="@+id/jobEducation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/edittextstyle"
+                    android:fontFamily="@font/ralewaylight"
+                    android:hint="Education"
+                    android:inputType="text"
+                    android:padding="10dp"
+                    android:textColor="@color/colorWhite"
+                    android:textColorHint="#ffffff" />
+
+                <EditText
+                    android:id="@+id/jobCareer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/edittextstyle"
+                    android:fontFamily="@font/ralewaylight"
+                    android:hint="Career Level"
+                    android:inputType="text"
+                    android:padding="10dp"
+                    android:textColor="@color/colorWhite"
+                    android:textColorHint="#ffffff" />
+
+                <EditText
+                    android:id="@+id/jobSalary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/edittextstyle"
+                    android:fontFamily="@font/ralewaylight"
+                    android:hint="Salary Range"
+                    android:inputType="text"
+                    android:padding="10dp"
+                    android:textColor="@color/colorWhite"
+                    android:textColorHint="#ffffff" />
+
+                <EditText
+                    android:id="@+id/jobDueDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/edittextstyle"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:fontFamily="@font/ralewaylight"
+                    android:hint="Due Date"
+                    android:padding="10dp"
+                    android:textColor="@color/colorWhite"
+                    android:textColorHint="#ffffff" />
+
+                <EditText
+                    android:id="@+id/jobExperience"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/edittextstyle"
+                    android:fontFamily="@font/ralewaylight"
+                    android:hint="Experience"
+                    android:padding="10dp"
+                    android:textColor="@color/colorWhite"
+                    android:textColorHint="#ffffff" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:fontFamily="@font/raleway_semi_bold"
+                    android:padding="10dp"
+                    android:text="Select Job For"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/genderMale"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/ralewaylight"
+                        android:text="Male"
+                        android:textColor="@color/colorWhite" />
+
+                    <RadioButton
+                        android:id="@+id/genderFemale"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:fontFamily="@font/ralewaylight"
+                        android:text="Female"
+                        android:textColor="@color/colorWhite" />
+
+                    <RadioButton
+                        android:id="@+id/genderOthers"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:fontFamily="@font/ralewaylight"
+                        android:text="Others"
+                        android:textColor="@color/colorWhite" />
+
+                    <RadioButton
+                        android:id="@+id/genderAll"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:fontFamily="@font/ralewaylight"
+                        android:text="All"
+                        android:textColor="@color/colorWhite" />
+
+                </RadioGroup>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:fontFamily="@font/raleway_semi_bold"
+                    android:padding="10dp"
+                    android:text="Job Timimg"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/typeFullTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/ralewaylight"
+                        android:text="Full Time"
+                        android:textColor="@color/colorWhite" />
+
+                    <RadioButton
+                        android:id="@+id/typePartTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:fontFamily="@font/ralewaylight"
+                        android:text="Part Time"
+                        android:textColor="@color/colorWhite" />
+
+                    <RadioButton
+                        android:id="@+id/typeBoth"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:fontFamily="@font/ralewaylight"
+                        android:text="Both"
+                        android:textColor="@color/colorWhite" />
+
+                </RadioGroup>
+
+                <EditText
+                    android:id="@+id/jobDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/edittextstyle"
+                    android:breakStrategy="balanced"
+                    android:fitsSystemWindows="true"
+                    android:fontFamily="@font/ralewaylight"
+                    android:gravity="top|start"
+                    android:hint="Job Description"
+                    android:inputType="textMultiLine"
+                    android:lines="5"
+                    android:maxLines="30"
+                    android:padding="5dp"
+                    android:scrollHorizontally="false"
+                    android:singleLine="false"
+                    android:textColor="@color/colorWhite"
+                    android:textColorHint="#ffffff" />
+
+                <EditText
+                    android:id="@+id/requiredThings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/edittextstyle"
+                    android:breakStrategy="balanced"
+                    android:fitsSystemWindows="true"
+                    android:fontFamily="@font/ralewaylight"
+                    android:gravity="top|start"
+                    android:hint="Must have These Things"
+                    android:inputType="textMultiLine"
+                    android:lines="5"
+                    android:maxLines="30"
+                    android:padding="5dp"
+                    android:scrollHorizontally="false"
+                    android:singleLine="false"
+                    android:textColor="@color/colorWhite"
+                    android:textColorHint="#ffffff" />
+
+                <Button
+                    android:id="@+id/submitJob"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/style_button_solid"
+                    android:fontFamily="@font/ralewaylight"
+                    android:paddingLeft="70dp"
+                    android:paddingRight="70dp"
+                    android:text="Submit"
+                    android:textAllCaps="false"
+                    android:textColor="#fff" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <Button
+            android:id="@+id/btnCompleteJob"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorWhite"
+            android:text="Make Job Complete"
+            android:visibility="gone" />
 
-            <TextView
-                android:id="@+id/contactFormTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="16dp"
-                android:text="Post New Job"
-                android:textColor="@color/colorWhite"
-                android:fontFamily="@font/raleway_semi_bold"
-                android:textSize="40sp"
-                android:typeface="serif" />
-
-            <EditText
-                android:id="@+id/jobTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Job Title"
-                android:layout_marginBottom="10dp"
-                android:inputType="text"
-                android:padding="10dp"
-                android:fontFamily="@font/ralewaylight"
-                android:background="@drawable/edittextstyle"
-                android:textColor="@color/colorWhite"
-                android:textColorHint="#ffffff"/>
-
-            <EditText
-                android:id="@+id/jobLocation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:focusable="false"
-                android:fontFamily="@font/ralewaylight"
-                android:focusableInTouchMode="false"
-                android:hint="Location"
-                android:inputType="textEmailAddress"
-                android:padding="10dp"
-                android:background="@drawable/edittextstyle"
-                android:textColor="@color/colorWhite"
-                android:textColorHint="#ffffff"/>
-
-            <EditText
-                android:id="@+id/jobIndustry"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Industry"
-                android:inputType="text"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:padding="10dp"
-                android:background="@drawable/edittextstyle"
-                android:textColor="@color/colorWhite"
-                android:textColorHint="#ffffff"
-                android:fontFamily="@font/ralewaylight"/>
-
-            <EditText
-                android:id="@+id/jobDepartment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Department"
-                android:inputType="text"
-                android:padding="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/edittextstyle"
-                android:textColor="@color/colorWhite"
-                android:textColorHint="#ffffff"
-                android:fontFamily="@font/ralewaylight"/>
-
-            <EditText
-                android:id="@+id/jobEducation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Education"
-                android:inputType="text"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:padding="10dp"
-                android:background="@drawable/edittextstyle"
-                android:textColor="@color/colorWhite"
-                android:textColorHint="#ffffff"
-                android:fontFamily="@font/ralewaylight"/>
-
-            <EditText
-                android:id="@+id/jobCareer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Career Level"
-                android:inputType="text"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:padding="10dp"
-                android:background="@drawable/edittextstyle"
-                android:textColor="@color/colorWhite"
-                android:textColorHint="#ffffff"
-                android:fontFamily="@font/ralewaylight"/>
-
-            <EditText
-                android:id="@+id/jobSalary"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Salary Range"
-                android:inputType="text"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:padding="10dp"
-                android:background="@drawable/edittextstyle"
-                android:textColor="@color/colorWhite"
-                android:textColorHint="#ffffff"
-                android:fontFamily="@font/ralewaylight"/>
-
-            <EditText
-                android:id="@+id/jobDueDate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
-                android:hint="Due Date"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:padding="10dp"
-                android:background="@drawable/edittextstyle"
-                android:textColor="@color/colorWhite"
-                android:textColorHint="#ffffff"
-                android:fontFamily="@font/ralewaylight"/>
-
-            <EditText
-                android:id="@+id/jobExperience"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Experience"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:padding="10dp"
-                android:background="@drawable/edittextstyle"
-                android:textColor="@color/colorWhite"
-                android:textColorHint="#ffffff"
-                android:fontFamily="@font/ralewaylight"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Select Job For"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="5dp"
-                android:padding="10dp"
-                android:fontFamily="@font/raleway_semi_bold"
-                android:textStyle="bold"
-                android:textColor="@color/colorWhite"
-                android:textSize="15sp"
-                />
-
-            <RadioGroup
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/genderMale"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Male"
-                    android:fontFamily="@font/ralewaylight"
-                    android:textColor="@color/colorWhite"/>
-
-                <RadioButton
-                    android:id="@+id/genderFemale"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Female"
-                    android:fontFamily="@font/ralewaylight"
-                    android:layout_marginLeft="10dp"
-                    android:textColor="@color/colorWhite"/>
-
-                <RadioButton
-                    android:id="@+id/genderOthers"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Others"
-                    android:fontFamily="@font/ralewaylight"
-                    android:layout_marginLeft="10dp"
-                    android:textColor="@color/colorWhite"/>
-
-                <RadioButton
-                    android:id="@+id/genderAll"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="All"
-                    android:fontFamily="@font/ralewaylight"
-                    android:layout_marginLeft="10dp"
-                    android:textColor="@color/colorWhite"/>
-
-            </RadioGroup>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Job Timimg"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="5dp"
-                android:padding="10dp"
-                android:fontFamily="@font/raleway_semi_bold"
-                android:textStyle="bold"
-                android:textColor="@color/colorWhite"
-                android:textSize="15sp"/>
-
-            <RadioGroup
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/typeFullTime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Full Time"
-                    android:fontFamily="@font/ralewaylight"
-                    android:textColor="@color/colorWhite"/>
-
-                <RadioButton
-                    android:id="@+id/typePartTime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Part Time"
-                    android:fontFamily="@font/ralewaylight"
-                    android:layout_marginLeft="10dp"
-                    android:textColor="@color/colorWhite"/>
-
-                <RadioButton
-                    android:id="@+id/typeBoth"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Both"
-                    android:fontFamily="@font/ralewaylight"
-                    android:layout_marginLeft="10dp"
-                    android:textColor="@color/colorWhite"/>
-
-            </RadioGroup>
-
-            <EditText
-                android:id="@+id/jobDescription"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:breakStrategy="balanced"
-                android:fitsSystemWindows="true"
-                android:gravity="top|start"
-                android:hint="Job Description"
-                android:inputType="textMultiLine"
-                android:lines="5"
-                android:maxLines="30"
-                android:padding="5dp"
-                android:fontFamily="@font/ralewaylight"
-                android:scrollHorizontally="false"
-                android:singleLine="false"
-                android:background="@drawable/edittextstyle"
-                android:textColor="@color/colorWhite"
-                android:textColorHint="#ffffff"/>
-
-            <EditText
-                android:id="@+id/requiredThings"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:breakStrategy="balanced"
-                android:fitsSystemWindows="true"
-                android:gravity="top|start"
-                android:hint="Must have These Things"
-                android:inputType="textMultiLine"
-                android:lines="5"
-                android:maxLines="30"
-                android:padding="5dp"
-                android:scrollHorizontally="false"
-                android:singleLine="false"
-                android:fontFamily="@font/ralewaylight"
-                android:background="@drawable/edittextstyle"
-                android:textColor="@color/colorWhite"
-                android:textColorHint="#ffffff"/>
-
-            <Button
-                android:id="@+id/submitJob"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:background="@drawable/style_button_solid"
-                android:paddingLeft="70dp"
-                android:paddingRight="70dp"
-                android:text="Submit"
-                android:textAllCaps="false"
-                android:fontFamily="@font/ralewaylight"
-                android:textColor="#fff" />
-
-        </LinearLayout>
-
-    </ScrollView>
+    </RelativeLayout>
 
 </FrameLayout>

@@ -94,7 +94,7 @@ public class HomeDrawerActivityUser extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.home_drawer, menu);
+        //getMenuInflater().inflate(R.menu.home_drawer, menu);
         return true;
     }
 
@@ -143,7 +143,10 @@ public class HomeDrawerActivityUser extends AppCompatActivity
 
             signOut();
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_contact_us) {
+
+
+        } else if (id == R.id.nav_about_us) {
 
 
         }
@@ -200,7 +203,8 @@ public class HomeDrawerActivityUser extends AppCompatActivity
     private void signOut() {
 
         mAuth.signOut();
-        CommonFunctionsClass.unSubscribeFromTopic(context, firebaseUser.getUid(), true);
+        if (firebaseUser != null)
+            CommonFunctionsClass.unSubscribeFromTopic(context, firebaseUser.getUid(), true);
         startActivity(new Intent(context, StartMainActivity.class));
         finish();
 

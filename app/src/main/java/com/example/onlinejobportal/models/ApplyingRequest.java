@@ -12,12 +12,12 @@ public class ApplyingRequest implements Serializable {
     public static final String STRING_CHAT_REF = "chatId";
 
     private String requestId, applierId, applyingAtCompanyId, applyingAtJobId, applyingAtDateTime, acceptedAtDateTime,
-            rejectedAtDateTime, hiredAtDateTime, notHiredAtDateTime, applyingStatus, chatId;
+            rejectedAtDateTime, hiredAtDateTime, notHiredAtDateTime, applyingStatus, chatId, requestProposal;
 
     public ApplyingRequest() {
     }
 
-    public ApplyingRequest(String requestId, String applierId, String applyingAtCompanyId, String applyingAtJobId, String applyingAtDateTime, String acceptedAtDateTime, String rejectedAtDateTime, String hiredAtDateTime, String notHiredAtDateTime, String applyingStatus, String chatId) {
+    public ApplyingRequest(String requestId, String applierId, String applyingAtCompanyId, String applyingAtJobId, String applyingAtDateTime, String acceptedAtDateTime, String rejectedAtDateTime, String hiredAtDateTime, String notHiredAtDateTime, String applyingStatus, String chatId, String requestProposal) {
         this.requestId = requestId;
         this.applierId = applierId;
         this.applyingAtCompanyId = applyingAtCompanyId;
@@ -29,6 +29,7 @@ public class ApplyingRequest implements Serializable {
         this.notHiredAtDateTime = notHiredAtDateTime;
         this.applyingStatus = applyingStatus;
         this.chatId = chatId;
+        this.requestProposal = requestProposal;
     }
 
     public String getRequestId() {
@@ -74,4 +75,9 @@ public class ApplyingRequest implements Serializable {
     public String getChatId() {
         return chatId;
     }
+
+    public String getRequestProposal() {
+        return requestProposal;
+    }
+
 }

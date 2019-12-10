@@ -2,6 +2,7 @@ package com.example.onlinejobportal.company;
 
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,10 +11,13 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +33,7 @@ import com.example.onlinejobportal.interfaces.FragmentInteractionListenerInterfa
 import com.example.onlinejobportal.models.ApplyingRequest;
 import com.example.onlinejobportal.models.CompanyProfileModel;
 import com.example.onlinejobportal.models.JobModel;
+import com.example.onlinejobportal.models.UserProfileModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
@@ -54,7 +59,7 @@ public class FragmentJobDescription extends Fragment {
 
     private ImageView companyImage;
     private TextView jobTitle, companyName, jobLocation, jobExperience, jobDepartment, jobUploadedAt, jobDueDate, jobIndustry, jobType, jobRequiredEducation, jobCareer, jobRequiredGender, jobDescription, jobSpecification;
-    private Button btnApplyForJob;
+    private Button btnApplyForJob, btnCompleteJob;
 
     private FirebaseUser firebaseUser;
     private FragmentInteractionListenerInterface mListener;
@@ -101,17 +106,60 @@ public class FragmentJobDescription extends Fragment {
         jobDescription = view.findViewById(R.id.jobDescription);
         jobSpecification = view.findViewById(R.id.jobSpecification);
         btnApplyForJob = view.findViewById(R.id.btnApplyForJob);
-
+        btnCompleteJob = view.findViewById(R.id.btnCompleteJob);
 
     }
 
     private void setBtnApplyForJob(final JobModel jobModel) {
+        btnApplyForJob.setVisibility(View.VISIBLE);
         btnApplyForJob.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                if (firebaseUser != null)
-                    loadApplyingInstanceOnDatabase(jobModel);
-                else {
+            public void onClick(View v) {
+                if (firebaseUser != null) {
+
+                    MyFirebaseDatabase.APPLYING_REQUESTS_REFERENCE.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            if (dataSnapshot.exists() && dataSnapshot.getValue() != null) {
+
+                                boolean isRequested = false;
+
+                                Iterable<DataSnapshot> snapshots = dataSnapshot.getChildren();
+                                for (DataSnapshot snapshot : snapshots) {
+
+                                    try {
+
+                                        ApplyingRequest applyingRequest = snapshot.getValue(ApplyingRequest.class);
+                                        if (applyingRequest != null && applyingRequest.getApplyingAtCompanyId().equals(jobModel.getUploadBy())
+                                                && !applyingRequest.getApplyingStatus().equals(Constants.REQUEST_STATUS_HIRED)
+                                                && !applyingRequest.getApplyingStatus().equals(Constants.REQUEST_STATUS_ACCEPTED)
+                                        ) {
+                                            isRequested = true;
+                                            Snackbar.make(view, "Already requested", Snackbar.LENGTH_LONG).show();
+                                            return;
+                                        }
+
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+
+                                }
+
+                                if (!isRequested)
+                                    showDialogForProposal(jobModel);
+
+                            } else
+                                showDialogForProposal(jobModel);
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+
+                } else {
                     Snackbar.make(view, "Sign In or create new account to continue!", Snackbar.LENGTH_LONG).show();
                     startActivity(new Intent(context, LoginActivity.class));
                 }
@@ -119,12 +167,53 @@ public class FragmentJobDescription extends Fragment {
         });
     }
 
-    private void loadApplyingInstanceOnDatabase(final JobModel jobModel) {
+    private void setBtnCompleteJob(final JobModel jobModel) {
+        btnCompleteJob.setVisibility(View.VISIBLE);
+        btnCompleteJob.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MyFirebaseDatabase.COMPANY_POSTED_JOBS_REFERENCE.child(jobModel.getJobId()).child(JobModel.STRING_JOB_STATUS).setValue(Constants.JOB_COMPLETED).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful())
+                            ((FragmentActivity) context).getSupportFragmentManager().popBackStack();
+                    }
+                });
+            }
+        });
+    }
+
+    private void showDialogForProposal(final JobModel jobModel) {
+        View view = LayoutInflater.from(context).inflate(R.layout.layout_write_proposal, null);
+
+        final EditText inputProposal = view.findViewById(R.id.inputProposal);
+        Button btnSubmit = view.findViewById(R.id.btnSubmit);
+
+        final AlertDialog dialog = new AlertDialog.Builder(context)
+                .setView(view).create();
+
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (TextUtils.isEmpty(inputProposal.getText())) {
+                    inputProposal.setError("Field is required!");
+                } else if (inputProposal.length() < 50) {
+                    inputProposal.setError("At least 50 characters required!");
+                } else
+                    loadApplyingInstanceOnDatabase(jobModel, inputProposal.getText().toString().trim(), dialog);
+            }
+        });
+
+        dialog.show();
+    }
+
+
+    private void loadApplyingInstanceOnDatabase(final JobModel jobModel, String proposal, final AlertDialog dialog) {
 
         if (jobModel.getJobStatus().equals(Constants.JOB_ACTIVE)) {
 
             final String id = UUID.randomUUID().toString();
-            MyFirebaseDatabase.APPLYING_REQUESTS_REFERENCE.child(id).setValue(buildApplyingInstance(id, jobModel)).addOnCompleteListener(new OnCompleteListener<Void>() {
+            MyFirebaseDatabase.APPLYING_REQUESTS_REFERENCE.child(id).setValue(buildApplyingInstance(id, jobModel, proposal)).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful()) {
@@ -152,7 +241,7 @@ public class FragmentJobDescription extends Fragment {
                                     );
                             }
                         });
-
+                        dialog.dismiss();
                     } else
                         Snackbar.make(view, "Error in applying!", Snackbar.LENGTH_LONG).show();
                 }
@@ -162,7 +251,8 @@ public class FragmentJobDescription extends Fragment {
             Snackbar.make(view, "Sorry, this job is't active now!", Snackbar.LENGTH_LONG).show();
     }
 
-    private ApplyingRequest buildApplyingInstance(String id, JobModel jobModel) {
+    private ApplyingRequest buildApplyingInstance(String id, JobModel jobModel, String proposal) {
+        Log.e(TAG, "buildApplyingInstance: " + proposal );
         return new ApplyingRequest(
                 id,
                 firebaseUser.getUid(),
@@ -174,7 +264,8 @@ public class FragmentJobDescription extends Fragment {
                 "",
                 "",
                 Constants.REQUEST_STATUS_PENDING,
-                ""
+                "",
+                proposal
         );
     }
 
@@ -217,7 +308,10 @@ public class FragmentJobDescription extends Fragment {
                         }
                     });
 
-                    setBtnApplyForJob(jobModel);
+                    if (jobModel.getUploadBy().equals(firebaseUser.getUid()))
+                        setBtnCompleteJob(jobModel);
+                    else
+                        setBtnApplyForJob(jobModel);
 
                 }
 

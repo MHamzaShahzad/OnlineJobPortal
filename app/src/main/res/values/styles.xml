@@ -18,7 +18,11 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="EditText.OutlinedBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <item name="android:textColorHint">#ffffff</item>
+        <item name="android:textColorHint">@color/colorWhite</item>
+    </style>
+
+    <style name="Colored.EditText.OutlinedBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:textColorHint">@color/colorPrimaryDark</item>
     </style>
 
 </resources>

@@ -8,9 +8,9 @@
         android:id="@+id/userCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
+        android:layout_marginLeft="3dp"
         android:layout_marginTop="2.5dp"
-        android:layout_marginRight="5dp"
+        android:layout_marginRight="3dp"
         android:layout_marginBottom="2.5dp"
         android:background="@drawable/gradient_background"
         app:cardCornerRadius="3dp">
@@ -18,7 +18,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp">
+            android:padding="5dp">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/userProfileImage"
@@ -27,6 +27,18 @@
                 android:layout_margin="5dp"
                 android:layout_centerVertical="true"
                 android:src="@drawable/useravatar" />
+
+            <ImageView
+                android:id="@+id/verifiedIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/userProfileImage"
+                android:layout_marginStart="-20dp"
+                android:layout_marginLeft="-20dp"
+                android:layout_marginTop="-10dp"
+                android:layout_toEndOf="@id/userProfileImage"
+                android:layout_toRightOf="@id/userProfileImage"
+                app:srcCompat="@drawable/ic_verified_user" />
 
             <LinearLayout
                 android:layout_width="match_parent"

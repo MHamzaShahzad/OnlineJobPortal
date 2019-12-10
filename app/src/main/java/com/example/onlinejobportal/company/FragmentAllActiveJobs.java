@@ -7,23 +7,30 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 
 import com.example.onlinejobportal.common.Constants;
 import com.example.onlinejobportal.R;
 import com.example.onlinejobportal.adapters.AdapterAllJobs;
+import com.example.onlinejobportal.common.HidingScrollListener;
 import com.example.onlinejobportal.controllers.MyFirebaseDatabase;
 import com.example.onlinejobportal.interfaces.FragmentInteractionListenerInterface;
 import com.example.onlinejobportal.models.JobModel;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
@@ -44,16 +51,19 @@ public class FragmentAllActiveJobs extends Fragment implements SwipeRefreshLayou
     private ValueEventListener jobsValueEventListener;
     private List<JobModel> jobModelList;
 
-    private EditText inputJobTitle, inputJobCity;
+    private AutoCompleteTextView inputJobTitle, inputJobCity;
     private Button btnSearchJobs;
 
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private FragmentInteractionListenerInterface mListener;
+    private ArrayAdapter<String> adapterAutoCompleteJobTitle;
 
+    private List<String> jobTitleListForATV;
 
     public FragmentAllActiveJobs() {
         // Required empty public constructor
         jobModelList = new ArrayList<>();
+        jobTitleListForATV = new ArrayList<>();
     }
 
 
@@ -65,13 +75,13 @@ public class FragmentAllActiveJobs extends Fragment implements SwipeRefreshLayou
 
         context = container.getContext();
         adapterAllJobs = new AdapterAllJobs(context, jobModelList);
+        adapterAutoCompleteJobTitle = new ArrayAdapter<String>(context, android.R.layout.simple_dropdown_item_1line, jobTitleListForATV);
         // Inflate the layout for this fragment
         if (view == null) {
             view = inflater.inflate(R.layout.fragment_all_jobs, container, false);
 
             initLayoutWidgets();
             setRecyclerAllActiveJobs();
-            initJobsValueEventListener();
         }
         return view;
     }
@@ -80,10 +90,12 @@ public class FragmentAllActiveJobs extends Fragment implements SwipeRefreshLayou
         // SwipeRefreshLayout
         mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_container);
         mSwipeRefreshLayout.setOnRefreshListener(this);
-        mSwipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary,
+        mSwipeRefreshLayout.setColorSchemeResources(
+                R.color.colorPrimary,
                 android.R.color.holo_green_dark,
                 android.R.color.holo_orange_dark,
-                android.R.color.holo_blue_dark);
+                android.R.color.holo_blue_dark
+        );
         /*
          * Showing Swipe Refresh animation on activity create
          * As animation won't start on onCreate, post runnable is used
@@ -92,7 +104,7 @@ public class FragmentAllActiveJobs extends Fragment implements SwipeRefreshLayou
 
             @Override
             public void run() {
-                startRefreshing();
+                Log.e(TAG, "run: ");
                 // Fetching data from server
                 initJobsValueEventListener();
             }
@@ -114,6 +126,8 @@ public class FragmentAllActiveJobs extends Fragment implements SwipeRefreshLayou
         inputJobTitle = view.findViewById(R.id.inputJobTitle);
         inputJobCity = view.findViewById(R.id.inputJobCity);
         btnSearchJobs = view.findViewById(R.id.btnSearchJobs);
+
+        inputJobTitle.setAdapter(adapterAutoCompleteJobTitle);
 
         setBtnSearchJobs();
     }
@@ -152,27 +166,36 @@ public class FragmentAllActiveJobs extends Fragment implements SwipeRefreshLayou
     }
 
     private void initJobsValueEventListener() {
+        startRefreshing();
         removeJobsValueEventListener();
         jobsValueEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists() && dataSnapshot.getValue() != null) {
                     jobModelList.clear();
+                    jobTitleListForATV.clear();
                     Iterable<DataSnapshot> snapshots = dataSnapshot.getChildren();
                     for (DataSnapshot snapshot : snapshots) {
                         try {
 
                             JobModel jobModel = snapshot.getValue(JobModel.class);
-                            if (jobModel != null && jobModel.getJobStatus().equals(Constants.JOB_ACTIVE))
-                                jobModelList.add(jobModel);
+                            if (jobModel != null) {
+                                if (jobModel.getJobStatus().equals(Constants.JOB_ACTIVE))
+                                    jobModelList.add(jobModel);
+
+                                jobTitleListForATV.add(jobModel.getJobTitle());
+                            }
 
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
                     }
+
+                    Log.e(TAG, "onDataChange: " + jobModelList.size());
                     adapterAllJobs.notifyDataSetChanged();
-                    stopRefreshing();
+                    adapterAutoCompleteJobTitle.notifyDataSetChanged();
                 }
+                stopRefreshing();
             }
 
             @Override
@@ -190,6 +213,7 @@ public class FragmentAllActiveJobs extends Fragment implements SwipeRefreshLayou
 
     @Override
     public void onResume() {
+        setRecyclerAllActiveJobs();
         initSwipeRefreshLayout();
         super.onResume();
         if (mListener != null)
