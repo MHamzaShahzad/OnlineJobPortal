@@ -3,6 +3,7 @@ package com.example.onlinejobportal.common;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentManager;
 
+import com.example.onlinejobportal.R;
 import com.example.onlinejobportal.activities.HomeDrawerActivityCompany;
 import com.example.onlinejobportal.activities.HomeDrawerActivityUser;
 import com.example.onlinejobportal.activities.LoginActivity;
@@ -25,6 +27,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.messaging.FirebaseMessaging;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -32,20 +35,20 @@ public class CommonFunctionsClass {
 
     private static final String TAG = CommonFunctionsClass.class.getName();
 
-    public static void subscribeToTopic(final Context context, final String topic, final boolean isHidden){
+    public static void subscribeToTopic(final Context context, final String topic, final boolean isHidden) {
         FirebaseMessaging.getInstance().subscribeToTopic(topic).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()){
+                if (task.isSuccessful()) {
                     if (isHidden)
-                        Log.d(TAG, "onComplete: subscription to " + topic + " successful!" );
+                        Log.d(TAG, "onComplete: subscription to " + topic + " successful!");
                     else
-                        Toast.makeText(context, "Subscription to "+ topic + " successful.", Toast.LENGTH_LONG).show();
-                }else {
+                        Toast.makeText(context, "Subscription to " + topic + " successful.", Toast.LENGTH_LONG).show();
+                } else {
                     if (isHidden)
-                        Log.d(TAG, "onComplete: can't subscribe successfully to " + topic );
+                        Log.d(TAG, "onComplete: can't subscribe successfully to " + topic);
                     else
-                        Toast.makeText(context, "Subscription to "+ topic + " failed.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, "Subscription to " + topic + " failed.", Toast.LENGTH_LONG).show();
 
                 }
 
@@ -53,20 +56,20 @@ public class CommonFunctionsClass {
         });
     }
 
-    public static void unSubscribeFromTopic(final Context context, final String topic, final boolean isHidden){
+    public static void unSubscribeFromTopic(final Context context, final String topic, final boolean isHidden) {
         FirebaseMessaging.getInstance().unsubscribeFromTopic(topic).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()){
+                if (task.isSuccessful()) {
                     if (isHidden)
-                        Log.d(TAG, "onComplete: un-subscribed from " + topic + " successful!" );
+                        Log.d(TAG, "onComplete: un-subscribed from " + topic + " successful!");
                     else
-                        Toast.makeText(context, "Un-Subscribed from "+ topic + " successful.", Toast.LENGTH_LONG).show();
-                }else {
+                        Toast.makeText(context, "Un-Subscribed from " + topic + " successful.", Toast.LENGTH_LONG).show();
+                } else {
                     if (isHidden)
-                        Log.d(TAG, "onComplete: can't un-subscribe successfully from " + topic );
+                        Log.d(TAG, "onComplete: can't un-subscribe successfully from " + topic);
                     else
-                        Toast.makeText(context, "Un-Subscribed from "+ topic + " failed.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, "Un-Subscribed from " + topic + " failed.", Toast.LENGTH_LONG).show();
 
                 }
 
@@ -78,13 +81,16 @@ public class CommonFunctionsClass {
         return Patterns.EMAIL_ADDRESS.matcher(charSequence).matches();
     }
 
-    public static void moveToHome(final Context context, String uId) {
+    public static void moveToHome(final Context context, String uId, final Bundle bundle) {
+
 
         MyFirebaseDatabase.COMPANY_PROFILE_REFERENCE.child(uId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists() && dataSnapshot.getValue() != null) {
-                    context.startActivity(new Intent(context, HomeDrawerActivityCompany.class));
+                    Intent intent = new Intent(context, HomeDrawerActivityCompany.class);
+                    intent.putExtra(Constants.NOTIFICATION_CHAT_DATA_BUNDLE, bundle);
+                    context.startActivity(intent);
                     ((Activity) context).finish();
                 }
             }
@@ -99,7 +105,9 @@ public class CommonFunctionsClass {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists() && dataSnapshot.getValue() != null) {
-                    context.startActivity(new Intent(context, HomeDrawerActivityUser.class));
+                    Intent intent = new Intent(context, HomeDrawerActivityUser.class);
+                    intent.putExtra(Constants.NOTIFICATION_CHAT_DATA_BUNDLE, bundle);
+                    context.startActivity(intent);
                     ((Activity) context).finish();
                 }
             }
@@ -109,6 +117,20 @@ public class CommonFunctionsClass {
 
             }
         });
+    }
+
+    public static void openChatFromNotification(Intent intent, FragmentManager fragmentManager, boolean seenByCompanyOrNot) {
+        if (intent != null) {
+            Bundle notiChatBundle = intent.getBundleExtra(Constants.NOTIFICATION_CHAT_DATA_BUNDLE);
+            if (notiChatBundle != null)
+                try {
+                    notiChatBundle.putBoolean(Constants.IS_APPLYING_SEEN_BY_COMPANY, seenByCompanyOrNot);
+                    fragmentManager.beginTransaction().replace(R.id.fragment_home, FragmentChat.getInstance(notiChatBundle), Constants.TITLE_APPLICANT_REQUEST_DESCRIPTION).addToBackStack(Constants.TITLE_APPLICANT_REQUEST_DESCRIPTION).commit();
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+        }
     }
 
     public static void moveToCreate(Context context, String signUpAs) {
@@ -145,7 +167,7 @@ public class CommonFunctionsClass {
         return "";
     }
 
-    public static String getGender(String gender){
+    public static String getGender(String gender) {
         switch (gender) {
             case Constants.GENDER_MALE:
                 return Constants.STRING_GENDER_MALE;
@@ -177,23 +199,23 @@ public class CommonFunctionsClass {
         return 0.0;
     }
 
-    public static void clearFragmentBackStack(FragmentManager fragmentManager){
+    public static void clearFragmentBackStack(FragmentManager fragmentManager) {
         for (int i = 0; i < fragmentManager.getBackStackEntryCount(); i++)
             fragmentManager.popBackStack();
     }
 
-    public static String getUserStatusString(String status){
-        switch (status){
+    public static String getUserStatusString(String status) {
+        switch (status) {
             case Constants.USER_TRUSTED:
                 return Constants.STRING_USER_TRUSTED;
             case Constants.USER_NOT_TRUSTED:
                 return Constants.STRING_USER_NOT_TRUSTED;
-                default:
-                    return null;
+            default:
+                return null;
         }
     }
 
-    public static String getCurrentDateTime(){
+    public static String getCurrentDateTime() {
         return new SimpleDateFormat("dd MM yyyy hh:mm a").format(Calendar.getInstance().getTime());
     }
 

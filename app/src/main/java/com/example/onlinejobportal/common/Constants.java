@@ -8,6 +8,7 @@ public class Constants {
     public static final String LOOK_FOR_TRUSTED_OBJECT = "lookForTrustedObject";
     public static final String APPLYING_REQ_OBJ = "applying_req_obj";
     public static final String HIRING_REQ_OBJ = "hiring_req_obj";
+    public static final String NOTIFICATION_CHAT_DATA_BUNDLE = "noti_chat_data_bundle";
 
     public static final String AUTHENTICATE_AS = "authenticateAs";
     public static final String AUTHENTICATE_AS_USER = "0";

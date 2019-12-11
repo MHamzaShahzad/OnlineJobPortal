@@ -12,7 +12,9 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerChat"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_above="@id/layout_send_message"/>
 
         <LinearLayout
             android:id="@+id/layout_send_message"

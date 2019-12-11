@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -72,17 +73,22 @@ public class FragmentApplyForVerify extends DialogFragment {
         btn_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MyFirebaseDatabase.MAKE_TRUSTED_REFERENCE.child(firebaseUser.getUid()).setValue(buildLookForTrusted()).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(context, "Applied for verification, wait till you received a notification for your interview.", Toast.LENGTH_LONG).show();
-                            FragmentApplyForVerify.this.dismiss();
-                        } else
-                            Toast.makeText(context, "Can't send, please try again!", Toast.LENGTH_LONG).show();
+                if (TextUtils.isEmpty(editText_enter_message.getText())) {
+                    editText_enter_message.setError("Please write your proposal.");
+                } else if (!TextUtils.isEmpty(editText_enter_message.getText()) && editText_enter_message.length() < 30) {
+                    editText_enter_message.setError("Proposal should be at least 30 characters long.");
+                } else
+                    MyFirebaseDatabase.MAKE_TRUSTED_REFERENCE.child(firebaseUser.getUid()).setValue(buildLookForTrusted()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(context, "Applied for verification, wait till you received a notification for your interview.", Toast.LENGTH_LONG).show();
+                                FragmentApplyForVerify.this.dismiss();
+                            } else
+                                Toast.makeText(context, "Can't send, please try again!", Toast.LENGTH_LONG).show();
 
-                    }
-                });
+                        }
+                    });
             }
         });
     }

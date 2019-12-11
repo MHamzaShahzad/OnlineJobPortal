@@ -64,7 +64,7 @@ public class StartMainActivity extends AppCompatActivity implements FragmentInte
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         if (currentUser != null){
-            CommonFunctionsClass.moveToHome(context, currentUser.getUid());
+            CommonFunctionsClass.moveToHome(context, currentUser.getUid(), getIntent().getBundleExtra(Constants.NOTIFICATION_CHAT_DATA_BUNDLE));
         }
     }
 

@@ -7,6 +7,9 @@ import android.os.Bundle;
 import com.example.onlinejobportal.common.CommonFunctionsClass;
 import com.example.onlinejobportal.common.Constants;
 import com.example.onlinejobportal.R;
+import com.example.onlinejobportal.common.FragmentAppliedAtJobDescription;
+import com.example.onlinejobportal.common.FragmentChat;
+import com.example.onlinejobportal.common.FragmentHiringReqDescription;
 import com.example.onlinejobportal.common.FragmentJobsAppliedAt;
 import com.example.onlinejobportal.company.FragmentCreateEditCompanyProfile;
 import com.example.onlinejobportal.company.FragmentCreateNewJob;
@@ -14,7 +17,9 @@ import com.example.onlinejobportal.common.FragmentHiringRequests;
 import com.example.onlinejobportal.company.FragmentMyPostedJobs;
 import com.example.onlinejobportal.controllers.MyFirebaseDatabase;
 import com.example.onlinejobportal.interfaces.FragmentInteractionListenerInterface;
+import com.example.onlinejobportal.models.ApplyingRequest;
 import com.example.onlinejobportal.models.CompanyProfileModel;
+import com.example.onlinejobportal.models.HiringRequest;
 import com.example.onlinejobportal.user.FragmentAllUsers;
 
 import android.view.View;
@@ -75,6 +80,8 @@ public class HomeDrawerActivityCompany extends AppCompatActivity
 
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_home, new FragmentAllUsers(), Constants.TITLE_USERS_LIST).commit();
         loadCompanyProfileDataInNavigationHeader(navigationView.getHeaderView(0));
+
+        CommonFunctionsClass.openChatFromNotification(getIntent(), getSupportFragmentManager(), true);
     }
 
     @Override

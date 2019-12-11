@@ -11,6 +11,7 @@ import android.graphics.Color;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import android.util.Log;
 
 import androidx.annotation.RequiresApi;
@@ -18,9 +19,11 @@ import androidx.core.app.NotificationCompat;
 
 import com.example.onlinejobportal.R;
 import com.example.onlinejobportal.activities.StartMainActivity;
+import com.example.onlinejobportal.common.Constants;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
+import java.io.Serializable;
 import java.util.Random;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
@@ -37,6 +40,17 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         Log.e(TAG, "onMessageReceived: " + remoteMessage);
 
         final Intent intent = new Intent(this, StartMainActivity.class);
+
+        if (remoteMessage.getData().get(Constants.CHAT_ID_REF) != null && remoteMessage.getData().get(Constants.MESSAGE_RECEIVER_ID) != null) {
+
+            Bundle bundle = new Bundle();
+            bundle.putString(Constants.CHAT_ID_REF, remoteMessage.getData().get(Constants.CHAT_ID_REF));
+            bundle.putString(Constants.MESSAGE_RECEIVER_ID, remoteMessage.getData().get(Constants.MESSAGE_RECEIVER_ID));
+
+            intent.putExtra(Constants.NOTIFICATION_CHAT_DATA_BUNDLE, bundle);
+
+        }
+
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         int notificationID = new Random().nextInt(3000);
       /*
@@ -48,7 +62,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         }
 
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent,
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, notificationID, intent,
                 PendingIntent.FLAG_ONE_SHOT);
 
         Bitmap largeIcon = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher_foreground);
@@ -82,7 +96,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void setupChannels(NotificationManager notificationManager) {
         CharSequence adminChannelName = "New notification";
-        String adminChannelDescription = "Device to devie notification";
+        String adminChannelDescription = "Device to device notification";
 
         NotificationChannel adminChannel;
         adminChannel = new NotificationChannel(CHANNEL_ID, adminChannelName, NotificationManager.IMPORTANCE_HIGH);

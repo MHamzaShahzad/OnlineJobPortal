@@ -118,7 +118,9 @@ public class FragmentChat extends Fragment {
                                 context,
                                 arguments.getString(Constants.MESSAGE_RECEIVER_ID),
                                 "New Message",
-                                inputTextMessage.getText().toString().trim()
+                                inputTextMessage.getText().toString().trim(),
+                                arguments.getString(Constants.CHAT_ID_REF),
+                                arguments.getString(Constants.MESSAGE_RECEIVER_ID)
                         );
 
                 }

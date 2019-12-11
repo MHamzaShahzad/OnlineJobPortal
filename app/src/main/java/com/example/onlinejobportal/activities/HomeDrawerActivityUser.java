@@ -73,6 +73,9 @@ public class HomeDrawerActivityUser extends AppCompatActivity
 
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_home, new FragmentAllActiveJobs(), Constants.TITLE_JOBS).commit();
         loadUserProfileDataInNavigationHeader(navigationView.getHeaderView(0));
+
+        CommonFunctionsClass.openChatFromNotification(getIntent(), getSupportFragmentManager(), false);
+
     }
 
     @Override

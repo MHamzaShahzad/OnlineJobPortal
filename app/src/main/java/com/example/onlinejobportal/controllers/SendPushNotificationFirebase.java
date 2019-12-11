@@ -9,6 +9,8 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.example.onlinejobportal.common.Constants;
+import com.example.onlinejobportal.models.ApplyingRequest;
 import com.example.onlinejobportal.models.MySingleton;
 
 import org.json.JSONException;
@@ -22,7 +24,7 @@ public class SendPushNotificationFirebase {
     private static final String TAG = SendPushNotificationFirebase.class.getName();
 
     private static final String FCM_API = "https://fcm.googleapis.com/fcm/send";
-    private static final String serverKey = "key=" + "AAAAHwp-ooo:APA91bEQ3aGGe1wEg5mb5unp0ttaYieDAoYgWeqblyEITB98huTV3BtGpkmHd58_MmOqYUFD4IudS-P2j-kVkZXMFJv80CJOwp83xNWEQMFRMA-M3i_0lf0PCB2ld8QF-AD1X8lKuMte";
+    private static final String serverKey = "key=" + "AAAAvO0-fEQ:APA91bGfaU9Afe2OdEiLSDGWpte6LKcJSbxy5EzucNxGEcnaKCwHPIXVH-FcOLMYYqD__OFi3gcOnlkVHx-5rX50tSfm07YU1Ru2lKRJI3w9V9qUhhnaBUOtkDPVyBYlmuM6VygRy6DA";
     private static final String contentType = "application/json";
 
     public static void buildAndSendNotification(Context context, String TOPIC_SEND_TO, String notificationTitle, String notificationMsg){
@@ -31,6 +33,25 @@ public class SendPushNotificationFirebase {
         try {
             notificationBody.put("title", notificationTitle);
             notificationBody.put("message", notificationMsg);
+
+            notification.put("to", "/topics/" + TOPIC_SEND_TO);
+            notification.put("data", notificationBody);
+        } catch (JSONException e) {
+            Log.e(TAG, "onCreate: " + e.getMessage() );
+        }
+        sendNotification(context, notification);
+    }
+
+    public static void buildAndSendNotification(Context context, String TOPIC_SEND_TO, String notificationTitle, String notificationMsg, String chatId, String receiverId){
+        JSONObject notification = new JSONObject();
+        JSONObject notificationBody = new JSONObject();
+        try {
+
+
+            notificationBody.put("title", notificationTitle);
+            notificationBody.put("message", notificationMsg);
+            notificationBody.put(Constants.CHAT_ID_REF, chatId);
+            notificationBody.put(Constants.MESSAGE_RECEIVER_ID, receiverId);
 
             notification.put("to", "/topics/" + TOPIC_SEND_TO);
             notification.put("data", notificationBody);

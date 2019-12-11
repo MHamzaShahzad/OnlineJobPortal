@@ -101,7 +101,7 @@ public class LoginActivity extends AppCompatActivity {
                             Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             if (user != null) {
-                                CommonFunctionsClass.moveToHome(context, user.getUid());
+                                CommonFunctionsClass.moveToHome(context, user.getUid(), null);
                             }
                         } else {
                             // If sign in fails, display a message to the user.
