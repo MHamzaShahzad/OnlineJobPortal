@@ -2,7 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_background"
+    android:background="@color/colorWhite"
     android:clickable="true">
 
     <RelativeLayout
@@ -44,7 +44,7 @@
                         android:fontFamily="@font/raleway_semi_bold"
                         android:text="Job Title"
                         android:textAlignment="center"
-                        android:textColor="@color/colorWhite"
+                        android:textColor="@color/colorPrimaryDark"
                         android:textSize="17sp"
                         android:textStyle="bold" />
 
@@ -58,7 +58,7 @@
                         android:fontFamily="@font/ralewaylight"
                         android:text="Company Name"
                         android:textAlignment="center"
-                        android:textColor="@color/colorWhite"
+                        android:textColor="@color/colorPrimaryDark"
                         android:textSize="17sp" />
 
 
@@ -73,7 +73,7 @@
                         android:fontFamily="@font/ralewaylight"
                         android:text="Location"
                         android:textAlignment="center"
-                        android:textColor="@color/colorWhite"
+                        android:textColor="@color/colorPrimaryDark"
                         android:textSize="17sp" />
 
 
@@ -86,7 +86,7 @@
                         android:fontFamily="@font/ralewaylight"
                         android:text="Experience"
                         android:textAlignment="center"
-                        android:textColor="@color/colorWhite"
+                        android:textColor="@color/colorPrimaryDark"
                         android:textSize="17sp" />
 
 
@@ -99,7 +99,7 @@
                         android:fontFamily="@font/ralewaylight"
                         android:text="Job Department"
                         android:textAlignment="center"
-                        android:textColor="@color/colorWhite"
+                        android:textColor="@color/colorPrimaryDark"
                         android:textSize="17sp" />
                 </RelativeLayout>
 
@@ -124,7 +124,7 @@
                             android:fontFamily="@font/ralewaylight"
                             android:text="Uploaded At"
                             android:textAlignment="center"
-                            android:textColor="@color/colorWhite"
+                            android:textColor="@color/colorPrimaryDark"
                             android:textSize="17sp" />
 
                         <TextView
@@ -135,7 +135,7 @@
                             android:padding="2dp"
                             android:text=""
                             android:textAlignment="center"
-                            android:textColor="@color/colorWhite"
+                            android:textColor="@color/colorPrimaryDark"
                             android:textSize="14sp" />
 
                     </LinearLayout>
@@ -156,7 +156,7 @@
                             android:fontFamily="@font/ralewaylight"
                             android:text="Due Date"
                             android:textAlignment="center"
-                            android:textColor="@color/colorWhite"
+                            android:textColor="@color/colorPrimaryDark"
                             android:textSize="17sp" />
 
                         <TextView
@@ -167,7 +167,7 @@
                             android:gravity="center"
                             android:padding="2dp"
                             android:text=""
-                            android:textColor="@color/colorWhite"
+                            android:textColor="@color/colorPrimaryDark"
                             android:textSize="14sp" />
 
                     </LinearLayout>
@@ -194,7 +194,7 @@
                             android:layout_weight="0.3"
                             android:fontFamily="@font/raleway_semi_bold"
                             android:text="Industry"
-                            android:textColor="@color/colorWhite"
+                            android:textColor="@color/colorPrimaryDark"
                             android:textSize="17sp" />
 
 
@@ -205,7 +205,7 @@
                             android:layout_weight="0.7"
                             android:fontFamily="@font/ralewaylight"
                             android:textAlignment="center"
-                            android:textColor="@color/colorWhite"
+                            android:textColor="@color/colorPrimaryDark"
                             android:textSize="14sp" />
 
                     </LinearLayout>
@@ -222,7 +222,7 @@
                             android:layout_weight="0.3"
                             android:fontFamily="@font/raleway_semi_bold"
                             android:text="Job Type"
-                            android:textColor="@color/colorWhite"
+                            android:textColor="@color/colorPrimaryDark"
                             android:textSize="17sp" />
 
 
@@ -233,7 +233,7 @@
                             android:layout_weight="0.7"
                             android:fontFamily="@font/ralewaylight"
                             android:textAlignment="center"
-                            android:textColor="@color/colorWhite"
+                            android:textColor="@color/colorPrimaryDark"
                             android:textSize="14sp" />
 
                     </LinearLayout>
@@ -250,7 +250,7 @@
                             android:layout_weight="0.3"
                             android:fontFamily="@font/raleway_semi_bold"
                             android:text="Education"
-                            android:textColor="@color/colorWhite"
+                            android:textColor="@color/colorPrimaryDark"
                             android:textSize="17sp" />
 
 
@@ -261,7 +261,7 @@
                             android:layout_weight="0.7"
                             android:fontFamily="@font/ralewaylight"
                             android:textAlignment="center"
-                            android:textColor="@color/colorWhite"
+                            android:textColor="@color/colorPrimaryDark"
                             android:textSize="14sp" />
 
                     </LinearLayout>
@@ -278,7 +278,7 @@
                             android:layout_weight="0.3"
                             android:fontFamily="@font/raleway_semi_bold"
                             android:text="Career Level"
-                            android:textColor="@color/colorWhite"
+                            android:textColor="@color/colorPrimaryDark"
                             android:textSize="17sp" />
 
 
@@ -289,7 +289,7 @@
                             android:layout_weight="0.7"
                             android:fontFamily="@font/ralewaylight"
                             android:textAlignment="center"
-                            android:textColor="@color/colorWhite"
+                            android:textColor="@color/colorPrimaryDark"
                             android:textSize="14sp" />
 
                     </LinearLayout>
@@ -306,7 +306,7 @@
                             android:layout_weight="0.3"
                             android:fontFamily="@font/raleway_semi_bold"
                             android:text="Gender"
-                            android:textColor="@color/colorWhite"
+                            android:textColor="@color/colorPrimaryDark"
                             android:textSize="17sp" />
 
 
@@ -317,7 +317,7 @@
                             android:layout_weight="0.7"
                             android:fontFamily="@font/ralewaylight"
                             android:textAlignment="center"
-                            android:textColor="@color/colorWhite"
+                            android:textColor="@color/colorPrimaryDark"
                             android:textSize="14sp" />
 
                     </LinearLayout>
@@ -335,7 +335,7 @@
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/raleway_semi_bold"
                         android:text="Description"
-                        android:textColor="@color/colorWhite"
+                        android:textColor="@color/colorPrimaryDark"
                         android:textSize="17sp" />
 
                     <TextView
@@ -347,7 +347,7 @@
                         android:fontFamily="@font/ralewaylight"
                         android:padding="5dp"
                         android:text=""
-                        android:textColor="@color/colorWhite"
+                        android:textColor="@color/colorPrimaryDark"
                         android:textSize="14sp" />
 
                 </LinearLayout>
@@ -363,7 +363,7 @@
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/raleway_semi_bold"
                         android:text="Specifications"
-                        android:textColor="@color/colorWhite"
+                        android:textColor="@color/colorPrimaryDark"
                         android:textSize="17sp" />
 
                     <TextView
@@ -375,7 +375,7 @@
                         android:fontFamily="@font/ralewaylight"
                         android:padding="5dp"
                         android:text=""
-                        android:textColor="@color/colorWhite"
+                        android:textColor="@color/colorPrimaryDark"
                         android:textSize="14sp" />
 
                 </LinearLayout>
@@ -389,7 +389,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:background="@color/colorWhite"
+            android:textColor="@color/colorWhite"
+            android:background="@drawable/style_button_solid"
             android:visibility="gone"
             android:text="Apply" />
 
@@ -398,7 +399,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:background="@color/colorWhite"
+            android:textColor="@color/colorWhite"
+            android:background="@drawable/style_button_solid"
             android:visibility="gone"
             android:text="Make Job Complete" />
 

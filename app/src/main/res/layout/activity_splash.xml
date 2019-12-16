@@ -7,21 +7,21 @@
     tools:context=".activities.SplashActivity"
     android:background="@color/colorWhite">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Let's Make Possible"
+        android:textColor="#353535"
+        android:visibility="invisible"
+        android:fontFamily="@font/raleway_semi_bold"
+        android:textSize="25sp"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/image"/>
+
     <ImageView
         android:layout_width="match_parent"
         android:id="@+id/image"
+        android:layout_centerInParent="true"
         android:layout_height="wrap_content"
-        android:src="@drawable/job_icon1"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Online Job Portal"
-        android:textSize="30sp"
-        android:textColor="@color/colorPrimaryDark"
-        android:typeface="serif"
-        android:fontFamily="@font/raleway_semi_bold"
-        android:textStyle="bold"
-        android:layout_below="@+id/image"
-        android:textAlignment="center" />
-
+        android:src="@drawable/logoproject"/>
 </RelativeLayout>

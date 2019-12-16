@@ -235,7 +235,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:background="@drawable/gradient_background"
+            android:fontFamily="@font/raleway_semi_bold"
+            android:background="@drawable/style_button_solid"
             android:text="Send Hiring Request"
             android:textColor="@color/colorWhite" />
 

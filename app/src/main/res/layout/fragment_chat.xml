@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorWhite"
     tools:context=".common.FragmentChat">
 
     <RelativeLayout
@@ -26,8 +27,12 @@
             <EditText
                 android:id="@+id/inputTextMessage"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_weight="0.8"
+                android:fontFamily="@font/ralewaylight"
+                android:background="@drawable/edittextstyle"
+                android:textColor="@color/colorPrimaryDark"
+                android:textColorHint="@color/colorPrimaryDark"
                 android:inputType="textMultiLine"
                 android:hint="Enter your message..."
                 />
@@ -35,8 +40,9 @@
             <ImageButton
                 android:id="@+id/btnSendMessage"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_weight="0.2"
+                android:background="@color/colorPrimaryDark"
                 android:src="@drawable/ic_send_black_"/>
 
         </LinearLayout>

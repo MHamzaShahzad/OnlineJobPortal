@@ -2,12 +2,12 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorWhite"
     android:fillViewport="true">
 
     <RelativeLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/gradient_background"
         android:padding="10dp"
         tools:context=".activities.LoginActivity">
         <!--<TextView-->
@@ -20,11 +20,20 @@
         <!--android:layout_marginTop="55dp"-->
         <!--android:textStyle="bold"-->
         <!--android:textAlignment="center"/>-->
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:layout_marginTop="50dp"
+            android:src="@drawable/logoproject"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/logoComp"
+            android:layout_centerHorizontal="true"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/logoComp">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/layoutFirstName"
@@ -41,8 +50,7 @@
                     android:fontFamily="@font/ralewaylight"
                     android:inputType="textPersonName"
                     android:padding="10dp"
-                    android:textColor="@color/colorWhite"
-                    android:textColorHint="#ffffff" />
+                    android:textColor="@color/colorTextBluu" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -63,8 +71,7 @@
                     android:fontFamily="@font/ralewaylight"
                     android:inputType="textEmailAddress"
                     android:padding="10dp"
-                    android:textColor="@color/colorWhite"
-                    android:textColorHint="#ffffff" />
+                    android:textColor="@color/colorTextBluu" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -85,22 +92,23 @@
                     android:fontFamily="@font/ralewaylight"
                     android:inputType="textPassword"
                     android:padding="10dp"
-                    android:textColor="@color/colorWhite"
-                    android:textColorHint="#ffffff" />
+                    android:textColor="@color/colorTextBluu" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/btnSignUp"
-                android:layout_width="200dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/passwordTextLayout"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="15dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginLeft="50dp"
                 android:background="@drawable/style_button_solid"
                 android:text="Sign Up"
-                android:textAllCaps="false"
-                android:fontFamily="@font/ralewaylight"
+                android:textAllCaps="true"
+                android:fontFamily="@font/raleway_semi_bold"
                 android:textColor="@color/colorWhite" />
 
         </RelativeLayout>

@@ -3,13 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorWhite"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fillViewport="true">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/gradient_background"
         android:padding="10dp"
         tools:context=".activities.LoginActivity">
         <TextView
@@ -24,15 +24,25 @@
             android:id="@+id/admin"
             android:fontFamily="@font/raleway_semi_bold"
             android:textColor="@color/colorWhite"
+            android:textAllCaps="true"
             android:textSize="15sp"
             android:background="@drawable/style_button_solid_circle"
             android:text=" Admin ?" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:src="@drawable/logoproject"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:id="@+id/logoComp"
+            android:layout_below="@id/admin"
+            android:layout_centerHorizontal="true"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:id="@+id/login_layout"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true">
+            android:layout_below="@id/logoComp">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/emailTextLayout"
@@ -50,8 +60,7 @@
                     android:inputType="textEmailAddress"
                     android:padding="10dp"
                     android:fontFamily="@font/ralewaylight"
-                    android:textColor="@color/colorWhite"
-                    android:textColorHint="#ffffff" />
+                    android:textColor="@color/colorPrimaryDark" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -73,8 +82,7 @@
                     android:inputType="textPassword"
                     android:padding="10dp"
                     android:fontFamily="@font/ralewaylight"
-                    android:textColor="@color/colorWhite"
-                    android:textColorHint="#ffffff" />
+                    android:textColor="@color/colorPrimaryDark" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -87,8 +95,8 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/style_button_solid"
                 android:paddingLeft="60dp"
-                android:fontFamily="@font/ralewaylight"
-                android:textAllCaps="false"
+                android:fontFamily="@font/raleway_semi_bold"
+                android:textAllCaps="true"
                 android:paddingRight="60dp"
                 android:text="Submit"
                 android:textColor="#fff" />
@@ -102,10 +110,12 @@
             android:onClick="moveToSignUp"
             android:layout_marginBottom="10dp"
             android:layout_alignParentBottom="true"
+            android:textAllCaps="true"
             android:fontFamily="@font/raleway_semi_bold"
-            android:textColor="@color/colorWhite"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="10dp"
             android:background="@drawable/border_style_edittext"
-            android:text="Create New Account." />
+            android:text="Create New Account" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -115,11 +125,13 @@
             android:layout_marginBottom="10dp"
             android:layout_alignParentRight="true"
             android:layout_marginTop="20dp"
+            android:textAllCaps="true"
+            android:textSize="10dp"
             android:fontFamily="@font/raleway_semi_bold"
-            android:textColor="@color/colorWhite"
+            android:textColor="@color/colorPrimaryDark"
             android:background="@drawable/border_style_edittext"
             android:onClick="forgotPassword"
-            android:text="Forgot Password" />
+            android:text="Forgot Password?" />
 
     </RelativeLayout>
 

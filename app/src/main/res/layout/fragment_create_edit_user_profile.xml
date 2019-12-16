@@ -75,7 +75,8 @@
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Colored.EditText.OutlinedBox"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/firstName"
@@ -84,6 +85,7 @@
                         android:background="@drawable/edittextstyle"
                         android:fontFamily="@font/ralewaylight"
                         android:hint="First Name"
+                        android:textColor="@color/colorPrimaryDark"
                         android:inputType="textPersonName"
                         android:padding="10dp"/>
 
@@ -93,7 +95,8 @@
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Colored.EditText.OutlinedBox"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/lastName"
@@ -102,6 +105,7 @@
                         android:background="@drawable/edittextstylewhite"
                         android:fontFamily="@font/ralewaylight"
                         android:hint="Last Name"
+                        android:textColor="@color/colorPrimaryDark"
                         android:inputType="textPersonName"
                         android:padding="10dp" />
 
@@ -110,6 +114,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Colored.EditText.OutlinedBox"
                     android:layout_width="match_parent"
+                    android:layout_marginTop="5dp"
                     android:layout_height="wrap_content">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -121,6 +126,7 @@
                         android:focusableInTouchMode="false"
                         android:fontFamily="@font/ralewaylight"
                         android:hint="Email Address"
+                        android:textColor="@color/colorPrimaryDark"
                         android:inputType="textEmailAddress"
                         android:padding="10dp" />
 
@@ -130,7 +136,8 @@
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Colored.EditText.OutlinedBox"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/phoneNumber"
@@ -139,6 +146,7 @@
                         android:background="@drawable/edittextstylewhite"
                         android:fontFamily="@font/ralewaylight"
                         android:hint="Phone Number"
+                        android:textColor="@color/colorPrimaryDark"
                         android:inputType="phone"
                         android:padding="10dp"/>
 
@@ -147,6 +155,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Colored.EditText.OutlinedBox"
                     android:layout_width="match_parent"
+                    android:layout_marginTop="5dp"
                     android:layout_height="wrap_content">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -157,6 +166,7 @@
                         android:fontFamily="@font/ralewaylight"
                         android:hint="Introduction"
                         android:inputType="text"
+                        android:textColor="@color/colorPrimaryDark"
                         android:padding="10dp"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -164,7 +174,8 @@
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Colored.EditText.OutlinedBox"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/userSkills"
@@ -174,6 +185,7 @@
                         android:fontFamily="@font/ralewaylight"
                         android:hint="Enter your Skills"
                         android:inputType="text"
+                        android:textColor="@color/colorPrimaryDark"
                         android:padding="10dp"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -181,6 +193,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Colored.EditText.OutlinedBox"
                     android:layout_width="match_parent"
+                    android:layout_marginTop="5dp"
                     android:layout_height="wrap_content">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -191,6 +204,7 @@
                         android:fontFamily="@font/ralewaylight"
                         android:hint="Current Job"
                         android:inputType="text"
+                        android:textColor="@color/colorPrimaryDark"
                         android:padding="10dp"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -198,6 +212,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Colored.EditText.OutlinedBox"
                     android:layout_width="match_parent"
+                    android:layout_marginTop="5dp"
                     android:layout_height="wrap_content">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -207,6 +222,7 @@
                         android:background="@drawable/edittextstylewhite"
                         android:fontFamily="@font/ralewaylight"
                         android:hint="Higher Education"
+                        android:textColor="@color/colorPrimaryDark"
                         android:inputType="text"
                         android:padding="10dp"/>
 
@@ -215,7 +231,9 @@
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Colored.EditText.OutlinedBox"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="5dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/userAge"
@@ -224,6 +242,7 @@
                         android:background="@drawable/edittextstylewhite"
                         android:fontFamily="@font/ralewaylight"
                         android:hint="Age"
+                        android:textColor="@color/colorPrimaryDark"
                         android:inputType="text"
                         android:padding="10dp" />
 
@@ -233,6 +252,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Colored.EditText.OutlinedBox"
                     android:layout_width="match_parent"
+                    android:layout_marginTop="5dp"
                     android:layout_height="wrap_content">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -242,6 +262,7 @@
                         android:background="@drawable/edittextstylewhite"
                         android:fontFamily="@font/ralewaylight"
                         android:hint="City"
+                        android:textColor="@color/colorPrimaryDark"
                         android:inputType="text"
                         android:padding="10dp"/>
 
@@ -250,6 +271,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Colored.EditText.OutlinedBox"
                     android:layout_width="match_parent"
+                    android:layout_marginTop="5dp"
                     android:layout_height="wrap_content">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -259,6 +281,7 @@
                         android:background="@drawable/edittextstylewhite"
                         android:fontFamily="@font/ralewaylight"
                         android:hint="Country"
+                        android:textColor="@color/colorPrimaryDark"
                         android:inputType="text"
                         android:padding="10dp"/>
 
@@ -351,14 +374,14 @@
 
                 <Button
                     android:id="@+id/btnSubmit"
-                    android:layout_width="200dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/style_button_solid"
                     android:fontFamily="@font/ralewaylight"
-                    android:paddingLeft="60dp"
-                    android:paddingRight="60dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
                     android:text="SUBMIT"
                     android:textColor="@color/colorWhite" />
 

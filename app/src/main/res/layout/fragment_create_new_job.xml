@@ -304,15 +304,15 @@
 
                 <Button
                     android:id="@+id/submitJob"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:background="@drawable/style_button_solid"
                     android:fontFamily="@font/ralewaylight"
-                    android:paddingLeft="70dp"
-                    android:paddingRight="70dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_marginLeft="50dp"
                     android:text="Submit"
-                    android:textAllCaps="false"
+                    android:textAllCaps="true"
                     android:textColor="#fff" />
 
             </LinearLayout>

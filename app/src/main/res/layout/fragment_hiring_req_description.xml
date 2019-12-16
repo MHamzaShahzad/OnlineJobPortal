@@ -3,8 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_background"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:clickable="true"
+    android:background="@color/colorWhite"
     tools:context=".common.FragmentHiringReqDescription">
 
     <RelativeLayout
@@ -25,7 +26,7 @@
                     android:id="@+id/layout_user_description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+                   android:visibility="gone"
                     android:orientation="vertical">
 
                     <LinearLayout
@@ -50,7 +51,7 @@
                             android:layout_gravity="center"
                             android:layout_marginTop="10dp"
                             android:fontFamily="@font/raleway_semi_bold"
-                            android:textColor="@color/colorWhite"
+                            android:textColor="@color/colorPrimaryDark"
                             android:textSize="17sp"
                             android:textStyle="bold" />
 
@@ -64,6 +65,7 @@
                         android:layout_centerHorizontal="true"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="-50dp"
+                        app:cardBackgroundColor="@color/colorPrimaryDark"
                         android:layout_marginRight="10dp"
                         android:layout_marginBottom="1dp"
                         android:padding="10dp">
@@ -89,7 +91,7 @@
                                     android:layout_gravity="center"
                                     android:fontFamily="@font/raleway_semi_bold"
                                     android:text="Current Job"
-                                    android:textColor="@color/colorPrimaryDark"
+                                    android:textColor="@color/colorWhite"
                                     android:textSize="15sp" />
 
                                 <TextView
@@ -102,7 +104,7 @@
                                     android:fontFamily="@font/ralewaylight"
                                     android:lines="3"
                                     android:text="Nill"
-                                    android:textColor="@color/colorPrimaryDark"
+                                    android:textColor="@color/colorWhite"
                                     android:textSize="13sp"
                                     android:textStyle="bold" />
 
@@ -122,7 +124,7 @@
                                     android:layout_gravity="center"
                                     android:fontFamily="@font/raleway_semi_bold"
                                     android:text="Age"
-                                    android:textColor="@color/colorPrimaryDark"
+                                    android:textColor="@color/colorWhite"
                                     android:textSize="15sp" />
 
                                 <TextView
@@ -133,7 +135,7 @@
                                     android:layout_marginTop="15dp"
                                     android:fontFamily="sans-serif-light"
                                     android:text="Nill"
-                                    android:textColor="@color/colorPrimaryDark"
+                                    android:textColor="@color/colorWhite"
                                     android:textSize="13sp"
                                     android:textStyle="bold" />
 
@@ -153,7 +155,7 @@
                                     android:layout_gravity="center"
                                     android:fontFamily="@font/raleway_semi_bold"
                                     android:text="Skill"
-                                    android:textColor="@color/colorPrimaryDark"
+                                    android:textColor="@color/colorWhite"
                                     android:textSize="15sp" />
 
                                 <TextView
@@ -165,7 +167,7 @@
                                     android:fontFamily="@font/ralewaylight"
                                     android:lines="3"
                                     android:text="Nill"
-                                    android:textColor="@color/colorPrimaryDark"
+                                    android:textColor="@color/colorWhite"
                                     android:textSize="13sp"
                                     android:textStyle="bold" />
 
@@ -180,7 +182,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/card_main_intro"
                         android:layout_margin="20dp"
-                        android:background="@color/colorWhite"
+                        android:background="@color/colorPrimaryDark"
                         android:orientation="vertical">
 
                         <TextView
@@ -189,7 +191,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/ralewaylight"
                             android:padding="10dp"
-                            android:textColor="@color/colorPrimaryDark"
+                            android:textColor="@color/colorWhite"
                             android:textSize="17sp" />
 
                         <TextView
@@ -198,7 +200,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-light"
                             android:padding="10dp"
-                            android:textColor="@color/colorPrimaryDark"
+                            android:textColor="@color/colorWhite"
                             android:textSize="17sp" />
 
                         <TextView
@@ -207,7 +209,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/ralewaylight"
                             android:padding="10dp"
-                            android:textColor="@color/colorPrimaryDark"
+                            android:textColor="@color/colorWhite"
                             android:textSize="17sp" />
 
                         <TextView
@@ -216,7 +218,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/ralewaylight"
                             android:padding="10dp"
-                            android:textColor="@color/colorPrimaryDark"
+                            android:textColor="@color/colorWhite"
                             android:textSize="17sp" />
 
                         <TextView
@@ -225,7 +227,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/ralewaylight"
                             android:padding="10dp"
-                            android:textColor="@color/colorPrimaryDark"
+                            android:textColor="@color/colorWhite"
                             android:textSize="17sp" />
 
                         <TextView
@@ -236,7 +238,7 @@
                             android:padding="10dp"
                             android:text="Chat With User"
                             android:textAlignment="center"
-                            android:textColor="@color/colorPrimaryDark"
+                            android:textColor="@color/colorWhite"
                             android:textSize="17sp" />
 
                     </LinearLayout>
@@ -270,7 +272,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginTop="10dp"
-                            android:textColor="@color/colorWhite"
+                            android:textColor="@color/colorPrimaryDark"
                             android:textSize="19sp"
                             android:textStyle="bold" />
 
@@ -311,7 +313,7 @@
                                     android:fontFamily="@font/raleway_semi_bold"
                                     android:text="Company Type"
                                     android:textAlignment="center"
-                                    android:textColor="#102286"
+                                    android:textColor="@color/colorPrimaryDark"
                                     android:textSize="15sp" />
 
                                 <TextView
@@ -319,6 +321,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
+                                    android:textColor="@color/colorPrimaryDark"
                                     android:fontFamily="@font/ralewaylight"
                                     android:textAlignment="center"
                                     android:textSize="14sp" />
@@ -340,7 +343,7 @@
                                     android:fontFamily="@font/raleway_semi_bold"
                                     android:text="Phone#"
                                     android:textAlignment="center"
-                                    android:textColor="#102286"
+                                    android:textColor="@color/colorPrimaryDark"
                                     android:textSize="15sp" />
 
                                 <TextView
@@ -348,6 +351,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
+                                    android:textColor="@color/colorPrimaryDark"
                                     android:fontFamily="@font/ralewaylight"
                                     android:textAlignment="center"
                                     android:textSize="14sp" />
@@ -418,7 +422,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Company Proposal"
-                        android:textColor="@color/colorWhite"
+                        android:textColor="@color/colorPrimaryDark"
                         android:fontFamily="@font/raleway_semi_bold"
                         android:layout_marginBottom="5dp"
                         android:textSize="19sp"/>
@@ -428,7 +432,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/edittextstyle"
-                        android:textColor="@color/colorWhite"
+                        android:textColor="@color/colorPrimaryDark"
                         android:fontFamily="@font/ralewaylight"
                         />
 
@@ -459,7 +463,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="2.5dp"
                     android:layout_weight="0.5"
-                    android:background="@color/colorWhite"
+                    android:textColor="@color/colorWhite"
+                    android:background="@drawable/style_button_solid"
                     android:text="Accept" />
 
                 <Button
@@ -468,7 +473,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="2.5dp"
                     android:layout_weight="0.5"
-                    android:background="@color/colorWhite"
+                    android:textColor="@color/colorWhite"
+                    android:background="@drawable/style_button_solid"
                     android:text="Reject" />
 
             </LinearLayout>
@@ -487,7 +493,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="2.5dp"
                     android:layout_weight="0.5"
-                    android:background="@color/colorWhite"
+                    android:background="@drawable/style_button_solid"
+                    android:textColor="@color/colorWhite"
                     android:text="Hire" />
 
                 <Button
@@ -496,7 +503,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="2.5dp"
                     android:layout_weight="0.5"
-                    android:background="@color/colorWhite"
+                    android:background="@drawable/style_button_solid"
+                    android:textColor="@color/colorWhite"
                     android:text="Not Hire" />
 
             </LinearLayout>

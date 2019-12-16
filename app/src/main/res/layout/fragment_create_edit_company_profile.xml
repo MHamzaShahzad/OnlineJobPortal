@@ -2,7 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_background"
+    android:background="@color/colorWhite"
     android:clickable="true">
 
     <ScrollView
@@ -18,8 +18,8 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/companyImage"
-                android:layout_width="170dp"
-                android:layout_height="170dp"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
                 android:layout_marginBottom="10dp"
                 android:src="@drawable/useravatar"
                 android:layout_gravity="center"/>
@@ -28,7 +28,8 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 style="@style/EditText.OutlinedBox"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/companyName"
@@ -39,15 +40,15 @@
                     android:background="@drawable/edittextstyle"
                     android:padding="10dp"
                     android:fontFamily="@font/ralewaylight"
-                    android:textColor="@color/colorWhite"
-                    android:textColorHint="#fff"/>
+                    android:textColor="@color/colorPrimaryDark" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 style="@style/EditText.OutlinedBox"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/companyEmailAddress"
@@ -60,15 +61,15 @@
                     android:background="@drawable/edittextstyle"
                     android:padding="10dp"
                     android:fontFamily="@font/ralewaylight"
-                    android:textColor="@color/colorWhite"
-                    android:textColorHint="#fff"/>
+                    android:textColor="@color/colorPrimaryDark" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 style="@style/EditText.OutlinedBox"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/companyPhoneNumber"
@@ -79,15 +80,15 @@
                     android:background="@drawable/edittextstyle"
                     android:padding="10dp"
                     android:fontFamily="@font/ralewaylight"
-                    android:textColor="@color/colorWhite"
-                    android:textColorHint="#fff"/>
+                    android:textColor="@color/colorPrimaryDark" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 style="@style/EditText.OutlinedBox"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/companyCity"
@@ -98,14 +99,14 @@
                     android:background="@drawable/edittextstyle"
                     android:padding="10dp"
                     android:fontFamily="@font/ralewaylight"
-                    android:textColor="@color/colorWhite"
-                    android:textColorHint="#fff"/>
+                    android:textColor="@color/colorPrimaryDark" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 style="@style/EditText.OutlinedBox"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/companyCountry"
@@ -116,14 +117,14 @@
                     android:background="@drawable/edittextstyle"
                     android:padding="10dp"
                     android:fontFamily="@font/ralewaylight"
-                    android:textColor="@color/colorWhite"
-                    android:textColorHint="#fff"/>
+                    android:textColor="@color/colorPrimaryDark" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 style="@style/EditText.OutlinedBox"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/companyAbout"
@@ -137,8 +138,7 @@
                     android:background="@drawable/edittextstyle"
                     android:padding="10dp"
                     android:fontFamily="@font/ralewaylight"
-                    android:textColor="@color/colorWhite"
-                    android:textColorHint="#fff"/>
+                    android:textColor="@color/colorPrimaryDark" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -150,7 +150,7 @@
                 android:padding="10dp"
                 android:fontFamily="@font/raleway_semi_bold"
                 android:textStyle="bold"
-                android:textColor="@color/colorWhite"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="15sp"/>
 
             <RadioGroup
@@ -165,7 +165,7 @@
                     android:layout_height="wrap_content"
                     android:text="Government"
                     android:fontFamily="@font/ralewaylight"
-                    android:textColor="@color/colorWhite"/>
+                    android:textColor="@color/colorPrimaryDark"/>
 
                 <RadioButton
                     android:id="@+id/companyPvt"
@@ -174,21 +174,21 @@
                     android:text="Private LTD"
                     android:fontFamily="@font/ralewaylight"
                     android:layout_marginLeft="20dp"
-                    android:textColor="@color/colorWhite"/>
+                    android:textColor="@color/colorPrimaryDark"/>
 
             </RadioGroup>
 
             <Button
                 android:id="@+id/companyBtnSubmit"
-                android:layout_width="200dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="SUBMIT"
                 android:fontFamily="@font/ralewaylight"
                 android:textAllCaps="false"
                 android:background="@drawable/style_button_solid"
-                android:paddingLeft="60dp"
-                android:paddingRight="60dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginLeft="50dp"
                 android:textColor="#fff"
                 android:layout_marginTop="10dp"/>
 
