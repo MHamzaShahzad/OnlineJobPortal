@@ -21,24 +21,24 @@
         <!--android:textStyle="bold"-->
         <!--android:textAlignment="center"/>-->
         <ImageView
+            android:id="@+id/logoComp"
             android:layout_width="wrap_content"
             android:layout_height="200dp"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="50dp"
-            android:src="@drawable/logoproject"
             android:layout_marginBottom="10dp"
-            android:id="@+id/logoComp"
-            android:layout_centerHorizontal="true"/>
+            android:src="@drawable/logoproject" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_below="@id/logoComp">
+            android:layout_below="@id/logoComp"
+            android:layout_marginTop="10dp">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/layoutFirstName"
-                android:layout_width="match_parent"
                 style="@style/EditText.OutlinedBox"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -46,19 +46,19 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/edittextstyle"
-                    android:hint="Company Name"
                     android:fontFamily="@font/ralewaylight"
+                    android:hint="Company Name"
                     android:inputType="textPersonName"
                     android:padding="10dp"
-                    android:textColor="@color/colorTextBluu" />
+                    android:textColor="@color/colorTextBlue" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/emailTextLayout"
+                style="@style/EditText.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/EditText.OutlinedBox"
                 android:layout_below="@id/layoutFirstName"
                 android:layout_marginTop="7dp">
 
@@ -67,19 +67,19 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/edittextstyle"
-                    android:hint="Email"
                     android:fontFamily="@font/ralewaylight"
+                    android:hint="Email"
                     android:inputType="textEmailAddress"
                     android:padding="10dp"
-                    android:textColor="@color/colorTextBluu" />
+                    android:textColor="@color/colorTextBlue" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/passwordTextLayout"
+                style="@style/EditText.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/EditText.OutlinedBox"
                 android:layout_below="@id/emailTextLayout"
                 android:layout_marginTop="7dp">
 
@@ -88,11 +88,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/edittextstyle"
-                    android:hint="Password"
                     android:fontFamily="@font/ralewaylight"
+                    android:hint="Password"
                     android:inputType="textPassword"
                     android:padding="10dp"
-                    android:textColor="@color/colorTextBluu" />
+                    android:textColor="@color/colorTextBlue" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -102,13 +102,13 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/passwordTextLayout"
                 android:layout_centerHorizontal="true"
+                android:layout_marginLeft="50dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginRight="50dp"
-                android:layout_marginLeft="50dp"
                 android:background="@drawable/style_button_solid"
+                android:fontFamily="@font/raleway_semi_bold"
                 android:text="Sign Up"
                 android:textAllCaps="true"
-                android:fontFamily="@font/raleway_semi_bold"
                 android:textColor="@color/colorWhite" />
 
         </RelativeLayout>

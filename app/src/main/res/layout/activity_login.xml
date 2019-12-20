@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fillViewport="true">
 
     <RelativeLayout
@@ -12,43 +12,44 @@
         android:layout_height="wrap_content"
         android:padding="10dp"
         tools:context=".activities.LoginActivity">
+
         <TextView
+            android:id="@+id/admin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:onClick="loginAdmin"
             android:layout_marginTop="5dp"
-            android:padding="10dp"
             android:layout_marginRight="5dp"
-            android:id="@+id/admin"
-            android:fontFamily="@font/raleway_semi_bold"
-            android:textColor="@color/colorWhite"
-            android:textAllCaps="true"
-            android:textSize="15sp"
             android:background="@drawable/style_button_solid_circle"
-            android:text=" Admin ?" />
+            android:fontFamily="@font/raleway_semi_bold"
+            android:onClick="loginAdmin"
+            android:padding="10dp"
+            android:text=" Admin ?"
+            android:textAllCaps="true"
+            android:textColor="@color/colorWhite"
+            android:textSize="15sp" />
+
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="200dp"
-            android:src="@drawable/logoproject"
+            android:id="@+id/logoComp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_below="@id/admin"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
-            android:id="@+id/logoComp"
-            android:layout_below="@id/admin"
-            android:layout_centerHorizontal="true"/>
+            android:src="@drawable/logoproject" />
 
         <RelativeLayout
-            android:layout_width="match_parent"
             android:id="@+id/login_layout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/logoComp">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/emailTextLayout"
-                android:layout_width="match_parent"
-                app:hintTextAppearance="@style/EditText.OutlinedBox"
                 style="@style/EditText.OutlinedBox"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -56,19 +57,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/edittextstyle"
+                    android:fontFamily="@font/ralewaylight"
                     android:hint="Email"
                     android:inputType="textEmailAddress"
                     android:padding="10dp"
-                    android:fontFamily="@font/ralewaylight"
                     android:textColor="@color/colorPrimaryDark" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/passwordTextLayout"
-                android:layout_width="match_parent"
-                app:hintTextAppearance="@style/EditText.OutlinedBox"
                 style="@style/EditText.OutlinedBox"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/emailTextLayout"
                 android:layout_marginTop="7dp">
@@ -78,10 +78,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/edittextstyle"
+                    android:fontFamily="@font/ralewaylight"
                     android:hint="Password"
                     android:inputType="textPassword"
                     android:padding="10dp"
-                    android:fontFamily="@font/ralewaylight"
                     android:textColor="@color/colorPrimaryDark" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -91,13 +91,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/passwordTextLayout"
-                android:layout_centerInParent="true"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/style_button_solid"
-                android:paddingLeft="60dp"
                 android:fontFamily="@font/raleway_semi_bold"
-                android:textAllCaps="true"
-                android:paddingRight="60dp"
+                android:paddingLeft="60dp"
+                android:paddingRight="50dp"
+                android:layout_marginBottom="60dp"
                 android:text="Submit"
                 android:textColor="#fff" />
 
@@ -106,32 +105,31 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:onClick="moveToSignUp"
-            android:layout_marginBottom="10dp"
             android:layout_alignParentBottom="true"
-            android:textAllCaps="true"
-            android:fontFamily="@font/raleway_semi_bold"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/border_style_edittext"
-            android:text="Create New Account" />
+            android:fontFamily="@font/raleway_semi_bold"
+            android:onClick="moveToSignUp"
+            android:text="Create New Account"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="10dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="10dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="20dp"
-            android:textAllCaps="true"
-            android:textSize="10dp"
-            android:fontFamily="@font/raleway_semi_bold"
-            android:textColor="@color/colorPrimaryDark"
             android:background="@drawable/border_style_edittext"
+            android:fontFamily="@font/raleway_semi_bold"
             android:onClick="forgotPassword"
-            android:text="Forgot Password?" />
+            android:text="Forgot Password?"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="10dp" />
 
     </RelativeLayout>
 

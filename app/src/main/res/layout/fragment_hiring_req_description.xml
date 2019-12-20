@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:clickable="true"
     android:background="@color/colorWhite"
+    android:clickable="true"
     tools:context=".common.FragmentHiringReqDescription">
 
     <RelativeLayout
@@ -13,8 +13,11 @@
         android:layout_height="match_parent">
 
         <ScrollView
+            android:id="@+id/scrollView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_above="@id/layout_controls"
             android:fillViewport="true">
 
             <LinearLayout
@@ -26,7 +29,7 @@
                     android:id="@+id/layout_user_description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                   android:visibility="gone"
+                    android:visibility="gone"
                     android:orientation="vertical">
 
                     <LinearLayout
@@ -51,7 +54,7 @@
                             android:layout_gravity="center"
                             android:layout_marginTop="10dp"
                             android:fontFamily="@font/raleway_semi_bold"
-                            android:textColor="@color/colorPrimaryDark"
+                            android:textColor="@color/colorWhite"
                             android:textSize="17sp"
                             android:textStyle="bold" />
 
@@ -65,10 +68,10 @@
                         android:layout_centerHorizontal="true"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="-50dp"
-                        app:cardBackgroundColor="@color/colorPrimaryDark"
                         android:layout_marginRight="10dp"
                         android:layout_marginBottom="1dp"
-                        android:padding="10dp">
+                        android:padding="10dp"
+                        app:cardBackgroundColor="@color/colorPrimaryDark">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -249,8 +252,8 @@
                     android:id="@+id/layout_company_description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:visibility="visible">
 
                     <LinearLayout
                         android:id="@+id/layout_header_company"
@@ -321,9 +324,9 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
-                                    android:textColor="@color/colorPrimaryDark"
                                     android:fontFamily="@font/ralewaylight"
                                     android:textAlignment="center"
+                                    android:textColor="@color/colorPrimaryDark"
                                     android:textSize="14sp" />
 
                             </LinearLayout>
@@ -351,9 +354,9 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
-                                    android:textColor="@color/colorPrimaryDark"
                                     android:fontFamily="@font/ralewaylight"
                                     android:textAlignment="center"
+                                    android:textColor="@color/colorPrimaryDark"
                                     android:textSize="14sp" />
 
                             </LinearLayout>
@@ -379,6 +382,9 @@
                             android:textColor="@color/colorPrimaryDark"
                             android:textSize="17sp" />
 
+                        <View
+                            style="@style/Divider"/>
+
                         <TextView
                             android:id="@+id/companyAbout"
                             android:layout_width="match_parent"
@@ -387,6 +393,9 @@
                             android:padding="10dp"
                             android:textColor="@color/colorPrimaryDark"
                             android:textSize="17sp" />
+
+                        <View
+                            style="@style/Divider"/>
 
                         <TextView
                             android:id="@+id/companyLocation"
@@ -397,6 +406,9 @@
                             android:textColor="@color/colorPrimaryDark"
                             android:textSize="17sp" />
 
+                        <View
+                            style="@style/Divider"/>
+
                         <TextView
                             android:id="@+id/chatWithCompany"
                             android:layout_width="match_parent"
@@ -404,6 +416,7 @@
                             android:fontFamily="sans-serif-light"
                             android:padding="10dp"
                             android:text="View Chat"
+                            style="@style/Divider"
                             android:textAlignment="center"
                             android:textColor="@color/colorPrimaryDark"
                             android:textSize="17sp" />
@@ -421,20 +434,19 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:fontFamily="@font/raleway_semi_bold"
                         android:text="Company Proposal"
                         android:textColor="@color/colorPrimaryDark"
-                        android:fontFamily="@font/raleway_semi_bold"
-                        android:layout_marginBottom="5dp"
-                        android:textSize="19sp"/>
+                        android:textSize="19sp" />
 
                     <TextView
                         android:id="@+id/textCompanyProposal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/edittextstyle"
-                        android:textColor="@color/colorPrimaryDark"
                         android:fontFamily="@font/ralewaylight"
-                        />
+                        android:textColor="@color/colorPrimaryDark" />
 
                 </LinearLayout>
 
@@ -463,9 +475,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="2.5dp"
                     android:layout_weight="0.5"
-                    android:textColor="@color/colorWhite"
                     android:background="@drawable/style_button_solid"
-                    android:text="Accept" />
+                    android:text="Accept"
+                    android:textColor="@color/colorWhite" />
 
                 <Button
                     android:id="@+id/btnRejectRequest"
@@ -473,9 +485,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="2.5dp"
                     android:layout_weight="0.5"
-                    android:textColor="@color/colorWhite"
                     android:background="@drawable/style_button_solid"
-                    android:text="Reject" />
+                    android:text="Reject"
+                    android:textColor="@color/colorWhite" />
 
             </LinearLayout>
 
@@ -494,8 +506,8 @@
                     android:layout_marginRight="2.5dp"
                     android:layout_weight="0.5"
                     android:background="@drawable/style_button_solid"
-                    android:textColor="@color/colorWhite"
-                    android:text="Hire" />
+                    android:text="Hire"
+                    android:textColor="@color/colorWhite" />
 
                 <Button
                     android:id="@+id/btnNotHire"
@@ -504,8 +516,8 @@
                     android:layout_marginLeft="2.5dp"
                     android:layout_weight="0.5"
                     android:background="@drawable/style_button_solid"
-                    android:textColor="@color/colorWhite"
-                    android:text="Not Hire" />
+                    android:text="Not Hire"
+                    android:textColor="@color/colorWhite" />
 
             </LinearLayout>
 

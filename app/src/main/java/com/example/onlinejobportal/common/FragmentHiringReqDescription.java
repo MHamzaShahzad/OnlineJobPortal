@@ -324,8 +324,8 @@ public class FragmentHiringReqDescription extends Fragment {
                             if (userProfileModel.getUserImage() != null && !userProfileModel.getUserImage().equals("") && !userProfileModel.getUserImage().equals("null"))
                                 Picasso.get()
                                         .load(userProfileModel.getUserImage())
-                                        .placeholder(R.drawable.ic_launcher_background)
-                                        .error(R.drawable.ic_launcher_background)
+                                        .placeholder(R.drawable.useravatar)
+                                        .error(R.drawable.useravatar)
                                         .centerInside()
                                         .fit()
                                         .into(profileImage);
@@ -371,8 +371,8 @@ public class FragmentHiringReqDescription extends Fragment {
                             if (companyProfileModel.getImage() != null && !companyProfileModel.getImage().equals("") && !companyProfileModel.getImage().equalsIgnoreCase("null"))
                                 Picasso.get()
                                         .load(companyProfileModel.getImage())
-                                        .error(R.drawable.ic_launcher_background)
-                                        .placeholder(R.drawable.ic_launcher_background)
+                                        .error(R.drawable.image_placeholder)
+                                        .placeholder(R.drawable.image_placeholder)
                                         .centerInside().fit()
                                         .into(companyProfileImage);
 

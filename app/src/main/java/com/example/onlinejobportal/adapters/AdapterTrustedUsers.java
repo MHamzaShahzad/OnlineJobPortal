@@ -105,8 +105,8 @@ public class AdapterTrustedUsers extends RecyclerView.Adapter<AdapterTrustedUser
                             if (userProfileModel.getUserImage() != null && !userProfileModel.getUserImage().equals("null") && !userProfileModel.getUserImage().equals(""))
                                 Picasso.get()
                                         .load(userProfileModel.getUserImage())
-                                        .error(R.drawable.ic_launcher_background)
-                                        .placeholder(R.drawable.ic_launcher_background)
+                                        .error(R.drawable.useravatar)
+                                        .placeholder(R.drawable.useravatar)
                                         .centerInside().fit()
                                         .into(holder.userProfileImage);
 

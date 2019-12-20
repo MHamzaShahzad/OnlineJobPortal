@@ -186,8 +186,8 @@ public class FragmentCreateEditCompanyProfile extends Fragment {
                             if (profile.getImage() != null && !profile.getImage().equals("null") && !profile.getImage().equals(""))
                                 Picasso.get()
                                         .load(profile.getImage())
-                                        .error(R.drawable.ic_launcher_background)
-                                        .placeholder(R.drawable.ic_launcher_background)
+                                        .error(R.drawable.image_placeholder)
+                                        .placeholder(R.drawable.image_placeholder)
                                         .centerInside().fit()
                                         .into(companyImage);
 

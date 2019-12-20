@@ -86,7 +86,15 @@ public class AdapterJobsAppliedAt extends RecyclerView.Adapter<AdapterJobsApplie
                 Bundle bundle = new Bundle();
                 bundle.putBoolean(Constants.IS_APPLYING_SEEN_BY_COMPANY, isSeenByCompany);
                 bundle.putSerializable(Constants.APPLYING_REQ_OBJ, applyingRequestList.get(holder.getAdapterPosition()));
-                ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_home, FragmentAppliedAtJobDescription.getInstance(bundle)).addToBackStack(null).commit();
+                ((FragmentActivity) context)
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(
+                                R.id.fragment_home,
+                                FragmentAppliedAtJobDescription.getInstance(bundle),
+                                (isSeenByCompany) ? Constants.TITLE_APPLICANT_REQUEST_DESCRIPTION : Constants.TITLE_YOUR_REQUEST
+                        ).addToBackStack((isSeenByCompany) ? Constants.TITLE_APPLICANT_REQUEST_DESCRIPTION : Constants.TITLE_YOUR_REQUEST)
+                        .commit();
             }
         });
 
@@ -161,8 +169,8 @@ public class AdapterJobsAppliedAt extends RecyclerView.Adapter<AdapterJobsApplie
                             if (userProfileModel.getUserImage() != null && !userProfileModel.getUserImage().equals("null") && !userProfileModel.getUserImage().equals(""))
                                 Picasso.get()
                                         .load(userProfileModel.getUserImage())
-                                        .error(R.drawable.ic_launcher_background)
-                                        .placeholder(R.drawable.ic_launcher_background)
+                                        .error(R.drawable.useravatar)
+                                        .placeholder(R.drawable.useravatar)
                                         .centerInside().fit()
                                         .into(holder.imageView);
                         }
@@ -196,8 +204,8 @@ public class AdapterJobsAppliedAt extends RecyclerView.Adapter<AdapterJobsApplie
                             if (companyProfileModel.getImage() != null && !companyProfileModel.getImage().equals("null") && !companyProfileModel.getImage().equals(""))
                                 Picasso.get()
                                         .load(companyProfileModel.getImage())
-                                        .error(R.drawable.ic_launcher_background)
-                                        .placeholder(R.drawable.ic_launcher_background)
+                                        .error(R.drawable.image_placeholder)
+                                        .placeholder(R.drawable.image_placeholder)
                                         .centerInside().fit()
                                         .into(holder.imageView);
                         }

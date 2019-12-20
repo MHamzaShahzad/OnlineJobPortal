@@ -309,8 +309,8 @@ public class FragmentCreateEditUserProfile extends Fragment {
                                 if (profile.getUserImage() != null && !profile.getUserImage().equals("null") && !profile.getUserImage().equals(""))
                                     Picasso.get()
                                             .load(profile.getUserImage())
-                                            .error(R.drawable.ic_launcher_background)
-                                            .placeholder(R.drawable.ic_launcher_background)
+                                            .error(R.drawable.useravatar)
+                                            .placeholder(R.drawable.useravatar)
                                             .centerInside().fit()
                                             .into(profileImage);
 

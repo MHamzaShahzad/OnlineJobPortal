@@ -130,8 +130,8 @@ public class AdapterHiringRequests extends RecyclerView.Adapter<AdapterHiringReq
                             if (userProfileModel.getUserImage() != null && !userProfileModel.getUserImage().equals("null") && !userProfileModel.getUserImage().equals(""))
                                 Picasso.get()
                                         .load(userProfileModel.getUserImage())
-                                        .error(R.drawable.ic_launcher_background)
-                                        .placeholder(R.drawable.ic_launcher_background)
+                                        .error(R.drawable.useravatar)
+                                        .placeholder(R.drawable.useravatar)
                                         .centerInside().fit()
                                         .into(holder.imageView);
 
@@ -167,8 +167,8 @@ public class AdapterHiringRequests extends RecyclerView.Adapter<AdapterHiringReq
                             if (companyProfileModel.getImage() != null && !companyProfileModel.getImage().equals("null") && !companyProfileModel.getImage().equals(""))
                                 Picasso.get()
                                         .load(companyProfileModel.getImage())
-                                        .error(R.drawable.ic_launcher_background)
-                                        .placeholder(R.drawable.ic_launcher_background)
+                                        .error(R.drawable.image_placeholder)
+                                        .placeholder(R.drawable.image_placeholder)
                                         .centerInside().fit()
                                         .into(holder.imageView);
                         }

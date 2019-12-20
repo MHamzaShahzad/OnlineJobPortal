@@ -91,6 +91,9 @@ public class HomeDrawerActivityUser extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
+            if (getSupportFragmentManager().getBackStackEntryCount() == 0)
+                if (getSupportActionBar() != null)
+                    getSupportActionBar().setTitle(Constants.TITLE_JOBS);
         }
     }
 
@@ -174,8 +177,8 @@ public class HomeDrawerActivityUser extends AppCompatActivity
                             if (userProfileModel.getUserImage() != null && !userProfileModel.getUserImage().equals("null") && !userProfileModel.getUserImage().equals(""))
                                 Picasso.get()
                                         .load(userProfileModel.getUserImage())
-                                        .placeholder(R.drawable.ic_launcher_background)
-                                        .error(R.drawable.ic_launcher_background)
+                                        .placeholder(R.drawable.useravatar)
+                                        .error(R.drawable.useravatar)
                                         .centerInside().fit()
                                         .into(headerImageUser);
 

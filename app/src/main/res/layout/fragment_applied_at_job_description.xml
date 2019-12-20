@@ -47,7 +47,7 @@
                         android:fontFamily="@font/raleway_semi_bold"
                         android:text="Applicant Details"
                         android:textAlignment="center"
-                        android:textColor="@color/colorWhite"
+                        android:textColor="@color/colorPrimaryDark"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -60,7 +60,7 @@
                         android:fontFamily="@font/raleway_semi_bold"
                         android:text="Name"
                         android:textAlignment="center"
-                        android:textColor="@color/colorWhite"
+                        android:textColor="@color/colorPrimaryDark"
                         android:textSize="17sp"
                         android:textStyle="bold" />
 
@@ -73,7 +73,7 @@
                         android:fontFamily="@font/ralewaylight"
                         android:text="Trusted Or Not"
                         android:textAlignment="center"
-                        android:textColor="@color/colorWhite"
+                        android:textColor="@color/colorPrimaryDark"
                         android:textSize="17sp"/>
 
                     <TextView
@@ -85,7 +85,7 @@
                         android:fontFamily="@font/ralewaylight"
                         android:text="Age"
                         android:textAlignment="center"
-                        android:textColor="@color/colorWhite"
+                        android:textColor="@color/colorPrimaryDark"
                         android:textSize="17sp" />
 
 
@@ -98,7 +98,7 @@
                         android:fontFamily="@font/ralewaylight"
                         android:text="Marital Status"
                         android:textAlignment="center"
-                        android:textColor="@color/colorWhite"
+                        android:textColor="@color/colorPrimaryDark"
                         android:textSize="17sp" />
 
                     <TextView
@@ -110,7 +110,7 @@
                         android:fontFamily="@font/ralewaylight"
                         android:text="Email Address"
                         android:textAlignment="center"
-                        android:textColor="@color/colorWhite"
+                        android:textColor="@color/colorPrimaryDark"
                         android:textSize="17sp" />
 
                     <TextView
@@ -122,7 +122,7 @@
                         android:fontFamily="@font/ralewaylight"
                         android:text="Skills"
                         android:textAlignment="center"
-                        android:textColor="@color/colorWhite"
+                        android:textColor="@color/colorPrimaryDark"
                         android:textSize="17sp" />
 
                     <TextView
@@ -134,7 +134,7 @@
                         android:fontFamily="@font/ralewaylight"
                         android:text="Education"
                         android:textAlignment="center"
-                        android:textColor="@color/colorWhite"
+                        android:textColor="@color/colorPrimaryDark"
                         android:textSize="17sp" />
 
 
@@ -147,7 +147,7 @@
                         android:fontFamily="@font/ralewaylight"
                         android:text="Current Job"
                         android:textAlignment="center"
-                        android:textColor="@color/colorWhite"
+                        android:textColor="@color/colorPrimaryDark"
                         android:textSize="17sp" />
 
                     <TextView
@@ -161,7 +161,7 @@
                         android:fontFamily="@font/ralewaylight"
                         android:text="Address"
                         android:textAlignment="center"
-                        android:textColor="@color/colorWhite"
+                        android:textColor="@color/colorPrimaryDark"
                         android:textSize="17sp" />
 
                 </RelativeLayout>
@@ -170,6 +170,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
+                    android:visibility="gone"
                     android:background="@drawable/edittextstyle">
 
                     <TextView
@@ -566,7 +567,7 @@
                     android:background="@drawable/edittextstyle"
                     android:fontFamily="@font/ralewaylight"
                     android:textAlignment="center"
-                    android:padding="5dp"
+                    android:padding="10dp"
                     android:text="Chat"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="17sp" />

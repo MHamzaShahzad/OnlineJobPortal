@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -82,7 +83,8 @@ public class FragmentAppliedAtJobDescription extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
+        if (mListener != null)
+            mListener.onFragmentInteraction(this.getTag());
         context = container.getContext();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         // Inflate the layout for this fragment
@@ -154,13 +156,9 @@ public class FragmentAppliedAtJobDescription extends Fragment {
                 if (applyingRequest != null) {
                     initJobReqListener(applyingRequest.getRequestId());
                     if (isAppliedAtJobSeenByCompany) {
-                        if (mListener != null)
-                            mListener.onFragmentInteraction(Constants.TITLE_APPLICANT_REQUEST_DESCRIPTION);
                         loadUserDetails(applyingRequest.getApplierId());
                         setStartChatWithUser(applyingRequest.getChatId(), applyingRequest.getApplierId());
                     }else {
-                        if (mListener != null)
-                            mListener.onFragmentInteraction(Constants.TITLE_YOUR_REQUEST_DESCRIPTION);
                         setChatWithCompany(applyingRequest.getChatId(), applyingRequest.getApplyingAtCompanyId());
                     }
                     loadCompanyDetails(applyingRequest.getApplyingAtCompanyId());
@@ -241,6 +239,9 @@ public class FragmentAppliedAtJobDescription extends Fragment {
                         applyingRequest = dataSnapshot.getValue(ApplyingRequest.class);
                         if (applyingRequest != null) {
 
+                            Log.e(TAG, "onDataChange: " + applyingRequest.getRequestProposal() );
+                            jobProposal.setText(applyingRequest.getRequestProposal());
+
                             switch (applyingRequest.getApplyingStatus()) {
                                 case Constants.REQUEST_STATUS_PENDING:
                                     if (isAppliedAtJobSeenByCompany && applyingRequest.getApplyingAtCompanyId().equals(firebaseUser.getUid())) {
@@ -277,7 +278,6 @@ public class FragmentAppliedAtJobDescription extends Fragment {
                                     break;
                                 default:
                             }
-                            jobProposal.setText(applyingRequest.getRequestProposal());
                         }
 
                     } catch (Exception e) {
@@ -376,8 +376,8 @@ public class FragmentAppliedAtJobDescription extends Fragment {
                             if (userProfileModel.getUserImage() != null && !userProfileModel.getUserImage().equals("") && !userProfileModel.getUserImage().equals("null"))
                                 Picasso.get()
                                         .load(userProfileModel.getUserImage())
-                                        .placeholder(R.drawable.ic_launcher_background)
-                                        .error(R.drawable.ic_launcher_background)
+                                        .placeholder(R.drawable.useravatar)
+                                        .error(R.drawable.useravatar)
                                         .centerInside()
                                         .fit()
                                         .into(imageView);
@@ -420,8 +420,8 @@ public class FragmentAppliedAtJobDescription extends Fragment {
                             if (!isAppliedAtJobSeenByCompany && companyProfileModel.getImage() != null && !companyProfileModel.getImage().equals("null") && !companyProfileModel.getImage().equals(""))
                                 Picasso.get()
                                         .load(companyProfileModel.getImage())
-                                        .error(R.drawable.ic_launcher_background)
-                                        .placeholder(R.drawable.ic_launcher_background)
+                                        .error(R.drawable.image_placeholder)
+                                        .placeholder(R.drawable.image_placeholder)
                                         .centerInside().fit()
                                         .into(imageView);
 

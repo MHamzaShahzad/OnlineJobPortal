@@ -97,6 +97,9 @@ public class HomeDrawerActivityCompany extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
+            if (getSupportFragmentManager().getBackStackEntryCount() == 0)
+                if (getSupportActionBar() != null)
+                    getSupportActionBar().setTitle(Constants.TITLE_USERS_LIST);
         }
     }
 
@@ -206,8 +209,8 @@ public class HomeDrawerActivityCompany extends AppCompatActivity
                             if (companyProfileModel.getImage() != null && !companyProfileModel.getImage().equals("null") && !companyProfileModel.getImage().equals(""))
                                 Picasso.get()
                                         .load(companyProfileModel.getImage())
-                                        .placeholder(R.drawable.ic_launcher_background)
-                                        .error(R.drawable.ic_launcher_background)
+                                        .placeholder(R.drawable.image_placeholder)
+                                        .error(R.drawable.image_placeholder)
                                         .centerInside().fit()
                                         .into(headerImageCompany);
 
