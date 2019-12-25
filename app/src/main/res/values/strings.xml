@@ -36,5 +36,10 @@
     <string name="menu_applying_req">Applyer Requests</string>
     <string name="menu_contact_us">Contact Us</string>
     <string name="menu_about_us">About Us</string>
+    <string name="web_client_id">811434146884-dfpl38h3r7n8u0ijmjbq1us0527insg9.apps.googleusercontent.com</string>
+
+    <string name="facebook_app_id">440410409970714</string>
+    <string name="fb_login_protocol_scheme">fb440410409970714</string>
+
 
 </resources>

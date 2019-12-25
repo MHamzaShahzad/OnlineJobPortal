@@ -1,136 +1,183 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorWhite"
-    android:fillViewport="true">
+    tools:context=".activities.LoginActivity">
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        tools:context=".activities.LoginActivity">
-
-        <TextView
-            android:id="@+id/admin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="5dp"
-            android:background="@drawable/style_button_solid_circle"
-            android:fontFamily="@font/raleway_semi_bold"
-            android:onClick="loginAdmin"
-            android:padding="10dp"
-            android:text=" Admin ?"
-            android:textAllCaps="true"
-            android:textColor="@color/colorWhite"
-            android:textSize="15sp" />
-
-        <ImageView
-            android:id="@+id/logoComp"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_below="@id/admin"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:src="@drawable/logoproject" />
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite"
+        android:fillViewport="true">
 
         <RelativeLayout
-            android:id="@+id/login_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/logoComp">
+            android:padding="10dp">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/emailTextLayout"
-                style="@style/EditText.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/inputEmail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/edittextstyle"
-                    android:fontFamily="@font/ralewaylight"
-                    android:hint="Email"
-                    android:inputType="textEmailAddress"
-                    android:padding="10dp"
-                    android:textColor="@color/colorPrimaryDark" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/passwordTextLayout"
-                style="@style/EditText.OutlinedBox"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/admin"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/emailTextLayout"
-                android:layout_marginTop="7dp">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/inputPassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/edittextstyle"
-                    android:fontFamily="@font/ralewaylight"
-                    android:hint="Password"
-                    android:inputType="textPassword"
-                    android:padding="10dp"
-                    android:textColor="@color/colorPrimaryDark" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <Button
-                android:id="@+id/btnSignIn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/passwordTextLayout"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/style_button_solid"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/style_button_solid_circle"
                 android:fontFamily="@font/raleway_semi_bold"
-                android:paddingLeft="60dp"
-                android:paddingRight="50dp"
-                android:layout_marginBottom="60dp"
-                android:text="Submit"
-                android:textColor="#fff" />
+                android:onClick="loginAdmin"
+                android:padding="10dp"
+                android:text=" Admin ?"
+                android:textAllCaps="true"
+                android:textColor="@color/colorWhite"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:id="@+id/logoComp"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_below="@id/admin"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/logoproject" />
+
+            <RelativeLayout
+                android:id="@+id/login_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/logoComp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/emailTextLayout"
+                    style="@style/EditText.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/inputEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/edittextstyle"
+                        android:fontFamily="@font/ralewaylight"
+                        android:hint="Email"
+                        android:inputType="textEmailAddress"
+                        android:padding="10dp"
+                        android:textColor="@color/colorPrimaryDark" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/passwordTextLayout"
+                    style="@style/EditText.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/emailTextLayout"
+                    android:layout_marginTop="7dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/inputPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/edittextstyle"
+                        android:fontFamily="@font/ralewaylight"
+                        android:hint="Password"
+                        android:inputType="textPassword"
+                        android:padding="10dp"
+                        android:textColor="@color/colorPrimaryDark" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:id="@+id/btnSignIn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/passwordTextLayout"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/style_button_solid"
+                    android:fontFamily="@font/raleway_semi_bold"
+                    android:text="Submit"
+                    android:textColor="#fff" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/btnSignIn"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/border_style_edittext"
+                    android:fontFamily="@font/raleway_semi_bold"
+                    android:onClick="forgotPassword"
+                    android:text="Forgot Password ?"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="10dp" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_fb_google_sign_in"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_below="@id/login_layout"
+                android:layout_marginTop="30dp"
+                android:orientation="vertical">
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@color/color_black"
+                    android:drawableStart="@drawable/ic_email_black_24dp"
+                    android:drawableLeft="@drawable/ic_email_black_24dp"
+                    android:onClick="moveToSignUp"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingEnd="10dp"
+                    android:text="Continue with Email"
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+                    android:textColor="#fff" />
+
+                <Button
+                    android:id="@+id/login_button_fb"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/facebook"
+                    android:drawableStart="@drawable/ic_facebook"
+                    android:drawableLeft="@drawable/ic_facebook"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingEnd="10dp"
+                    android:text="Continue with Facebook"
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+                    android:textColor="#fff" />
+
+                <Button
+                    android:id="@+id/login_button_google"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#DD4B39"
+                    android:drawableStart="@drawable/ic_google"
+                    android:drawableLeft="@drawable/ic_google"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingEnd="10dp"
+                    android:text="Continue with Google"
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+                    android:textColor="#fff" />
+
+            </LinearLayout>
 
         </RelativeLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/border_style_edittext"
-            android:fontFamily="@font/raleway_semi_bold"
-            android:onClick="moveToSignUp"
-            android:text="Create New Account"
-            android:textAllCaps="true"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="10dp" />
+    </ScrollView>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/border_style_edittext"
-            android:fontFamily="@font/raleway_semi_bold"
-            android:onClick="forgotPassword"
-            android:text="Forgot Password?"
-            android:textAllCaps="true"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="10dp" />
-
-    </RelativeLayout>
-
-</ScrollView>
+</RelativeLayout>

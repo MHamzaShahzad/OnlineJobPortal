@@ -23,6 +23,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 
 import android.view.MenuItem;
 
+import com.facebook.login.LoginManager;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -211,6 +212,8 @@ public class HomeDrawerActivityUser extends AppCompatActivity
         mAuth.signOut();
         if (firebaseUser != null)
             CommonFunctionsClass.unSubscribeFromTopic(context, firebaseUser.getUid(), true);
+        LoginManager.getInstance().logOut();
+
         startActivity(new Intent(context, StartMainActivity.class));
         finish();
 

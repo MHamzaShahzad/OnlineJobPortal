@@ -9,6 +9,12 @@ public class CompanyProfileModel {
 
     }
 
+    public CompanyProfileModel(String image, String companyName, String companyBusinessEmail) {
+        this.image = image;
+        this.companyName = companyName;
+        this.companyBusinessEmail = companyBusinessEmail;
+    }
+
     public CompanyProfileModel(String companyName, String companyBusinessEmail) {
         this.companyName = companyName;
         this.companyBusinessEmail = companyBusinessEmail;

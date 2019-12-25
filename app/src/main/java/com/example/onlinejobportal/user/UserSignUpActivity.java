@@ -257,7 +257,7 @@ public class UserSignUpActivity extends AppCompatActivity {
     private void uploadUserBasicProfile(FirebaseUser user){
         MyFirebaseDatabase.USER_PROFILE_REFERENCE.child(user.getUid()).setValue(new UserProfileModel(
                 user.getUid(),
-                user.getPhotoUrl().toString(),
+                String.valueOf(user.getPhotoUrl()),
                 user.getDisplayName(),
                 user.getEmail(),
                 Constants.USER_NOT_TRUSTED)
